@@ -17,9 +17,9 @@ python3 -m http.server 8000
 
 | Section | What it does |
 | --- | --- |
-| Header | Delivery note, phone, live "open now" status (Sofia time), product search with suggestions, cart with total, "All categories" menu with every category from the shop, mobile menu |
+| Header | Wholesale note linking to the quote form, phone, live "open now" status (Sofia time), product search with suggestions, cart with total, "All categories" menu with every category from the shop, mobile menu |
 | Hero | Slider with three own product lines. Each slide has a small demo of the product: pull a towel from the dispenser and the next one comes out, pull and tear a toilet paper sheet, a fan of napkin colours. Next to it: the shop's banners for wet wipes with your logo and hotel supplies |
-| Benefits | Own production, delivery in 1–4 days with Econt or Speedy, wholesale and retail, Kimberly-Clark |
+| Benefits | Own production, logo printing on napkins and wet wipes, wholesale and retail, Kimberly-Clark |
 | Categories | 12 categories with product photos, linking to the shop |
 | Best sellers | Real products and prices (with and without VAT, € and лв.), filter by paper or hygiene, add to cart |
 | V or Z | What the two hand towel folds are, with sizes, and the dispenser that fits them |
