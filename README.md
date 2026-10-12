@@ -25,7 +25,7 @@ python3 -m http.server 8000
 | V or Z | What the two hand towel folds are, with sizes, and the dispenser that fits them |
 | Napkins | Pick a colour and see the actual Santia product, price and add to cart |
 | Banners | Christmas napkins, toilet paper, kitchen, cleaning, Santia for shops |
-| About | What the company does, with a small animation of jumbo roll → cutting → packs |
+| About | What the company makes and supplies, based on the "За нас" page of the current site, with a small animation of jumbo roll → cutting → packs |
 | Brands | Paper Converting, Kimberly-Clark, Santia, Scott, Kleenex, WypAll, Sano, Mar Plast |
 | Contact | Wholesale quote form, phone, email, address, hours, map link |
 
