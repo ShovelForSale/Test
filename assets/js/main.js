@@ -1,4 +1,4 @@
-/* Paper Converting Professional — front page interactions */
+/* Paper Converting Professional — home page */
 (() => {
   'use strict';
 
@@ -8,488 +8,463 @@
   const wait = ms => new Promise(r => setTimeout(r, ms));
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = matchMedia('(pointer: fine)').matches;
+  const SHOP = 'https://paper-professional.com';
+  const IMG = 'assets/img/';
   const BGN = 1.95583;
 
   const store = {
     get(k, d) { try { const v = localStorage.getItem('pcp.' + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
     set(k, v) { try { localStorage.setItem('pcp.' + k, JSON.stringify(v)); } catch { /* storage unavailable */ } },
   };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const eur = v => '€' + v.toFixed(2);
+  const bgn = v => (v * BGN).toFixed(2) + ' лв.';
 
-  const state = { vat: store.get('vat', true), cart: store.get('cart', []) };
+  /* ======================================================
+     DATA — categories, products and prices from the current shop
+     ====================================================== */
+  const c = (id, slug) => `${SHOP}/category/${id}/${slug}.html`;
+  const CATEGORIES = [
+    { name: 'Кърпи за ръце', href: c(187, 'karpi-za-ratse'), img: 'products/p5892.jpg', subs: [
+      ['V кърпи – къси', c(423, 'v-karpi-za-ratse-kasi')], ['V кърпи – широки', c(425, 'v-karpi-za-ratse-shiroki')],
+      ['Z кърпи', c(487, 'z-karpi-za-ratse')], ['Кърпи Kimberly-Clark', c(424, 'karpi-za-ratse-kimberly-clark')],
+      ['Кърпи на ролка', c(189, 'karpi-za-ratse-na-rolka')]] },
+    { name: 'Тоалетна хартия', href: c(191, 'toaletni-hartii'), img: 'products/p5914.jpg', subs: [
+      ['На пачки', c(202, 'na-pachki')], ['Малки ролки', c(358, 'na-rolki-malki')], ['Мини джъмбо', c(267, 'mini-dzhambo')],
+      ['Smart One', `${SHOP}/smart/one.html`], ['Пакети', c(477, 'toaletna-hartia-paketi')]] },
+    { name: 'Кухненски ролки', href: c(251, 'kuhnenski-rolki'), img: 'products/p5945.jpg', subs: [
+      ['Бели', c(383, 'kuhn-rolki-beli')], ['Избелени', c(334, 'kuhn-rolki-izbeleni')], ['За магазини', c(384, 'kuhn-rolki-magazini')]] },
+    { name: 'Салфетки', href: c(341, 'salfetki'), img: 'categories/napkins.jpg', subs: [
+      ['24×24 за бар', c(508, 'salfetki-24-24-barovi')], ['33×33', c(382, 'salfetki-33h33')], ['40×40', c(381, 'salfetki-40h40')],
+      ['Цветни 33×33', c(343, 'tsvetni-salfetki-33-33')], ['С шевици', c(385, 'salfetki-s-shevitsi')],
+      ['Коледни', c(356, 'koledni-salfetki')], ['Великденски', c(422, 'velikdenski-salfetki')], ['За диспенсър', c(370, 'salfetki-za-dispensar')]] },
+    { name: 'Дозатори', href: c(180, 'dozatori'), img: 'products/p6312.jpg', subs: [
+      ['Бели', c(181, 'beli-dozatori')], ['Черни', c(182, 'cherni-dozatori')], ['Инокс', c(185, 'inoksovi-dozatori')],
+      ['Сензорни', c(264, 'senzorni-dozatori')], ['Аксесоари за WC', c(401, 'aksesoari-za-wc')], ['Индустриални', c(325, 'industrialni-dozatori')]] },
+    { name: 'Сапун, пяна и дезинфектанти', href: c(199, 'sapun-pyana-500ml-1l-5l'), img: 'categories/soap.jpg', subs: [
+      ['Пълнители Kimberly-Clark', c(200, 'palniteli-kimberly-clark')], ['Сапун и пяна 500 мл – 5 л', c(199, 'sapun-pyana-500ml-1l-5l')],
+      ['Дезинфектанти за ръце', c(418, 'dezinfektanti-za-ratse')]] },
+    { name: 'Почистващи препарати', href: c(391, 'preparati-i-pochistvashti-sredstva'), img: 'categories/cleaning.jpg', subs: [
+      ['За кухня', c(410, 'za-kuhnya')], ['За под', c(405, 'za-pod')], ['За WC и баня', c(409, 'za-wc-banya')],
+      ['За стъкла', c(402, 'za-stakla')], ['Дезинфектанти', c(413, 'dezinfektanti')], ['Ароматизатори', c(256, 'aromatizatori')],
+      ['Перилни препарати', c(462, 'za-prane')], ['Други препарати', c(539, 'drugi-preparati')]] },
+    { name: 'Лични предпазни средства', href: c(193, 'lichni-predpazni-sredstva'), img: 'products/p3590.jpg', subs: [
+      ['Ръкавици', c(194, 'rakavitsi')], ['Маски за лице', c(195, 'maski-za-litse')], ['Престилки', c(328, 'prestilki')],
+      ['Калцуни', c(353, 'kaltsuni')], ['Бонета', c(392, 'boneta')], ['Очила', c(196, 'ochila')], ['Тапи за уши', c(197, 'tapi-za-ushi')]] },
+    { name: 'Хотелски консумативи', href: c(411, 'hotelski-konsumativi'), img: 'banners/hotel.jpg', subs: [
+      ['Хотелска козметика', c(435, 'hotelska-kozmetika')], ['Санитарни консумативи', c(434, 'sanitarni-konsumativi')],
+      ['Чехли', c(471, 'chehli')], ['Козметични кърпи', c(266, 'kozmetichni-karpi')], ['Мокри кърпички с лого', c(186, 'mokri-karpichki-s-logo')]] },
+    { name: 'Индустриални продукти', href: c(192, 'industrialni-produkti'), img: 'categories/industrial.jpg', subs: [
+      ['Индустриални ролки', c(206, 'industrialni-rolki')], ['Индустриален сапун', c(286, 'industrialen-sapun')],
+      ['Кърпи Kimtech Prep', c(214, 'karpi-kimtech-prep')], ['Кърпи Kimtech Science', c(246, 'karpi-kimtech-science')],
+      ['Стойки', c(307, 'stoyki')], ['Медицински ролки', c(327, 'meditsinski-rolki-charshafi')]] },
+    { name: 'Чували за смет', href: c(412, 'chuvali'), img: 'categories/bags.jpg', subs: [
+      ['20 – 50 л', c(414, 'chuvali-20l-35l-50l')], ['70 – 90 л', c(415, 'chuvali-70l-80l-90l')], ['130 – 300 л', c(416, 'chuvali-130l-200l-300l')]] },
+    { name: 'Еднократни и за масата', href: c(497, 'ednokratni-pribori'), img: 'products/p4166.jpg', subs: [
+      ['Еднократни прибори', c(497, 'ednokratni-pribori')], ['Покривки за маса', c(488, 'pokrivki-za-masa')],
+      ['Хигиенни колички', c(519, 'higienni-kolichki')]] },
+  ];
 
-  /* Run a callback only while an element is on screen (keeps rAF loops cheap). */
-  function whileVisible(el, onChange, margin = '100px') {
-    if (!('IntersectionObserver' in window)) { onChange(true); return; }
-    new IntersectionObserver(([e]) => onChange(e.isIntersecting), { rootMargin: margin }).observe(el);
-  }
+  const p = (id, slug) => `${SHOP}/product/${id}/${slug}.html`;
+  // own: made by Paper Converting (the shop photos carry their badge)
+  const PRODUCTS = [
+    { id: 'z2121', group: 'paper', own: true, hit: true, img: 'p5892.jpg', name: 'Z кърпи за ръце 21×21 см, 2 пласта, бели плътни', meta: '20 пакета в кашон', net: 19.50, gross: 23.40, href: p(3330, 'z-karpi-za-ratse-21h21sm-2-pl-beli-platni-20-paketa-v-kashon-kod-11004') },
+    { id: 'v2421', group: 'paper', own: true, img: 'p5901.jpg', name: 'V кърпи за ръце 24×21 см, 2 пласта, бели', meta: '20 пакета в кашон', net: 21.50, gross: 25.80, href: p(2733, 'v-karpi-za-ratse-24h21-2plasta-beli-20-paketa-v-kashon-kod-24-23') },
+    { id: 'v2121', group: 'paper', own: true, img: 'p5925.jpg', name: 'V кърпи за ръце 21×21 см, 2 пласта, бели', meta: 'Кашон, код 21', net: 19.50, gross: 23.40, href: p(2536, 'karpi-za-ratse-v-sganati-21h21-2plasta-beli-kod-21') },
+    { id: 'mj12', group: 'paper', own: true, img: 'p5914.jpg', name: 'Тоалетна хартия Мини джъмбо, бяла, 3 пласта', meta: '12 ролки', net: 11.70, gross: 14.04, href: p(2353, 'toaletna-hartia-mini-jumbo-byala-3-plasta-12-br') },
+    { id: 'mjg12', group: 'paper', own: true, img: 'p5913.jpg', name: 'Тоалетна хартия Мини джъмбо, гладка, 3 пласта', meta: '12 ролки', net: 13.29, gross: 15.95, href: p(3160, 'toaletna-hartia-mini-dzhambo-gladka-3-plasta-12-broya') },
+    { id: 'tp4021', group: 'paper', own: true, img: 'p5921.jpg', name: 'Тоалетна хартия на пачки, бяла, 2 пласта', meta: '40 пачки в кашон', net: 26.60, gross: 31.92, href: p(2392, '4021-toaletna-hartia-na-pachki-byala-2-plasta-40-pachki-kashon') },
+    { id: 'kr6', group: 'paper', own: true, img: 'p5945.jpg', name: 'Кухненска ролка бяла, 2 пласта', meta: '6 ролки', net: 13.29, gross: 15.95, href: p(2957, 'kuhnenska-rolka-byala-2plasta-6-broya') },
+    { id: 'tp48', group: 'paper', hit: true, img: 'p3835.jpg', name: 'Тоалетна хартия бяла, 3 пласта', meta: '48 ролки', net: 8.44, gross: 10.13, href: p(3158, 'toaletna-hartia-byala-3-plasta-48-broya') },
+    { id: 'dispViali', group: 'hygiene', img: 'p6196.jpg', name: 'Дозатор за кърпи за ръце Виали, за Z и V кърпи 21×21', meta: '1 брой', net: 11.00, gross: 13.20, href: p(4788, 'dozator-za-karpi-za-ratse-viali-za-z-i-v-karpi-21h21') },
+    { id: 'kc6945', group: 'hygiene', img: 'p6312.jpg', name: 'Дозатор за кърпи за ръце Kimberly-Clark, тесен', meta: 'Код 6945', net: 30.65, gross: 36.78, href: p(575, '6945-dozator-za-karpi-za-ratse-kimberly-clark-tesen') },
+    { id: 'scott6340', group: 'hygiene', hit: true, img: 'p6309.jpg', name: 'SCOTT Essential розова пяна за ръце', meta: '2500 дози, код 6340', net: 10.25, gross: 12.30, href: p(625, '6340-scott-essential-rozova-pyana-za-ratse-2500-dozi') },
+    { id: 'kleenex6331', group: 'hygiene', img: 'p6313.jpg', name: 'Kleenex розов течен сапун с глицерин', meta: '1000 дози, код 6331', net: 9.70, gross: 11.64, href: p(580, '6331-rozov-techen-sapun-kleenex-s-glitserin-1000-dozi') },
+    { id: 'foam5', group: 'hygiene', img: 'p4001.jpg', name: 'Пяна за ръце RELAX', meta: '5 литра', net: 10.00, gross: 12.00, href: p(2791, 'pyana-za-ratse-relax-5l') },
+    { id: 'gloves', group: 'hygiene', img: 'p3590.jpg', name: 'Нитрилни ръкавици без пудра', meta: '100 броя, код 1140', net: 9.00, gross: 10.80, href: p(2998, 'nitrilni-rakavitsi-bez-pudra-100-br-kod-1140') },
+    { id: 'kleenexRoll', group: 'hygiene', img: 'p1872.jpg', name: 'Kleenex кърпи за ръце на ролка', meta: 'Ultra Slim, 2 пласта, 100 м', net: 12.50, gross: 15.00, href: p(587, '6781-kleenex-ultra-slim-2-pl-100-m') },
+    { id: 'bags130', group: 'hygiene', img: 'p3159.jpg', name: 'Чували за смет 80×110 см, черни плътни', meta: '130 л, 10 броя', net: 0.82, gross: 0.98, href: p(2585, 'chuvali-za-smet-80h110-cherni-platni-130l-10-br') },
+  ];
+  const BEST = ['z2121', 'v2421', 'mj12', 'kr6', 'tp48', 'dispViali', 'scott6340', 'gloves'];
 
-  function loop(fn) {
-    let id = 0, last = 0, on = false;
-    const tick = t => { const dt = Math.min(64, t - (last || t)); last = t; fn(dt, t); if (on) id = requestAnimationFrame(tick); };
-    return {
-      start() { if (on) return; on = true; last = 0; id = requestAnimationFrame(tick); },
-      stop() { on = false; cancelAnimationFrame(id); },
-    };
-  }
+  const NAPKINS = [
+    { id: 'np-red', color: 'Червено', c: '#c8102e', img: 'p5580.jpg', name: 'Червени салфетки Santia Лукс, 2 пласта, 33×33 см', meta: '40 броя', net: 1.00, gross: 1.20, href: p(2313, 'cherveni-salfetki-2-plasta-33h33-40-br') },
+    { id: 'np-bordo', color: 'Бордо', c: '#6d1a2a', img: 'p6089.jpg', name: 'Салфетки бордо, 2 пласта, 40×40 см', meta: '40 броя', net: 1.50, gross: 1.80, href: p(4533, 'salfetki-bordo-40-40-2-pl-40-br') },
+    { id: 'np-champ', color: 'Шампанско', c: '#e3cf9e', light: true, img: 'p5575.jpg', name: 'Салфетки шампанско Santia Лукс, 2 пласта, 33×33 см', meta: '40 броя', net: 1.00, gross: 1.20, href: p(2426, 'salfetki-shampansko-luks-2pl-33h33-40-br') },
+    { id: 'np-yellow', color: 'Жълто', c: '#f2c230', light: true, img: 'p5577.jpg', name: 'Жълти салфетки Santia Лукс, 2 пласта, 33×33 см', meta: '40 броя', net: 1.00, gross: 1.20, href: p(2403, 'zhalti-salfetki-luks-2pl-33h33-40-br') },
+    { id: 'np-green', color: 'Светлозелено', c: '#9cc83c', light: true, img: 'p6637.jpg', name: 'Светлозелени салфетки Santia Lovely Home, 2 пласта, 33×24 см, 1/8', meta: '100 броя', net: 2.00, gross: 2.40, href: p(4688, 'svetlo-zeleni-salfetki-33-24-sm-1-8-2-pl-100-br') },
+    { id: 'np-blue', color: 'Синьо', c: '#1f4fa8', img: 'p5579.jpg', name: 'Сини салфетки Santia Лукс, 2 пласта, 33×33 см', meta: '40 броя', net: 1.00, gross: 1.20, href: p(2322, 'sini-salfetki-luks-2-pl-33h33-40-br') },
+    { id: 'np-rose', color: 'Пепел от рози', c: '#c99aa6', light: true, img: 'p6632.jpg', name: 'Салфетки пепел от рози Santia Lovely Home, 2 пласта, 33×24 см, 1/8', meta: '100 броя', net: 2.00, gross: 2.40, href: p(4693, 'salfetki-pepel-ot-rozi-33-24-sm-1-8-2-pl-100-br') },
+    { id: 'np-black', color: 'Черно', c: '#1d1d1f', img: 'p5578.jpg', name: 'Черни салфетки Santia Лукс, 2 пласта, 33×33 см, 1/4', meta: '40 броя', net: 1.20, gross: 1.44, href: p(2348, 'cherni-salfetki-luks-33h33-1-4-2-pl-40-br') },
+    { id: 'np-white', color: 'Бяло', c: '#f7f5f0', light: true, img: 'p5712.jpg', name: 'Бели луксозни салфетки, 2 пласта, 40×40 см, 1/8', meta: 'Пакет', net: 5.11, gross: 6.13, href: p(2465, 'beli-luksozni-salfetki-40-40-1-8-2-plasta') },
+  ];
 
-  /* ---------------- toast ---------------- */
+  const ITEMS = Object.fromEntries([...PRODUCTS, ...NAPKINS].map(x => [x.id, x]));
+
+  /* ---------------- small UI helpers ---------------- */
   const toastEl = $('#toast');
   let toastT;
   function toast(msg) {
     toastEl.textContent = msg;
     toastEl.classList.add('is-on');
     clearTimeout(toastT);
-    toastT = setTimeout(() => toastEl.classList.remove('is-on'), 2600);
+    toastT = setTimeout(() => toastEl.classList.remove('is-on'), 2800);
   }
 
-  /* ---------------- header ---------------- */
-  const header = $('#header');
-  const onScrollHeader = () => header.classList.toggle('is-stuck', scrollY > 30);
-  addEventListener('scroll', onScrollHeader, { passive: true });
-  onScrollHeader();
+  function whileVisible(el, cb, margin = '0px') {
+    if (!('IntersectionObserver' in window)) { cb(true); return; }
+    new IntersectionObserver(([e]) => cb(e.isIntersecting), { rootMargin: margin }).observe(el);
+  }
 
   const yearEl = $('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* desktop dropdowns: hover with intent delay, click to toggle, Esc / outside to close */
-  const navItems = $$('.nav__item.has-mega, .nav__item.has-drop');
-  function closeNav(except) {
-    navItems.forEach(li => {
-      if (li === except) return;
-      li.classList.remove('is-open');
-      $('.nav__link', li).setAttribute('aria-expanded', 'false');
-    });
-  }
-  navItems.forEach(li => {
-    const btn = $('.nav__link', li);
-    let t;
-    const open = () => { clearTimeout(t); closeNav(li); li.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); };
-    const close = () => { t = setTimeout(() => { li.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); }, 160); };
-    btn.addEventListener('click', () => (li.classList.contains('is-open') ? (li.classList.remove('is-open'), btn.setAttribute('aria-expanded', 'false')) : open()));
-    if (finePointer) { li.addEventListener('mouseenter', open); li.addEventListener('mouseleave', close); }
-    $$('a', li).forEach(a => a.addEventListener('click', () => closeNav()));
-  });
-  document.addEventListener('click', e => { if (!e.target.closest('.nav__item')) closeNav(); });
+  const header = $('#header');
+  const onScroll = () => header.classList.toggle('is-stuck', scrollY > 40);
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  /* ---------------- overlays: drawer, search, cart ---------------- */
-  const drawer = $('#drawer'), burger = $('#burger'), search = $('#search'), cart = $('#cart');
+  /* ---------------- overlays ---------------- */
+  const drawer = $('#drawer'), cart = $('#cart'), burger = $('#burger');
   function setOverlay(el, open) {
     el.classList.toggle('is-open', open);
     el.setAttribute('aria-hidden', String(!open));
-    document.body.classList.toggle('is-locked', $$('.drawer.is-open, .cart.is-open, .search.is-open').length > 0);
+    document.body.classList.toggle('is-locked', !!$('.drawer.is-open, .cart.is-open'));
+    if (el === drawer) burger.setAttribute('aria-expanded', String(open));
   }
-  burger.addEventListener('click', () => {
-    const open = !drawer.classList.contains('is-open');
-    setOverlay(drawer, open);
-    burger.setAttribute('aria-expanded', String(open));
-  });
-  drawer.addEventListener('click', e => {
-    if (e.target === drawer || e.target.closest('[data-close-drawer]') || e.target.closest('a')) {
-      setOverlay(drawer, false); burger.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  const searchInput = $('#searchInput'), searchResults = $('#searchResults');
-  $('#searchOpen').addEventListener('click', () => { setOverlay(search, true); renderSearch(''); setTimeout(() => searchInput.focus(), 60); });
-  $('#searchClose').addEventListener('click', () => setOverlay(search, false));
-  search.addEventListener('click', e => { if (e.target === search || e.target.closest('.search__results a')) setOverlay(search, false); });
-
+  burger.addEventListener('click', () => setOverlay(drawer, true));
+  [drawer, cart].forEach(el => el.addEventListener('click', e => {
+    if (e.target === el || e.target.closest('[data-close]')) setOverlay(el, false);
+  }));
   $('#cartOpen').addEventListener('click', () => { renderCart(); setOverlay(cart, true); });
-  cart.addEventListener('click', e => { if (e.target === cart || e.target.closest('[data-close-cart]')) setOverlay(cart, false); });
+
+  /* ---------------- mega menu ---------------- */
+  const mega = $('#mega'), megaBtn = $('#allCatsBtn'), megaList = $('#megaList'), megaPanel = $('#megaPanel');
+  megaList.innerHTML = CATEGORIES.map((cat, i) => `<li><button type="button" data-i="${i}">${esc(cat.name)}</button></li>`).join('');
+  function showCat(i) {
+    const cat = CATEGORIES[i];
+    $$('button', megaList).forEach((b, k) => b.classList.toggle('is-on', k === i));
+    megaPanel.innerHTML = `<div><h3><a href="${cat.href}">${esc(cat.name)}</a></h3>
+      <div class="mega__subs">${cat.subs.map(([n, h]) => `<a href="${h}">${esc(n)}</a>`).join('')}</div></div>
+      <a class="mega__pic" href="${cat.href}"><img src="${IMG + cat.img}" alt="">Всички: ${esc(cat.name.toLowerCase())}</a>`;
+  }
+  function setMega(open) {
+    mega.hidden = !open;
+    megaBtn.setAttribute('aria-expanded', String(open));
+    if (open && !$('.is-on', megaList)) showCat(0);
+  }
+  megaBtn.addEventListener('click', e => { e.stopPropagation(); setMega(mega.hidden); });
+  megaList.addEventListener('mouseover', e => { const b = e.target.closest('button'); if (b) showCat(+b.dataset.i); });
+  megaList.addEventListener('focusin', e => { const b = e.target.closest('button'); if (b) showCat(+b.dataset.i); });
+  megaList.addEventListener('click', e => { const b = e.target.closest('button'); if (b) location.href = CATEGORIES[+b.dataset.i].href; });
+  if (finePointer) {
+    let t;
+    $('#allcats').addEventListener('mouseenter', () => { clearTimeout(t); t = setTimeout(() => setMega(true), 120); });
+    $('#allcats').addEventListener('mouseleave', () => { clearTimeout(t); t = setTimeout(() => setMega(false), 220); });
+  }
+  document.addEventListener('click', e => { if (!e.target.closest('#allcats')) setMega(false); });
+  $('#allCatsLink').addEventListener('click', () => {
+    if (innerWidth <= 760) { setOverlay(drawer, true); return; }
+    scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    setTimeout(() => { setMega(true); megaBtn.focus(); }, reduce ? 0 : 450);
+  });
+
+  /* mobile drawer mirrors the same categories */
+  $('#drawerNav').innerHTML = CATEGORIES.map(cat => `<details><summary>${esc(cat.name)}</summary>
+      <a href="${cat.href}">Всички продукти</a>${cat.subs.map(([n, h]) => `<a href="${h}">${esc(n)}</a>`).join('')}</details>`).join('')
+    + `<a href="${SHOP}/new_products.html">Ново</a><a class="is-sale" href="${SHOP}/all_promotions.html">Промоции</a><a href="#contact" data-close>Контакти</a>`;
 
   addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      [drawer, search, cart].forEach(el => el.classList.contains('is-open') && setOverlay(el, false));
-      burger.setAttribute('aria-expanded', 'false');
-      closeNav();
-    }
-    if (e.key === '/' && !e.target.closest('input, textarea')) { e.preventDefault(); $('#searchOpen').click(); }
+    if (e.key !== 'Escape') return;
+    setMega(false); closeSearch();
+    [drawer, cart].forEach(el => el.classList.contains('is-open') && setOverlay(el, false));
   });
 
   /* ---------------- search ---------------- */
-  const SEARCH = [
-    ['Тоалетна хартия на пачки', 'Хартия', '#own'], ['Тоалетна хартия на ролки', 'Хартия', '#own'],
-    ['Тоалетна хартия мини джъмбо', 'Хартия', '#own'], ['Smart One', 'Хартия', '#own'],
-    ['Кърпи за ръце V сгъване', 'Хартия', '#pull'], ['Кърпи за ръце Z сгъване', 'Хартия', '#pull'],
-    ['Кърпи за ръце на ролка', 'Хартия', '#own'], ['Кухненски ролки', 'Хартия', '#own'],
-    ['Салфетки 24×24 за бар', 'Салфетки', '#napkins'], ['Салфетки 33×33', 'Салфетки', '#napkins'],
-    ['Салфетки 40×40', 'Салфетки', '#napkins'], ['Цветни салфетки', 'Салфетки', '#napkins'],
-    ['Салфетки с печат Santia', 'Салфетки', '#napkins'], ['Салфетки с шевица', 'Салфетки', '#napkins'],
-    ['Коледни салфетки', 'Салфетки', '#napkins'], ['Великденски салфетки', 'Салфетки', '#napkins'],
-    ['Медицински ролки', 'Хартия', '#catalog'], ['Индустриални ролки', 'Индустрия', '#catalog'],
-    ['Kimtech кърпи', 'Индустрия', '#catalog'], ['Бели дозатори', 'Дозатори', '#catalog'],
-    ['Черни дозатори', 'Дозатори', '#catalog'], ['Инокс дозатори', 'Дозатори', '#catalog'],
-    ['Сензорни дозатори', 'Дозатори', '#catalog'], ['Течен сапун и пяна', 'Хигиена', '#catalog'],
-    ['Дезинфектанти', 'Хигиена', '#catalog'], ['Ароматизатори', 'Хигиена', '#catalog'],
-    ['Препарати за кухня', 'Почистващи', '#catalog'], ['Препарати за под', 'Почистващи', '#catalog'],
-    ['Препарати за WC и баня', 'Почистващи', '#catalog'], ['Препарати за стъкла', 'Почистващи', '#catalog'],
-    ['Микрофибърни кърпи', 'Почистващи', '#catalog'], ['Перилни препарати', 'Почистващи', '#catalog'],
-    ['Чували за смет', 'Консумативи', '#catalog'], ['Нитрилни ръкавици', 'ЛПС', '#catalog'],
-    ['Маски за лице', 'ЛПС', '#catalog'], ['Престилки и калцуни', 'ЛПС', '#catalog'],
-    ['Хотелска козметика', 'Хотели', '#catalog'], ['Еднократни прибори', 'Консумативи', '#catalog'],
-    ['Покривки за маса', 'Консумативи', '#catalog'], ['Хигиенни колички', 'Почистващи', '#catalog'],
+  const q = $('#q'), drop = $('#searchDrop');
+  const INDEX = [
+    ...CATEGORIES.flatMap(cat => [{ kind: 'cat', name: cat.name, href: cat.href },
+      ...cat.subs.map(([n, h]) => ({ kind: 'cat', name: `${cat.name}: ${n}`, href: h }))]),
+    ...[...PRODUCTS, ...NAPKINS].map(x => ({ kind: 'prod', name: x.name, href: x.href, img: x.img, price: x.gross })),
   ];
-  const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  function renderSearch(q) {
-    const term = q.trim().toLowerCase();
-    let list = term ? SEARCH.filter(([n, c]) => (n + ' ' + c).toLowerCase().includes(term)) : SEARCH.slice(0, 6);
-    list = list.slice(0, 8);
-    if (!list.length) {
-      searchResults.innerHTML = `<li><a href="#contact"><span>Няма точно съвпадение. Попитайте ни за „${esc(q)}“</span><small>Контакт</small></a></li>`;
-      return;
+  let hits = [], active = -1;
+  const norm = s => s.toLowerCase().replace(/[×x]/g, 'х').replace(/\s+/g, ' ');
+  function mark(text, term) {
+    const i = norm(text).indexOf(norm(term));
+    if (!term || i < 0) return esc(text);
+    return esc(text.slice(0, i)) + '<mark>' + esc(text.slice(i, i + term.length)) + '</mark>' + esc(text.slice(i + term.length));
+  }
+  function renderSearch() {
+    const term = q.value.trim();
+    if (term.length < 2) { closeSearch(); return; }
+    const words = norm(term).split(' ').filter(Boolean);
+    const match = x => words.every(w => norm(x.name).includes(w));
+    const cats = INDEX.filter(x => x.kind === 'cat' && match(x)).slice(0, 5);
+    const prods = INDEX.filter(x => x.kind === 'prod' && match(x)).slice(0, 6);
+    hits = [...cats, ...prods];
+    active = -1;
+    if (!hits.length) {
+      drop.innerHTML = `<p class="search__empty">Няма резултати за „${esc(term)}“. Обадете се на <a href="tel:+359882027070"><b>0882 027 070</b></a> и ще ви помогнем.</p>`;
+    } else {
+      drop.innerHTML =
+        (cats.length ? `<p class="search__group">Категории</p>` + cats.map((x, i) => `<a class="search__item" data-k="${i}" href="${x.href}">${mark(x.name, term)}</a>`).join('') : '') +
+        (prods.length ? `<p class="search__group">Продукти</p>` + prods.map((x, i) => `<a class="search__item" data-k="${cats.length + i}" href="${x.href}"><img src="${IMG}products/${x.img}" alt="">${mark(x.name, term)}<small>${eur(x.price)}</small></a>`).join('') : '');
     }
-    searchResults.innerHTML = list.map(([n, c, h]) => {
-      let label = esc(n);
-      if (term) {
-        const i = n.toLowerCase().indexOf(term);
-        if (i > -1) label = esc(n.slice(0, i)) + '<mark>' + esc(n.slice(i, i + term.length)) + '</mark>' + esc(n.slice(i + term.length));
-      }
-      return `<li><a href="${h}"><span>${label}</span><small>${c}</small></a></li>`;
-    }).join('');
+    drop.hidden = false;
+    q.setAttribute('aria-expanded', 'true');
   }
-  searchInput.addEventListener('input', () => renderSearch(searchInput.value));
-  searchInput.addEventListener('keydown', e => {
-    if (e.key === 'Enter') { const a = $('a', searchResults); if (a) { a.click(); location.hash = a.getAttribute('href'); } }
+  function closeSearch() { drop.hidden = true; q.setAttribute('aria-expanded', 'false'); }
+  function setActive(i) {
+    active = i;
+    $$('.search__item', drop).forEach(a => a.classList.toggle('is-active', +a.dataset.k === i));
+  }
+  q.addEventListener('input', renderSearch);
+  q.addEventListener('focus', () => { if (q.value.trim().length >= 2) renderSearch(); });
+  q.addEventListener('keydown', e => {
+    if (drop.hidden || !hits.length) return;
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActive((active + 1) % hits.length); }
+    if (e.key === 'ArrowUp') { e.preventDefault(); setActive((active - 1 + hits.length) % hits.length); }
   });
+  $('#searchForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const target = hits[active] || hits[0];
+    if (target) location.href = target.href;
+    else renderSearch();
+  });
+  document.addEventListener('click', e => { if (!e.target.closest('#searchForm')) closeSearch(); });
 
-  /* ---------------- product illustrations (inline SVG) ---------------- */
-  let gid = 0;
-  function illus(p) {
-    const id = 'p' + (++gid);
-    const paper = `<linearGradient id="${id}w" x1="0" x2="1"><stop offset="0" stop-color="#d9d2c5"/><stop offset=".45" stop-color="#fffdf8"/><stop offset="1" stop-color="#cfc7b8"/></linearGradient>`;
-    const gold = `<linearGradient id="${id}g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6dd9e"/><stop offset=".5" stop-color="#d6ae5c"/><stop offset="1" stop-color="#8f6a2c"/></linearGradient>`;
-    const shadow = `<ellipse cx="95" cy="146" rx="70" ry="8" fill="#000" opacity=".45"/>`;
-    const roll = (x, y, w, h) => `
-      <rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#${id}w)"/>
-      <ellipse cx="${x + w / 2}" cy="${y + h}" rx="${w / 2}" ry="${w * .18}" fill="#cfc7b8"/>
-      <rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#${id}w)"/>
-      <ellipse cx="${x + w / 2}" cy="${y}" rx="${w / 2}" ry="${w * .18}" fill="#f6f1e7" stroke="#d9d2c5"/>
-      <ellipse cx="${x + w / 2}" cy="${y}" rx="${w * .17}" ry="${w * .06}" fill="#9a7745"/>
-      <ellipse cx="${x + w / 2}" cy="${y}" rx="${w * .12}" ry="${w * .042}" fill="#1c160f"/>`;
-    const box = (front, top, side, deco = '') => `
-      <path d="M40 70 L70 46 H160 L130 70 Z" fill="${top}"/>
-      <path d="M130 70 L160 46 V112 L130 136 Z" fill="${side}"/>
-      <path d="M40 70 H130 V136 H40 Z" fill="${front}"/>${deco}`;
-    const s = {
-      tp: `${shadow}${roll(48, 52, 36, 58)}${roll(92, 52, 36, 58)}${roll(26, 82, 36, 58)}${roll(70, 82, 36, 58)}${roll(114, 82, 36, 58)}
-           <rect x="22" y="40" width="132" height="104" rx="16" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="2"/>`,
-      jumbo: `${shadow}${roll(42, 46, 106, 92)}<rect x="42" y="98" width="106" height="16" fill="url(#${id}g)" opacity=".9"/>
-           <text x="95" y="110" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#1a1408" letter-spacing="1.5">MINI JUMBO</text>`,
-      kitchen: `${shadow}${roll(46, 34, 46, 104)}${roll(98, 34, 46, 104)}
-           <path d="M46 70 h46 M46 100 h46 M98 70 h46 M98 100 h46" stroke="#5b4a2e" stroke-opacity=".25" stroke-dasharray="2 3"/>`,
-      ztowel: `${shadow}${box(`url(#${id}w)`, '#f6f1e7', '#bdb4a3',
-           `<path d="M40 82 H130 M40 94 H130 M40 106 H130 M40 118 H130" stroke="#5b4a2e" stroke-opacity=".18"/>
-            <path d="M136 62 l8 6 -8 6 8 6 -8 6 8 6 -8 6" fill="none" stroke="#8f6a2c" stroke-width="2"/>
-            <rect x="58" y="88" width="54" height="30" rx="4" fill="url(#${id}g)"/>
-            <text x="85" y="109" text-anchor="middle" font-family="Unbounded, sans-serif" font-weight="700" font-size="18" fill="#1a1408">Z</text>`)}`,
-      vtowel: `${shadow}${box(`url(#${id}w)`, '#f6f1e7', '#bdb4a3',
-           `<path d="M40 82 H130 M40 94 H130 M40 106 H130 M40 118 H130" stroke="#5b4a2e" stroke-opacity=".18"/>
-            <path d="M136 64 l8 8 -8 8 M136 84 l8 8 -8 8" fill="none" stroke="#8f6a2c" stroke-width="2"/>
-            <rect x="58" y="88" width="54" height="30" rx="4" fill="url(#${id}g)"/>
-            <text x="85" y="109" text-anchor="middle" font-family="Unbounded, sans-serif" font-weight="700" font-size="18" fill="#1a1408">V</text>`)}`,
-      napkin: (() => {
-        const c = p.color || '#6d1a2a';
-        let out = shadow;
-        for (let i = 0; i < 7; i++) {
-          const y = 116 - i * 7;
-          out += `<path d="M95 ${y - 30} L150 ${y - 8} L95 ${y + 14} L40 ${y - 8} Z" fill="${c}" stroke="#000" stroke-opacity=".25"/>`;
-        }
-        out += `<path d="M95 44 L150 66 L95 88 L40 66 Z" fill="${c}"/>
-                <path d="M95 44 L95 88" stroke="#fff" stroke-opacity=".25"/>
-                <path d="M50 66 L95 48 L140 66 L95 84 Z" fill="none" stroke="#fff" stroke-opacity=".3" stroke-dasharray="2 3"/>`;
-        return out;
-      })(),
-      gloves: `${shadow}${box('#e9eef5', '#f6f8fb', '#b9c3cf',
-           `<path d="M66 60 c-4 -18 6 -26 10 -16 l2 -14 c1 -6 8 -6 9 0 l1 12 l3 -14 c1 -6 9 -5 9 1 l-1 16 l4 -10 c2 -5 9 -3 8 3 l-4 22 Z" fill="#5d7fd6" opacity=".95"/>
-            <rect x="52" y="88" width="66" height="26" rx="4" fill="#5d7fd6"/>
-            <text x="85" y="105" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#fff" letter-spacing="1.5">NITRILE</text>`)}`,
-      foam: `${shadow}<rect x="88" y="26" width="16" height="16" rx="3" fill="#5b5146"/>
-           <path d="M60 52 Q60 40 74 40 H118 Q132 40 132 52 V134 Q132 142 124 142 H68 Q60 142 60 134 Z" fill="url(#${id}w)"/>
-           <path d="M106 40 Q126 30 128 52" fill="none" stroke="#cfc7b8" stroke-width="7" stroke-linecap="round"/>
-           <rect x="68" y="72" width="56" height="48" rx="6" fill="#e8b8c8"/>
-           <rect x="68" y="72" width="56" height="12" rx="4" fill="url(#${id}g)"/>
-           <text x="96" y="106" text-anchor="middle" font-family="Unbounded, sans-serif" font-weight="600" font-size="14" fill="#5a2236">5L</text>`,
-      bags: `${shadow}<path d="M58 100 L58 142 Q95 150 132 142 L132 100" fill="#1d1d1f" stroke="#333"/>
-           <path d="M66 112 Q95 120 124 112" stroke="#444" fill="none"/>
-           <rect x="40" y="56" width="110" height="48" rx="24" fill="#232325"/>
-           <ellipse cx="150" cy="80" rx="12" ry="24" fill="#2e2e31"/>
-           <ellipse cx="150" cy="80" rx="5" ry="10" fill="#0c0c0d"/>
-           <path d="M50 66 Q95 60 140 66" stroke="#fff" stroke-opacity=".12" stroke-width="3" fill="none"/>`,
-    };
-    return `<svg viewBox="0 0 190 160" aria-hidden="true"><defs>${paper}${gold}</defs>${s[p.type] || s.tp}</svg>`;
-  }
-
-  /* ---------------- demo products ---------------- */
-  // Names and prices taken from the current online store; demo only.
-  const PRODUCTS = [
-    { id: 'z2121', code: '11004', type: 'ztowel', name: 'Z кърпи за ръце 21×21 см, 2 пласта, бели плътни', meta: '20 пакета в кашон', net: 19.50, gross: 23.40, badge: 'Хит' },
-    { id: 'v2421', code: '24*23', type: 'vtowel', name: 'V кърпи за ръце 24×21 см, 2 пласта, бели', meta: '20 пакета в кашон', net: 21.50, gross: 25.80 },
-    { id: 'tp48', code: 'TP-48', type: 'tp', name: 'Тоалетна хартия бяла, 3 пласта', meta: '48 броя', net: 8.44, gross: 10.13, badge: 'Хит' },
-    { id: 'mj12', code: 'MJ-12', type: 'jumbo', name: 'Тоалетна хартия Mini Jumbo, бяла, 3 пласта', meta: '12 броя', net: 11.70, gross: 14.04 },
-    { id: 'kr6', code: 'KR-6', type: 'kitchen', name: 'Кухненска ролка бяла, 2 пласта', meta: '6 броя', net: 13.29, gross: 15.95 },
-    { id: 'np40', code: 'NP-40', type: 'napkin', color: '#6d1a2a', name: 'Салфетки бордо 40×40, 2 пласта', meta: '40 броя', net: 1.50, gross: 1.80, badge: 'Ново' },
-    { id: 'gl100', code: '1140', type: 'gloves', name: 'Нитрилни ръкавици без пудра', meta: '100 броя', net: 9.00, gross: 10.80, oldNet: 11.25, oldGross: 13.50, badge: '-20%' },
-    { id: 'foam5', code: 'RLX-5', type: 'foam', name: 'Пяна за ръце RELAX', meta: '5 литра', net: 10.00, gross: 12.00 },
-    { id: 'bag130', code: 'BAG-130', type: 'bags', name: 'Чували за смет 80×110, черни плътни', meta: '130 л · 10 броя', net: 0.82, gross: 0.98 },
-  ];
-  const byId = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
-  const priceOf = p => (state.vat ? p.gross : p.net);
-  const eur = v => '€' + v.toFixed(2);
-  const bgn = v => (v * BGN).toFixed(2) + ' лв.';
-
-  const rail = $('#rail');
-  function renderRail() {
-    rail.innerHTML = PRODUCTS.map(p => {
-      const old = state.vat ? p.oldGross : p.oldNet;
-      const badge = p.badge ? `<span class="tag ${p.badge.startsWith('-') ? 'sale' : 'tag--gold'} product__badge">${p.badge}</span>` : '';
-      return `<article class="product" data-id="${p.id}">
-        <div class="product__img">${badge}${illus(p)}</div>
+  /* ---------------- products ---------------- */
+  const grid = $('#productGrid');
+  const cartIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1.3"/><circle cx="17" cy="20.5" r="1.3"/></svg>';
+  function renderProducts(filter) {
+    const list = filter === 'all' ? BEST.map(id => ITEMS[id]) : PRODUCTS.filter(x => x.group === filter).slice(0, 8);
+    grid.innerHTML = list.map((x, i) => `
+      <article class="product" style="--d:${i * 0.04}s">
+        <a class="product__img" href="${x.href}"><img src="${IMG}products/${x.img}" alt="" loading="lazy"></a>
         <div class="product__body">
-          <p class="mono product__code">код ${esc(p.code)}</p>
-          <h3>${esc(p.name)}</h3>
-          <p class="product__meta">${esc(p.meta)}</p>
-          <div class="product__foot">
-            <div class="price">${old ? `<s>${eur(old)}</s>` : ''}<b>${eur(priceOf(p))}</b><small>${bgn(priceOf(p))} · ${state.vat ? 'с ДДС' : 'без ДДС'}</small></div>
-            <button type="button" class="add" data-add="${p.id}" aria-label="Добави ${esc(p.name)} в количката">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            </button>
-          </div>
+          <div class="product__badges">${x.own ? '<span class="pbadge">Собствено производство</span>' : ''}${x.hit ? '<span class="pbadge pbadge--hit">Хит</span>' : ''}</div>
+          <a class="product__name" href="${x.href}">${esc(x.name)}</a>
+          <span class="price__meta">${esc(x.meta)}</span>
+          <div class="price"><b>${eur(x.gross)}</b><span>с ДДС · ${eur(x.net)} без ДДС · ${bgn(x.gross)}</span></div>
+          <button type="button" class="add" data-add="${x.id}">${cartIcon}Добави</button>
         </div>
-      </article>`;
-    }).join('');
-    bindSpotlight($$('.product', rail));
+      </article>`).join('');
   }
-  $$('[data-rail]').forEach(b => b.addEventListener('click', () => {
-    const card = $('.product', rail);
-    const step = card ? card.getBoundingClientRect().width + 16 : 300;
-    rail.scrollBy({ left: step * 2 * +b.dataset.rail, behavior: reduce ? 'auto' : 'smooth' });
+  $$('#prodTabs .tab').forEach(t => t.addEventListener('click', () => {
+    $$('#prodTabs .tab').forEach(x => { const on = x === t; x.classList.toggle('is-on', on); x.setAttribute('aria-selected', String(on)); });
+    renderProducts(t.dataset.filter);
   }));
+  renderProducts('all');
 
   /* ---------------- cart ---------------- */
-  const cartCount = $('#cartCount');
-  function saveCart() { store.set('cart', state.cart); }
-  function cartQty() { return state.cart.reduce((a, i) => a + i.qty, 0); }
-  function updateBadge(bump) {
-    const n = cartQty();
-    cartCount.textContent = n;
-    cartCount.classList.toggle('has', n > 0);
-    if (bump) { cartCount.classList.remove('bump'); void cartCount.offsetWidth; cartCount.classList.add('bump'); }
-  }
-  function addToCart(id, fromEl) {
-    const row = state.cart.find(i => i.id === id);
-    if (row) row.qty++; else state.cart.push({ id, qty: 1 });
-    saveCart();
-    const done = () => updateBadge(true);
-    if (fromEl && !reduce) flyTo(fromEl, $('#cartOpen'), done); else done();
-    fromEl && (fromEl.classList.remove('done'), void fromEl.offsetWidth, fromEl.classList.add('done'));
-    toast('Добавено в количката: ' + byId[id].name);
-  }
-  function flyTo(a, b, cb) {
-    const ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
-    const dot = document.createElement('i');
-    dot.className = 'fly';
-    document.body.appendChild(dot);
-    const x0 = ra.left + ra.width / 2 - 7, y0 = ra.top + ra.height / 2 - 7;
-    const x1 = rb.left + rb.width / 2 - 7, y1 = rb.top + rb.height / 2 - 7;
-    const mx = (x0 + x1) / 2, my = Math.min(y0, y1) - 120;
-    const anim = dot.animate([
-      { transform: `translate(${x0}px, ${y0}px) scale(1)` },
-      { transform: `translate(${mx}px, ${my}px) scale(1.4)`, offset: .5 },
-      { transform: `translate(${x1}px, ${y1}px) scale(.4)`, opacity: .6 },
-    ], { duration: 750, easing: 'cubic-bezier(.4,0,.2,1)' });
-    dot.style.left = dot.style.top = '0';
-    anim.onfinish = () => { dot.remove(); cb(); };
+  let cartItems = store.get('cart', []).filter(r => ITEMS[r.id]);
+  const save = () => store.set('cart', cartItems);
+  const totals = () => cartItems.reduce((a, r) => ({ net: a.net + ITEMS[r.id].net * r.qty, gross: a.gross + ITEMS[r.id].gross * r.qty, qty: a.qty + r.qty }), { net: 0, gross: 0, qty: 0 });
+  function updateHeader(bump) {
+    const t = totals(), badge = $('#cartCount');
+    badge.textContent = t.qty;
+    badge.classList.toggle('has', t.qty > 0);
+    $('#cartSum').textContent = eur(t.gross);
+    if (bump) { badge.classList.remove('bump'); void badge.offsetWidth; badge.classList.add('bump'); }
   }
   function renderCart() {
-    const list = $('#cartList');
-    $('#cartVatLabel').textContent = state.vat ? 'с ДДС' : 'без ДДС';
-    if (!state.cart.length) {
-      list.innerHTML = '<li class="cart__empty">Количката е празна.<br>Добавете продукт от „Най-продавани“.</li>';
-      $('#cartTotal').textContent = eur(0);
-      return;
-    }
-    list.innerHTML = state.cart.map(({ id, qty }) => {
-      const p = byId[id];
-      return `<li class="cart__row">${illus(p)}<div><h4>${esc(p.name)}</h4><small>${eur(priceOf(p))} × ${qty}</small></div>
-        <div class="qty"><button type="button" data-q="-1" data-id="${id}" aria-label="Намали">−</button><span>${qty}</span><button type="button" data-q="1" data-id="${id}" aria-label="Увеличи">+</button></div></li>`;
-    }).join('');
-    const total = state.cart.reduce((a, { id, qty }) => a + priceOf(byId[id]) * qty, 0);
-    $('#cartTotal').textContent = eur(total);
+    const list = $('#cartList'), t = totals();
+    list.innerHTML = cartItems.length ? cartItems.map(r => {
+      const x = ITEMS[r.id];
+      return `<li class="cart__item"><img src="${IMG}products/${x.img}" alt="">
+        <div><h4>${esc(x.name)}</h4><small>${eur(x.gross)} с ДДС × ${r.qty}</small></div>
+        <div class="qty"><button type="button" data-q="-1" data-id="${r.id}" aria-label="Намали количеството">−</button><span>${r.qty}</span><button type="button" data-q="1" data-id="${r.id}" aria-label="Увеличи количеството">+</button></div></li>`;
+    }).join('') : '<li class="cart__empty">Количката е празна.<br>Добавете продукти от каталога.</li>';
+    $('#cartNet').textContent = eur(t.net);
+    $('#cartTotal').textContent = eur(t.gross);
+    $('#cartToQuote').disabled = !cartItems.length;
   }
-  $('#cartList').addEventListener('click', e => {
-    const b = e.target.closest('[data-q]');
-    if (!b) return;
-    const row = state.cart.find(i => i.id === b.dataset.id);
-    row.qty += +b.dataset.q;
-    if (row.qty <= 0) state.cart = state.cart.filter(i => i !== row);
-    saveCart(); updateBadge(); renderCart();
-  });
+  function addToCart(id, btn) {
+    const row = cartItems.find(r => r.id === id);
+    if (row) row.qty++; else cartItems.push({ id, qty: 1 });
+    save();
+    const done = () => updateHeader(true);
+    const img = btn.closest('.product, .napkins__card, .fold')?.querySelector('img');
+    if (img && !reduce) fly(img, $('#cartOpen .hcart__icon'), done); else done();
+    btn.classList.add('done');
+    const label = btn.lastChild;
+    if (label && label.nodeType === 3) { const old = label.textContent; label.textContent = 'Добавено'; setTimeout(() => { label.textContent = old; btn.classList.remove('done'); }, 1400); }
+    else setTimeout(() => btn.classList.remove('done'), 1400);
+    toast('Добавено в количката: ' + ITEMS[id].name);
+  }
+  function fly(img, target, cb) {
+    const a = img.getBoundingClientRect(), b = target.getBoundingClientRect();
+    const f = document.createElement('img');
+    f.src = img.currentSrc || img.src; f.className = 'fly'; f.alt = '';
+    document.body.appendChild(f);
+    const x0 = a.left + a.width / 2 - 23, y0 = a.top + a.height / 2 - 23, x1 = b.left + b.width / 2 - 23, y1 = b.top + b.height / 2 - 23;
+    const anim = f.animate([
+      { transform: `translate(${x0}px, ${y0}px) scale(1.6)`, opacity: 1 },
+      { transform: `translate(${(x0 + x1) / 2}px, ${Math.min(y0, y1) - 80}px) scale(1)`, opacity: 1, offset: .55 },
+      { transform: `translate(${x1}px, ${y1}px) scale(.3)`, opacity: .4 },
+    ], { duration: 700, easing: 'cubic-bezier(.4,0,.2,1)' });
+    anim.onfinish = () => { f.remove(); cb(); };
+  }
   document.addEventListener('click', e => {
     const b = e.target.closest('[data-add]');
     if (b) addToCart(b.dataset.add, b);
   });
-
-  /* ---------------- VAT toggle ---------------- */
-  const vatBtns = $$('.vat__btn');
-  function setVat(on) {
-    state.vat = on;
-    store.set('vat', on);
-    vatBtns.forEach(b => { const me = (b.dataset.vat === '1') === on; b.classList.toggle('is-on', me); b.setAttribute('aria-pressed', String(me)); });
-    renderRail(); renderCart();
-  }
-  vatBtns.forEach(b => b.addEventListener('click', () => setVat(b.dataset.vat === '1')));
-
-  /* ---------------- open now (Sofia time) ---------------- */
-  function openStatus() {
-    let open = false;
-    try {
-      const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Sofia', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
-        .formatToParts(new Date()).map(p => [p.type, p.value]));
-      const mins = +parts.hour * 60 + +parts.minute;
-      open = !['Sat', 'Sun'].includes(parts.weekday) && mins >= 510 && mins < 1050;
-    } catch { /* Intl without time zones */ }
-    const top = $('#openStatus'), pill = $('#openPill');
-    top.classList.toggle('is-open', open);
-    top.lastChild.textContent = open ? ' Отворено · до 17:30' : ' Затворено · Пон–Пет 8:30–17:30';
-    pill.classList.toggle('is-open', open);
-    pill.textContent = open ? 'Отворено сега' : 'Затворено в момента';
-  }
-  openStatus();
-  setInterval(openStatus, 60000);
-
-  /* ---------------- reveal on scroll ---------------- */
-  if (!reduce && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver(entries => entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); }
-    }), { threshold: .12, rootMargin: '0px 0px -40px 0px' });
-    $$('[data-reveal]').forEach(el => {
-      const sibs = [...el.parentElement.children].filter(c => c.hasAttribute('data-reveal'));
-      el.style.setProperty('--d', (sibs.indexOf(el) % 6) * 0.07 + 's');
-      if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pre'); io.observe(el); }
-    });
-  }
-
-  /* ---------------- spotlight + magnetic ---------------- */
-  function bindSpotlight(els) {
-    if (!finePointer) return;
-    els.forEach(el => el.addEventListener('pointermove', e => {
-      const r = el.getBoundingClientRect();
-      el.style.setProperty('--mx', e.clientX - r.left + 'px');
-      el.style.setProperty('--my', e.clientY - r.top + 'px');
-    }));
-  }
-  bindSpotlight($$('.own-card, .tile'));
-
-  if (finePointer && !reduce) {
-    $$('.magnetic').forEach(el => {
-      el.addEventListener('pointermove', e => {
-        const r = el.getBoundingClientRect();
-        el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .22}px, ${(e.clientY - r.top - r.height / 2) * .32}px)`;
-      });
-      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
-    });
-  }
-
-  /* ---------------- counters ---------------- */
-  $$('[data-count]').forEach(el => {
-    const end = +el.dataset.count, suf = el.dataset.suffix || '';
-    if (reduce) return;
-    let done = false;
-    whileVisible(el, vis => {
-      if (!vis || done) return;
-      done = true;
-      const t0 = performance.now();
-      const step = t => {
-        const k = clamp((t - t0) / 1400, 0, 1), e = 1 - Math.pow(1 - k, 3);
-        el.textContent = Math.round(end * e) + suf;
-        if (k < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    }, '0px');
+  $('#cartList').addEventListener('click', e => {
+    const b = e.target.closest('[data-q]');
+    if (!b) return;
+    const row = cartItems.find(r => r.id === b.dataset.id);
+    row.qty += +b.dataset.q;
+    if (row.qty <= 0) cartItems = cartItems.filter(r => r !== row);
+    save(); updateHeader(); renderCart();
   });
+  $('#cartToQuote').addEventListener('click', () => {
+    if (!cartItems.length) return;
+    const t = totals();
+    $('#f-msg').value = 'Бих искал(а) оферта за:\n' + cartItems.map(r => `${r.qty} × ${ITEMS[r.id].name} (${eur(ITEMS[r.id].gross)} с ДДС)`).join('\n') + `\n\nОбщо: ${eur(t.gross)} с ДДС`;
+    setOverlay(cart, false);
+    $('#contact').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+    setTimeout(() => $('#f-name').focus({ preventScroll: true }), 600);
+  });
+  updateHeader();
 
-  /* ---------------- quote form ---------------- */
-  const form = $('#quoteForm'), formMsg = $('#formMsg');
-  form.addEventListener('submit', e => {
+  /* ---------------- napkin colour picker ---------------- */
+  const sw = $('#swatches');
+  sw.innerHTML = NAPKINS.map((n, i) => `<button type="button" class="swatch" role="radio" aria-checked="${i === 0}" tabindex="${i === 0 ? 0 : -1}" style="--c:${n.c}" data-i="${i}" title="${n.color}"><span class="sr">${n.color}</span></button>`).join('');
+  function pickNapkin(i, focus) {
+    const n = NAPKINS[i], img = $('#napImg');
+    $$('.swatch', sw).forEach((b, k) => { b.setAttribute('aria-checked', String(k === i)); b.tabIndex = k === i ? 0 : -1; });
+    if (focus) $$('.swatch', sw)[i].focus();
+    img.classList.add('is-swapping');
+    setTimeout(() => {
+      img.src = IMG + 'products/' + n.img;
+      img.alt = n.name;
+      img.classList.remove('is-swapping');
+    }, reduce ? 0 : 180);
+    $('#napLink').href = n.href;
+    $('#napColor').textContent = n.color;
+    $('#napColor').style.setProperty('--c', n.c);
+    $('#napTitle').textContent = `${n.name}, ${n.meta.toLowerCase()}`;
+    $('#napPrice').textContent = eur(n.gross);
+    $('#napNet').textContent = `с ДДС · ${eur(n.net)} без ДДС`;
+    $('#napAdd').dataset.add = n.id;
+  }
+  sw.addEventListener('click', e => { const b = e.target.closest('.swatch'); if (b) pickNapkin(+b.dataset.i); });
+  sw.addEventListener('keydown', e => {
+    const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+    if (!d) return;
     e.preventDefault();
-    const name = $('#f-name'), email = $('#f-email');
-    let ok = true;
-    [name, email].forEach(f => f.parentElement.classList.remove('is-bad'));
-    if (!name.value.trim()) { name.parentElement.classList.add('is-bad'); ok = false; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { email.parentElement.classList.add('is-bad'); ok = false; }
-    if (!ok) {
-      formMsg.className = 'form__msg bad';
-      formMsg.textContent = 'Попълнете име и валиден имейл, за да ви отговорим.';
-      return;
-    }
-    const interests = $$('input[name="interest"]:checked').map(i => i.value).join(', ') || '—';
-    const body = [
-      'Име: ' + name.value.trim(),
-      'Фирма: ' + ($('#f-company').value.trim() || '—'),
-      'Телефон: ' + ($('#f-phone').value.trim() || '—'),
-      'Имейл: ' + email.value.trim(),
-      'Интерес: ' + interests,
-      '', $('#f-msg').value.trim(),
-    ].join('\n');
-    formMsg.className = 'form__msg ok';
-    formMsg.textContent = 'Отваряме имейл до office@paper-professional.com с попълнените данни. Ако не се отвори, пишете ни директно на този адрес.';
-    location.href = 'mailto:office@paper-professional.com?subject=' + encodeURIComponent('Запитване за оферта') + '&body=' + encodeURIComponent(body);
+    const cur = $$('.swatch', sw).findIndex(b => b.getAttribute('aria-checked') === 'true');
+    pickNapkin((cur + d + NAPKINS.length) % NAPKINS.length, true);
   });
 
   /* ======================================================
-     HERO — golden dust
+     HERO — slider
      ====================================================== */
-  (function dust() {
-    const cv = $('#dust');
-    if (!cv || reduce) return;
-    const ctx = cv.getContext('2d');
-    let w = 0, h = 0, dpr = 1, parts = [], mx = .5, my = .5;
-    function size() {
-      dpr = Math.min(2, devicePixelRatio || 1);
-      w = cv.clientWidth; h = cv.clientHeight;
-      cv.width = w * dpr; cv.height = h * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const n = Math.round(clamp(w * h / 16000, 30, 90));
-      parts = Array.from({ length: n }, () => ({
-        x: Math.random() * w, y: Math.random() * h, z: Math.random(),
-        r: .4 + Math.random() * 1.6, vy: .05 + Math.random() * .22, ph: Math.random() * 6.28,
-      }));
-    }
-    size();
-    addEventListener('resize', size);
-    addEventListener('pointermove', e => { mx = e.clientX / innerWidth; my = e.clientY / innerHeight; }, { passive: true });
-    const lp = loop((dt, t) => {
-      ctx.clearRect(0, 0, w, h);
-      for (const p of parts) {
-        p.y -= p.vy * dt * .06 * (0.5 + p.z);
-        if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
-        const ox = (mx - .5) * 30 * p.z, oy = (my - .5) * 20 * p.z;
-        const a = .25 + .55 * (0.5 + 0.5 * Math.sin(t * .002 + p.ph));
-        ctx.beginPath();
-        ctx.arc(p.x + ox + Math.sin(t * .0006 + p.ph) * 8, p.y + oy, p.r * (0.6 + p.z), 0, 6.283);
-        ctx.fillStyle = p.z > .7 ? `rgba(246,221,158,${a})` : `rgba(214,174,92,${a * .7})`;
-        ctx.fill();
-      }
+  const slider = $('#slider'), slides = $$('.slide', slider), tabs = $$('.slider__tab', slider);
+  const SLIDE_MS = 8000;
+  let cur = 0, elapsed = 0, hover = false, holdUntil = 0, sliderSeen = true;
+  const hold = (ms = 12000) => { holdUntil = performance.now() + ms; };
+
+  function go(i) {
+    cur = (i + slides.length) % slides.length;
+    elapsed = 0;
+    slides.forEach((s, k) => { s.classList.toggle('is-active', k === cur); s.setAttribute('aria-hidden', String(k !== cur)); s.inert = k !== cur; });
+    tabs.forEach((t, k) => { t.classList.toggle('is-active', k === cur); t.setAttribute('aria-selected', String(k === cur)); $('i', t).style.width = '0%'; });
+    if (cur === 1) roll.onShow();
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => { go(i); hold(); });
+    t.addEventListener('keydown', e => {
+      const d = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+      if (!d) return;
+      go(cur + d); hold(); tabs[cur].focus();
     });
-    whileVisible(cv, v => (v ? lp.start() : lp.stop()));
+  });
+  slider.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') hover = true; });
+  slider.addEventListener('pointerleave', () => { hover = false; });
+  slider.addEventListener('focusin', () => hold());
+  whileVisible(slider, v => { sliderSeen = v; });
+
+  // swipe between slides on touch, but not while pulling a towel or a sheet
+  let sx = null, sy = 0;
+  slider.addEventListener('touchstart', e => {
+    if (e.target.closest('.towel, #sheet, .fan-nap')) { sx = null; return; }
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+  }, { passive: true });
+  slider.addEventListener('touchend', e => {
+    if (sx === null) return;
+    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) { go(cur + (dx < 0 ? 1 : -1)); hold(); }
+    sx = null;
+  }, { passive: true });
+
+  /* ---------------- slide 1: towel dispenser ---------------- */
+  const towelArt = (() => {
+    const towel = $('#towel'), stack = $('#dispStack');
+    const CAP = 10, TAB = -60;
+    let left = CAP, busy = false;
+    for (let i = 0; i < CAP; i++) stack.appendChild(document.createElement('i'));
+    const bars = [...stack.children];
+    const setY = (y, ms = 0, ease = 'cubic-bezier(.2,.7,.1,1)') => {
+      towel.style.transition = ms ? `transform ${ms}ms ${ease}, opacity 500ms` : 'none';
+      towel.style.transform = `translateY(${y}px)`;
+    };
+    const sync = () => bars.forEach((b, i) => b.classList.toggle('gone', i >= left));
+    async function pull() {
+      if (busy) return;
+      busy = true;
+      towel.classList.add('is-open');
+      setY(4, 420);
+      await wait(reduce ? 0 : 900);
+      towel.style.transition = 'transform 700ms cubic-bezier(.5,0,.75,0), opacity 600ms';
+      towel.style.transform = `translateY(300px) rotate(${Math.random() > .5 ? 6 : -6}deg)`;
+      towel.style.opacity = '0';
+      await wait(reduce ? 0 : 650);
+      left = left > 1 ? left - 1 : CAP; // a fresh pack goes in when the last towel is taken
+      sync();
+      towel.classList.remove('is-open');
+      setY(-120);
+      void towel.offsetWidth;
+      towel.style.opacity = '1';
+      setY(TAB, 560, 'cubic-bezier(.34,1.56,.64,1)');
+      await wait(reduce ? 0 : 560);
+      busy = false;
+    }
+    // drag the tab down to pull
+    let dragging = false, y0 = 0, dy = 0;
+    towel.addEventListener('pointerdown', e => {
+      if (busy) return;
+      dragging = true; y0 = e.clientY; dy = 0; hold();
+      towel.setPointerCapture?.(e.pointerId);
+    });
+    towel.addEventListener('pointermove', e => {
+      if (!dragging) return;
+      dy = clamp(e.clientY - y0, 0, 120);
+      setY(TAB + dy);
+      if (dy > 50) { dragging = false; pull(); }
+    });
+    const end = () => {
+      if (!dragging) return;
+      dragging = false;
+      if (dy < 6) pull(); else setY(TAB, 380, 'cubic-bezier(.34,1.56,.64,1)');
+    };
+    towel.addEventListener('pointerup', end);
+    towel.addEventListener('pointercancel', end);
+    towel.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hold(); pull(); } });
+    setY(TAB);
+    sync();
+    return { pull, get busy() { return busy || dragging; } };
   })();
 
-  /* ======================================================
-     HERO — toilet roll you can pull and tear
-     ====================================================== */
-  (function heroRoll() {
-    const svg = $('#rollSvg');
-    if (!svg) return;
-    const paper = $('#sheetPaper'), emb = $('#sheetEmboss'), perfG = $('#perfs'), sheet = $('#sheet');
-    const patBody = $('#embossBody'), patSheet = $('#embossSheet'), caps = $$('#capRings ellipse');
-    const hint = $('#pullHint'), counter = $('#sheetCount');
+  /* ---------------- slide 2: toilet roll ---------------- */
+  const roll = (() => {
+    const svg = $('#rollSvg'), sheet = $('#sheet'), paper = $('#sheetPaper'), emb = $('#sheetEmboss'), perfG = $('#perfs');
+    const patBody = $('#embossBody'), patSheet = $('#embossSheet'), caps = $$('#capRings ellipse'), hint = $('#pullHint');
     const NS = 'http://www.w3.org/2000/svg';
-    const TOP = 300, X0 = 134, X1 = 386, PERF = 92, BASE = 230, MAXL = 410;
+    const TOP = 210, X0 = 134, X1 = 386, PERF = 90, BASE = 210, MAXL = 330;
+    let L = BASE, U = 0, drag = 0, dragging = false, startY = 0, moved = 0, auto = false, demoed = false, hintT;
 
-    let L = BASE, U = 0, drag = 0, scrollExtra = 0, torn = 0, t0 = 0;
-    let dragging = false, startY = 0, moved = 0, auto = false;
-
-    const perfLines = Array.from({ length: 6 }, () => {
+    const perfLines = Array.from({ length: 5 }, () => {
       const l = document.createElementNS(NS, 'line');
       l.setAttribute('x1', X0); l.setAttribute('x2', X1);
       perfG.appendChild(l);
@@ -497,20 +472,21 @@
     });
     sheet.setAttribute('tabindex', '0');
     sheet.setAttribute('role', 'button');
-    sheet.setAttribute('aria-label', 'Откъсни лист');
+    sheet.setAttribute('aria-label', 'Откъснете лист');
 
-    function shape(len, top = TOP) {
-      const y = top + len, n = 18, step = (X1 - X0) / n;
-      let d = `M${X0} ${top} H${X1} V${y}`;
-      for (let i = 1; i <= n; i++) d += ` L${(X1 - step * i).toFixed(1)} ${(y + (i % 2 ? 3.5 : 0)).toFixed(1)}`;
-      return d + ' Z';
-    }
+    const zig = (y, from, to, amp) => {
+      let d = '';
+      const n = 18, step = (to - from) / n;
+      for (let i = 1; i <= n; i++) d += ` L${(from + step * i).toFixed(1)} ${(y + (i % 2 ? amp : 0)).toFixed(1)}`;
+      return d;
+    };
+    const shape = len => `M${X0} ${TOP} H${X1} V${TOP + len}${zig(TOP + len, X1, X0, 3.5)} Z`;
     function perfDists() {
       const off = ((U % PERF) + PERF) % PERF, out = [];
       for (let d = off; d < L - 8; d += PERF) if (d > 14) out.push(d);
       return out;
     }
-    function render(t) {
+    function render(t = 0) {
       const d = shape(L);
       paper.setAttribute('d', d);
       emb.setAttribute('d', d);
@@ -519,79 +495,61 @@
         if (i < ds.length) { l.setAttribute('y1', TOP + ds[i]); l.setAttribute('y2', TOP + ds[i]); l.style.display = ''; }
         else l.style.display = 'none';
       });
-      patSheet.setAttribute('patternTransform', `translate(0 ${(U % 18).toFixed(2)})`);
-      patBody.setAttribute('patternTransform', `translate(0 ${(U % 18).toFixed(2)})`);
-      caps.forEach((c, i) => { c.style.strokeDashoffset = (-U * (0.35 + i * 0.12)).toFixed(1); });
-      const bob = reduce ? 0 : Math.sin((t || 0) / 380) * 3;
+      const shift = `translate(0 ${(U % 18).toFixed(2)})`;
+      patSheet.setAttribute('patternTransform', shift);
+      patBody.setAttribute('patternTransform', shift);
+      caps.forEach((cap, i) => { cap.style.strokeDashoffset = (-U * (0.35 + i * 0.12)).toFixed(1); });
+      const bob = reduce ? 0 : Math.sin(t / 380) * 3;
       hint.setAttribute('transform', `translate(0 ${(TOP + L + 16 + bob).toFixed(1)})`);
-      sheet.style.transform = reduce || dragging ? '' : `skewX(${(Math.sin((t || 0) / 900) * 0.6).toFixed(3)}deg)`;
     }
-    sheet.style.transformBox = 'fill-box';
-    sheet.style.transformOrigin = '50% 0%';
-
     function setL(v, moving = true) {
       v = clamp(v, 60, MAXL);
       if (moving) U += v - L;
       L = v;
     }
-    function unitsPerPx() {
-      const r = svg.getBoundingClientRect();
-      return 1 / Math.min(r.width / 520, r.height / 720);
-    }
+    const unitsPerPx = () => { const r = svg.getBoundingClientRect(); return 1 / Math.min(r.width / 520, r.height / 600); };
 
     function tear() {
-      const cands = perfDists().filter(d => d >= 70 && d <= L - 40);
-      const cut = cands.length ? cands[cands.length - 1] : Math.max(70, L - PERF);
-      const pieceLen = L - cut;
-      // falling piece, same paper + emboss, perforated top edge
+      const cands = perfDists().filter(d => d >= 60 && d <= L - 36);
+      const cut = cands.length ? cands[cands.length - 1] : Math.max(60, L - PERF);
+      const len = L - cut, top = TOP + cut;
       const g = document.createElementNS(NS, 'g');
-      g.setAttribute('class', 'torn-piece');
-      const top = TOP + cut;
-      const n = 18, step = (X1 - X0) / n;
-      let d = `M${X0} ${top}`;
-      for (let i = 1; i <= n; i++) d += ` L${(X0 + step * i).toFixed(1)} ${(top + (i % 2 ? 2.5 : 0)).toFixed(1)}`;
-      d += ` V${top + pieceLen}`;
-      for (let i = 1; i <= n; i++) d += ` L${(X1 - step * i).toFixed(1)} ${(top + pieceLen + (i % 2 ? 3.5 : 0)).toFixed(1)}`;
-      d += ' Z';
+      const d = `M${X0} ${top}${zig(top, X0, X1, 2.5)} V${top + len}${zig(top + len, X1, X0, 3.5)} Z`;
       g.innerHTML = `<path d="${d}" fill="url(#gSheet)"/><path d="${d}" fill="url(#embossSheet)"/>`;
-      svg.insertBefore(g, $('#pullHint'));
+      svg.insertBefore(g, hint);
       g.style.transformBox = 'fill-box';
       g.style.transformOrigin = '50% 0%';
       const dir = Math.random() > .5 ? 1 : -1;
       const a = g.animate([
         { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
-        { transform: `translate(${dir * 30}px, 120px) rotate(${dir * 8}deg)`, opacity: 1, offset: .35 },
-        { transform: `translate(${dir * 90}px, 520px) rotate(${dir * 26}deg)`, opacity: 0 },
-      ], { duration: reduce ? 1 : 1300, easing: 'cubic-bezier(.45,0,.8,.55)' });
+        { transform: `translate(${dir * 24}px, 90px) rotate(${dir * 7}deg)`, opacity: 1, offset: .35 },
+        { transform: `translate(${dir * 70}px, 380px) rotate(${dir * 22}deg)`, opacity: 0 },
+      ], { duration: reduce ? 1 : 1200, easing: 'cubic-bezier(.45,0,.8,.55)' });
       a.onfinish = () => g.remove();
       setL(cut, false);
       drag = 0;
-      torn += Math.max(1, Math.round(pieceLen / PERF));
-      counter.textContent = 'листа: ' + torn;
       hint.classList.add('is-hidden');
-      clearTimeout(t0);
-      t0 = setTimeout(() => hint.classList.remove('is-hidden'), 5000);
+      clearTimeout(hintT);
+      hintT = setTimeout(() => hint.classList.remove('is-hidden'), 4000);
     }
-
     async function autoPull() {
       if (auto) return;
       auto = true;
-      const from = drag, to = from + 130, t1 = performance.now();
+      const from = drag, t1 = performance.now();
       await new Promise(res => {
         const step = t => {
-          const k = clamp((t - t1) / 520, 0, 1);
-          drag = from + (to - from) * (1 - Math.pow(1 - k, 3));
+          const k = clamp((t - t1) / 600, 0, 1);
+          drag = from + 120 * (1 - Math.pow(1 - k, 3));
           if (k < 1) requestAnimationFrame(step); else res();
         };
         requestAnimationFrame(step);
       });
-      await wait(120);
+      await wait(150);
       tear();
       auto = false;
     }
-
     sheet.addEventListener('pointerdown', e => {
-      dragging = true; moved = 0; startY = e.clientY;
+      dragging = true; moved = 0; startY = e.clientY; hold();
       svg.classList.add('is-dragging');
       sheet.setPointerCapture?.(e.pointerId);
     });
@@ -605,362 +563,130 @@
       if (!dragging) return;
       dragging = false;
       svg.classList.remove('is-dragging');
-      if (moved < 6) autoPull();
-      else if (drag > 36) tear();
+      if (moved < 6) autoPull(); else if (drag > 36) tear();
     };
     sheet.addEventListener('pointerup', up);
     sheet.addEventListener('pointercancel', up);
-    sheet.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); autoPull(); } });
+    sheet.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hold(); autoPull(); } });
 
-    const hero = $('.hero');
-    addEventListener('scroll', () => {
-      scrollExtra = clamp(scrollY / Math.max(1, hero.offsetHeight) * 160, 0, 160);
-    }, { passive: true });
-
-    const lp = loop((dt, t) => {
-      const target = BASE + scrollExtra + drag;
-      const k = dragging ? .45 : .09;
-      if (Math.abs(target - L) > .05) setL(L + (target - L) * k);
-      if (!dragging && !auto && drag > 0) drag *= .9; // a short tug springs back
+    function frame(t) {
+      const target = BASE + drag;
+      if (Math.abs(target - L) > .05) setL(L + (target - L) * (dragging ? .45 : .1));
+      if (!dragging && !auto && drag > 0) drag *= .88; // a short tug springs back
       render(t);
-    });
-    render(0);
-    if (!reduce) whileVisible(svg, v => (v ? lp.start() : lp.stop()));
-    else { svg.addEventListener('pointerup', () => requestAnimationFrame(() => render(0))); }
-  })();
-
-  /* ======================================================
-     PROCESS — scroll-driven converting line
-     ====================================================== */
-  (function processLine() {
-    const sec = $('#process'), svg = $('#line');
-    if (!sec || !svg) return;
-    const NS = 'http://www.w3.org/2000/svg';
-    const outer = $('#jumboOuter'), ringsG = $('#jumboRings'), spin = $('#jumboSpin'), mark = $('#jumboMark');
-    const web = $('#web'), flow = $('#webFlow'), zig = $('#zig'), beltFlow = $('#beltFlow'), itemsG = $('#items');
-    const steps = $$('#steps li'), bar = $('#processBar');
-    const parts = $$('#line [data-stage]');
-    const rollers = $$('#line .roller').map(g => ({
-      g, r: +g.dataset.roller, base: g.getAttribute('transform'),
-      spokes: $('.roller__spokes', g), knurl: $('.knurl', g),
-    }));
-    const CX = 190, CY = 270, RMAX = 170, RMIN = 64;
-
-    const rings = [];
-    for (let r = 44; r <= RMAX - 4; r += 9) {
-      const c = document.createElementNS(NS, 'circle');
-      c.setAttribute('cx', CX); c.setAttribute('cy', CY); c.setAttribute('r', r);
-      ringsG.appendChild(c); rings.push({ c, r });
     }
-
-    // conveyor items: rolls, towel stacks, napkin packs
-    const kinds = [
-      `<rect x="-11" y="-22" width="22" height="22" fill="#f3eee4"/><ellipse cx="0" cy="-22" rx="11" ry="4" fill="#fffdf8" stroke="#cfc7b8"/><ellipse cx="0" cy="-22" rx="3.5" ry="1.4" fill="#1c160f"/>`,
-      `<rect x="-14" y="-18" width="28" height="18" rx="2" fill="#f3eee4"/><path d="M-14 -12 H14 M-14 -6 H14" stroke="#9a8f7c" stroke-width="1"/><rect x="-6" y="-14" width="12" height="7" rx="1.5" fill="#d6ae5c"/>`,
-      `<path d="M0 -20 L16 -12 L0 -4 L-16 -12 Z" fill="#c8102e"/><path d="M-16 -12 V-6 L0 2 V-4 Z" fill="#8e0b20"/><path d="M16 -12 V-6 L0 2 V-4 Z" fill="#a50d26"/>`,
-    ];
-    const items = [];
-    let spawnAcc = 0, kindIdx = 0;
-    function spawn() {
-      const g = document.createElementNS(NS, 'g');
-      g.setAttribute('class', 'item');
-      g.innerHTML = kinds[kindIdx++ % kinds.length];
-      itemsG.appendChild(g);
-      items.push({ g, s: 0 });
-    }
-
-    let p = 0, offset = 0, lastScroll = scrollY, boost = 0, active = -1;
-    function measure() {
-      const r = sec.getBoundingClientRect();
-      const total = sec.offsetHeight - innerHeight;
-      p = clamp(-r.top / Math.max(1, total), 0, 1);
-      const v = Math.abs(scrollY - lastScroll);
-      lastScroll = scrollY;
-      boost = Math.min(5, boost + v * .02);
-    }
-    function setActive(i) {
-      if (i === active) return;
-      active = i;
-      steps.forEach((li, k) => { li.classList.toggle('is-active', k === i); li.classList.toggle('is-done', k < i); });
-      parts.forEach(el => { const s = +el.dataset.stage; el.classList.toggle('is-on', s === i); el.classList.toggle('is-past', s < i); });
-    }
-    function draw(dt) {
-      const r = RMAX - (RMAX - RMIN) * p;
-      outer.setAttribute('r', r.toFixed(1));
-      rings.forEach(o => { o.c.style.display = o.r < r - 3 ? '' : 'none'; });
-      mark.setAttribute('d', `M${CX} ${CY - 36} V${(CY - r + 8).toFixed(1)}`);
-      const y0 = CY + r;
-      const d = `M${CX} ${y0.toFixed(1)} C${CX + 120} ${y0.toFixed(1)} 330 414 400 400 L800 400`;
-      web.setAttribute('d', d);
-      flow.setAttribute('d', d);
-      const speed = (reduce ? 0 : 70) * (1 + boost); // paper units per second
-      const ds = speed * dt / 1000;
-      offset += ds;
-      boost *= .94;
-      flow.style.strokeDashoffset = (-offset).toFixed(1);
-      spin.setAttribute('transform', `rotate(${(offset / r * 57.2958).toFixed(2)} ${CX} ${CY})`);
-      rollers.forEach(o => {
-        const a = (offset / o.r * 57.2958) % 360;
-        if (o.spokes) o.spokes.setAttribute('transform', `rotate(${a.toFixed(1)})`);
-        if (o.knurl) o.knurl.style.strokeDashoffset = (-offset).toFixed(1);
-      });
-      zig.style.strokeDashoffset = (160 - (offset * 1.4) % 320 > 0 ? 160 - (offset * 1.4) % 320 : 0).toFixed(1);
-      beltFlow.style.strokeDashoffset = (-offset * .6).toFixed(1);
-
-      spawnAcc += ds;
-      if (spawnAcc > 70 && !reduce) { spawnAcc = 0; spawn(); }
-      for (let i = items.length - 1; i >= 0; i--) {
-        const it = items[i];
-        it.s += ds;
-        let x, y;
-        if (it.s < 26) { x = 800; y = 440 + it.s * .85; } else { x = 800 + (it.s - 26) * .9; y = 470; }
-        it.g.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
-        it.g.style.opacity = x > 905 ? clamp(1 - (x - 905) / 30, 0, 1) : clamp(it.s / 10, 0, 1);
-        if (x > 940) { it.g.remove(); items.splice(i, 1); }
-      }
-
-      bar.style.width = (p * 100).toFixed(1) + '%';
-      setActive(Math.min(4, Math.floor(p * 5)));
-    }
-
-    // prefill the conveyor so it never starts empty
-    for (let i = 0; i < 4; i++) { spawn(); items[items.length - 1].s = 26 + i * 52; }
-
-    addEventListener('scroll', measure, { passive: true });
-    addEventListener('resize', measure);
-    measure();
-    draw(0);
-    const lp = loop(dt => draw(dt));
-    if (!reduce) whileVisible(sec, v => (v ? lp.start() : lp.stop()), '0px');
-    else addEventListener('scroll', () => draw(0), { passive: true });
-  })();
-
-  /* ======================================================
-     PULL DEMO — dispenser + interfold diagram
-     ====================================================== */
-  (function dispenser() {
-    const disp = $('#disp');
-    if (!disp) return;
-    const towel = $('#towel'), stack = $('#dispStack'), led = $('#dispLed'), btn = $('#pullBtn');
-    const count = $('#pulledCount'), toggle = $('.fold-toggle'), toggleBtns = $$('.fold-toggle__btn');
-    const fText = $('#foldText'), fSize = $('#foldSize'), fPanels = $('#foldPanels');
-    const diagG = $('#diagSheets');
-    const NS = 'http://www.w3.org/2000/svg';
-    const CAP = 12, TAB = -64;
-    let left = CAP, pulled = 0, busy = false, fold = 'v';
-
-    const COPY = {
-      v: { text: 'Всяка кърпа е сгъната на две и захваща следващата. Компактна и икономична, за повечето стандартни дозатори.', size: '21×21 · 24×21 см', panels: '2' },
-      z: { text: 'Три панела с по-голяма площ за подсушаване. Подават се плавно една след друга, дори когато дозаторът е пълен.', size: '21×21 см', panels: '3' },
+    render();
+    return {
+      frame,
+      onShow() {
+        // show once what the sheet does, then leave it to the visitor
+        if (demoed || reduce) return;
+        demoed = true;
+        setTimeout(() => { if (cur === 1 && !dragging) autoPull(); }, 1500);
+      },
     };
-
-    for (let i = 0; i < CAP; i++) stack.appendChild(document.createElement('i'));
-    const bars = [...stack.children];
-
-    function setY(y, dur = 0, ease = 'cubic-bezier(.2,.7,.1,1)') {
-      towel.style.transition = dur ? `transform ${dur}ms ${ease}, opacity 400ms` : 'none';
-      towel.style.transform = `translateY(${y}px)`;
-    }
-    function syncStack() {
-      bars.forEach((b, i) => b.classList.toggle('gone', i >= left));
-      led.classList.toggle('is-low', left <= 2);
-      count.textContent = pulled;
-      btn.querySelector('span').textContent = left > 0 ? 'Изтегли кърпа' : 'Зареди дозатора';
-    }
-    async function refill() {
-      left = CAP; syncStack();
-      setY(-140); towel.style.opacity = '1';
-      void towel.offsetWidth;
-      setY(TAB, 600, 'cubic-bezier(.34,1.56,.64,1)');
-      toast('Дозаторът е зареден с нов пакет.');
-    }
-    async function pull() {
-      if (busy) return;
-      if (left <= 0) { refill(); return; }
-      busy = true;
-      towel.classList.add('is-open');
-      setY(0, 420);
-      diagramPull();
-      await wait(reduce ? 0 : 640);
-      towel.style.transition = 'transform 720ms cubic-bezier(.5,0,.75,0), opacity 620ms';
-      towel.style.transform = `translateY(440px) rotate(${Math.random() > .5 ? 7 : -7}deg)`;
-      towel.style.opacity = '0';
-      await wait(reduce ? 0 : 660);
-      left--; pulled++;
-      syncStack();
-      towel.classList.remove('is-open');
-      setY(-140);
-      void towel.offsetWidth;
-      towel.style.opacity = '1';
-      if (left > 0) setY(TAB, 560, 'cubic-bezier(.34,1.56,.64,1)');
-      await wait(reduce ? 0 : 480);
-      busy = false;
-    }
-
-    // drag the tab down to pull
-    let dragging = false, sy = 0, dy = 0;
-    towel.addEventListener('pointerdown', e => {
-      if (busy || left <= 0) return;
-      dragging = true; sy = e.clientY; dy = 0;
-      towel.setPointerCapture?.(e.pointerId);
-    });
-    towel.addEventListener('pointermove', e => {
-      if (!dragging) return;
-      dy = clamp(e.clientY - sy, 0, 140);
-      setY(TAB + dy);
-      if (dy > 56) { dragging = false; pull(); }
-    });
-    const end = () => {
-      if (!dragging) return;
-      dragging = false;
-      if (dy < 6) pull(); else setY(TAB, 380, 'cubic-bezier(.34,1.56,.64,1)');
-    };
-    towel.addEventListener('pointerup', end);
-    towel.addEventListener('pointercancel', end);
-    towel.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pull(); } });
-    btn.addEventListener('click', pull);
-
-    toggleBtns.forEach(b => b.addEventListener('click', () => {
-      fold = b.dataset.fold;
-      disp.dataset.fold = fold;
-      toggle.dataset.fold = fold;
-      toggleBtns.forEach(x => { const on = x === b; x.classList.toggle('is-on', on); x.setAttribute('aria-selected', String(on)); });
-      fText.textContent = COPY[fold].text;
-      fSize.textContent = COPY[fold].size;
-      fPanels.textContent = COPY[fold].panels;
-      diagC = 0;
-      drawDiagram(0);
-    }));
-
-    /* Cross-section of an interfolded stack.
-       V: sheet k has panels on layers 2k-1 and 2k+2 (one fold, alternating sides).
-       Z: sheet k has panels on layers 3k-2, 3k, 3k+2 (fold right, then left).
-       The lowest panel of the current sheet hangs out of the slot. */
-    const G = { x0: 58, x1: 262, yb: 202, s: 13, slot: 160 };
-    const layers = (k, f) => (f === 'v' ? [2 * k - 1, 2 * k + 2] : [3 * k - 2, 3 * k, 3 * k + 2]);
-    const base = (c, f) => (f === 'v' ? 2 * c + 1 : 3 * c);
-    let diagC = 0;
-
-    function sheetD(k, c, f, isTab) {
-      const L = layers(k, f), b = base(c, f);
-      const y = n => G.yb - (n - b) * G.s;
-      const sides = f === 'v'
-        ? (k % 2 === 0 ? [G.x1] : [G.x0])
-        : [G.x1, G.x0];
-      let d = '';
-      for (let i = 0; i < L.length; i++) {
-        const yy = y(L[i]);
-        const foldX = sides[i] ?? null;              // fold after this panel
-        const prevFold = i > 0 ? sides[i - 1] : null; // fold before this panel
-        const startX = prevFold ?? (f === 'v' ? (sides[0] === G.x1 ? G.x0 : G.x1) : G.x0);
-        const endX = foldX ?? (startX === G.x0 ? G.x1 : G.x0);
-        if (i === 0) {
-          if (isTab) {
-            const ty = G.yb + 7, dir = endX > G.slot ? 1 : -1;
-            d += `M${G.slot} ${G.yb + 46} L${G.slot} ${ty + 7} Q${G.slot} ${ty} ${G.slot + dir * 14} ${ty} L${endX} ${ty}`;
-          } else {
-            d += `M${startX} ${yy.toFixed(1)} L${endX} ${yy.toFixed(1)}`;
-          }
-        } else {
-          d += ` L${endX} ${yy.toFixed(1)}`;
-        }
-        if (i < L.length - 1) {
-          const y0 = i === 0 && isTab ? G.yb + 7 : yy, y1 = y(L[i + 1]);
-          const r = Math.max(1, (y0 - y1) / 2);
-          const sweep = foldX === G.x1 ? 0 : 1;
-          d += ` A${r.toFixed(1)} ${r.toFixed(1)} 0 0 ${sweep} ${foldX} ${y1.toFixed(1)}`;
-        }
-      }
-      return d;
-    }
-    function drawDiagram(c) {
-      const k0 = Math.floor(c), frac = c - k0;
-      const n = fold === 'v' ? 9 : 7;
-      let html = '';
-      for (let k = k0 + n; k >= k0; k--) {
-        const isCur = k === k0;
-        const col = k % 2 === 0 ? '#d6ae5c' : '#f3eee4';
-        const d = sheetD(k, c, fold, isCur && frac === 0);
-        const tf = isCur && frac > 0 ? ` transform="translate(0 ${(frac * 70).toFixed(1)})" opacity="${(1 - frac).toFixed(2)}"` : '';
-        html += `<path d="${d}" stroke="${col}"${tf}/>`;
-      }
-      diagG.innerHTML = html;
-    }
-    function diagramPull() {
-      const c0 = diagC, t1 = performance.now(), dur = reduce ? 1 : 700;
-      const step = t => {
-        const k = clamp((t - t1) / dur, 0, 1);
-        const e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
-        drawDiagram(c0 + e);
-        if (k < 1) requestAnimationFrame(step); else { diagC = c0 + 1; drawDiagram(diagC); }
-      };
-      requestAnimationFrame(step);
-    }
-
-    syncStack();
-    drawDiagram(0);
   })();
 
-  /* ======================================================
-     NAPKINS — colour picker, folding napkin, orbiting fan
-     ====================================================== */
-  (function napkins() {
-    const sec = $('#napkins');
-    if (!sec) return;
-    const COLORS = [
-      { n: 'Червено', c: '#c8102e' }, { n: 'Бордо', c: '#6d1a2a', t: '#b2394f' },
-      { n: 'Шампанско', c: '#e3c98f' }, { n: 'Жълто', c: '#f2c230' },
-      { n: 'Зелено', c: '#2f8f4e' }, { n: 'Синьо', c: '#1f5fbf', t: '#4f86e0' },
-      { n: 'Лилаво', c: '#6b3fa0', t: '#9a6fd0' }, { n: 'Черно', c: '#1c1c1e', t: '#8c8c90' },
-      { n: 'Крафт', c: '#b58a5a' }, { n: 'Бяло', c: '#f5f2ea' },
-    ];
-    const sw = $('#swatches'), name = $('#napkinName'), fan = $('#fan');
-    sw.innerHTML = COLORS.map((o, i) =>
-      `<button type="button" class="swatch" role="radio" aria-checked="${i === 0}" style="--c:${o.c}" data-i="${i}"><span class="sr">${o.n}</span></button>`).join('');
-    function pick(i) {
-      const o = COLORS[i];
-      sec.style.setProperty('--nc', o.c);
-      name.style.color = o.t || o.c;
-      name.textContent = o.n + '.';
-      $$('.swatch', sw).forEach((b, k) => { b.setAttribute('aria-checked', String(k === i)); b.tabIndex = k === i ? 0 : -1; });
-    }
-    sw.addEventListener('click', e => { const b = e.target.closest('.swatch'); if (b) pick(+b.dataset.i); });
-    sw.addEventListener('keydown', e => {
-      const cur = $$('.swatch', sw).findIndex(b => b.getAttribute('aria-checked') === 'true');
-      const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
-      if (!d) return;
-      e.preventDefault();
-      const n = (cur + d + COLORS.length) % COLORS.length;
-      pick(n); $$('.swatch', sw)[n].focus();
-    });
-    pick(0);
-
-    // orbiting napkins around the folding one
-    const small = matchMedia('(max-width: 720px)').matches;
-    const R = small ? 160 : 235;
-    fan.innerHTML = COLORS.filter(o => o.n !== 'Бяло').map((o, i, arr) => {
-      const ang = i * (360 / arr.length) + 12;
-      return `<i style="--c:${o.c};--r:${ang}deg;--tx:0px;--ty:${-R}px;--rr:${(i * 37) % 50 - 25}deg;--dl:${-i * 1.1}s"></i>`;
+  /* ---------------- slide 3: napkin fan ---------------- */
+  (function fan() {
+    const art = $('#artFan');
+    const picks = NAPKINS.filter(n => n.id !== 'np-white').slice(0, 7);
+    art.innerHTML = picks.map((n, i) => {
+      const a = -26 + i * 12;
+      return `<button type="button" class="fan-nap${n.light ? ' is-light' : ''}" style="--c:${n.c};--a:${a}deg;--d:${(i * .07).toFixed(2)}s" data-nap="${NAPKINS.indexOf(n)}" aria-label="${n.color} салфетки"><span>${n.color}</span></button>`;
     }).join('');
-
-    // fold stage label follows the CSS fold animation
-    const topHalf = $('.fq-top'), stepEl = $('#foldStep'), mmEl = $('#foldMm');
-    if (reduce || !topHalf.getAnimations) return;
-    setInterval(() => {
-      const a = topHalf.getAnimations()[0];
-      if (!a || a.currentTime == null) return;
-      const ph = (a.currentTime % 9000) / 9000;
-      let s = '1/1', mm = '400 × 400 mm';
-      if (ph >= .2 && ph < .38) { s = '1/2'; mm = '200 × 400 mm'; }
-      else if (ph >= .38 && ph < .74) { s = '1/4'; mm = '200 × 200 mm'; }
-      else if (ph >= .74 && ph < .8) { s = '1/2'; mm = '200 × 400 mm'; }
-      if (stepEl.textContent !== s) { stepEl.textContent = s; mmEl.textContent = mm; }
-    }, 120);
+    art.addEventListener('click', e => {
+      const b = e.target.closest('.fan-nap');
+      if (!b) return;
+      pickNapkin(+b.dataset.nap);
+      $('#napkins').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+    });
   })();
 
-  /* ---------------- first paint ---------------- */
-  renderRail();
-  updateBadge();
-  renderSearch('');
-  if (state.vat === false) setVat(false);
+  /* one clock for the slider, the towel demo and the roll */
+  let last = 0, towelT = 0;
+  function tick(t) {
+    const dt = Math.min(64, t - (last || t));
+    last = t;
+    const running = sliderSeen && !document.hidden;
+    if (running && !reduce) {
+      const paused = hover || t < holdUntil;
+      if (!paused) {
+        elapsed += dt;
+        $('i', tabs[cur]).style.width = Math.min(100, elapsed / SLIDE_MS * 100).toFixed(2) + '%';
+        if (elapsed >= SLIDE_MS) go(cur + 1);
+      }
+      if (cur === 0 && t >= holdUntil) {
+        towelT += dt;
+        if (towelT > 3600 && !towelArt.busy) { towelT = 0; towelArt.pull(); }
+      }
+    }
+    if (running && cur === 1) roll.frame(t);
+    requestAnimationFrame(tick);
+  }
+  go(0);
+  requestAnimationFrame(tick);
+
+  /* ---------------- open now (Sofia time) ---------------- */
+  function openStatus() {
+    let open = false;
+    try {
+      const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Sofia', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+        .formatToParts(new Date()).map(x => [x.type, x.value]));
+      const mins = +parts.hour * 60 + +parts.minute;
+      open = !['Sat', 'Sun'].includes(parts.weekday) && mins >= 510 && mins < 1050;
+    } catch { /* no time zone data */ }
+    const top = $('#openStatus'), pill = $('#openPill');
+    top.classList.toggle('is-open', open);
+    top.lastChild.textContent = open ? 'Отворено сега · до 17:30' : 'Пон–Пет 8:30–17:30';
+    pill.classList.toggle('is-open', open);
+    pill.textContent = open ? 'Отворено сега' : 'Затворено в момента';
+  }
+  openStatus();
+  setInterval(openStatus, 60000);
+
+  /* ---------------- forms ---------------- */
+  const form = $('#quoteForm'), msg = $('#formMsg');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = $('#f-name'), email = $('#f-email');
+    const okName = !!name.value.trim(), okMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+    name.parentElement.classList.toggle('is-bad', !okName);
+    email.parentElement.classList.toggle('is-bad', !okMail);
+    if (!okName || !okMail) {
+      msg.className = 'form__msg bad';
+      msg.textContent = 'Попълнете име и валиден имейл, за да ви отговорим.';
+      (okName ? email : name).focus();
+      return;
+    }
+    const body = [
+      'Име: ' + name.value.trim(),
+      'Фирма: ' + ($('#f-company').value.trim() || '—'),
+      'Телефон: ' + ($('#f-phone').value.trim() || '—'),
+      'Имейл: ' + email.value.trim(),
+      'Тип обект: ' + ($('#f-type').value || '—'),
+      '', $('#f-msg').value.trim(),
+    ].join('\n');
+    msg.className = 'form__msg ok';
+    msg.textContent = 'Отваряме имейл до office@paper-professional.com с вашето запитване. Ако не се отвори, пишете ни на този адрес или звънете на 0882 027 070.';
+    location.href = 'mailto:office@paper-professional.com?subject=' + encodeURIComponent('Запитване за оферта') + '&body=' + encodeURIComponent(body);
+  });
+  $('#newsForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const v = $('#news-email').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { toast('Въведете валиден имейл адрес.'); return; }
+    toast('Бюлетинът ще бъде свързан при пускането на новия сайт.');
+  });
+
+  /* ---------------- reveal on scroll ---------------- */
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); }
+    }), { threshold: .1, rootMargin: '0px 0px -30px 0px' });
+    $$('[data-reveal]').forEach(el => {
+      const sibs = [...el.parentElement.children].filter(x => x.hasAttribute('data-reveal'));
+      el.style.setProperty('--d', (sibs.indexOf(el) % 6) * 0.05 + 's');
+      if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pre'); io.observe(el); }
+    });
+  }
 })();

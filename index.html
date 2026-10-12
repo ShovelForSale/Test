@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Paper Converting Professional</title>
-<meta name="description" content="Пейпър Конвертинг ООД е производител на кърпи за ръце V и Z сгъвка, тоалетна хартия, кухненски ролки и салфетки. Дозатори, почистващи препарати и професионални консумативи на едро и дребно.">
-<meta name="theme-color" content="#0b0a09">
+<meta name="description" content="Пейпър Конвертинг ООД е производител на кърпи за ръце V и Z сгъвка, тоалетна хартия и кухненски ролки. Салфетки, дозатори, почистващи препарати и консумативи на едро и дребно с доставка в цялата страна.">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="assets/img/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Onest:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -19,209 +19,97 @@
 <!-- ============ TOP BAR ============ -->
 <div class="topbar">
   <div class="wrap topbar__in">
-    <div class="topbar__info">
-      <a href="tel:+359882027070" class="topbar__item">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
-        0882 027 070
-      </a>
-      <a href="mailto:office@paper-professional.com" class="topbar__item topbar__item--hide-s">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-        office@paper-professional.com
-      </a>
-      <span class="topbar__item topbar__item--hide-m" id="openStatus">
-        <i class="dot"></i> Пон–Пет 8:30–17:30
-      </span>
-    </div>
-    <div class="topbar__tools">
-      <div class="vat" role="group" aria-label="Цени">
-        <button type="button" class="vat__btn is-on" data-vat="1" aria-pressed="true">с ДДС</button>
-        <button type="button" class="vat__btn" data-vat="0" aria-pressed="false">без ДДС</button>
-      </div>
-      <a class="topbar__social" href="https://www.facebook.com/konsumativi.professional/" target="_blank" rel="noopener" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V8z"/></svg>
-      </a>
-      <a class="topbar__social" href="https://vm.tiktok.com/ZNdmBVR7o/" target="_blank" rel="noopener" aria-label="TikTok">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.5 2.5 4.5 5 4.8"/></svg>
-      </a>
+    <p class="topbar__note">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg>
+      Доставка с Еконт и Спиди до офис или адрес за 1–4 работни дни
+    </p>
+    <div class="topbar__links">
+      <a href="mailto:office@paper-professional.com">office@paper-professional.com</a>
+      <span class="topbar__hours" id="openStatus"><i></i>Пон–Пет 8:30–17:30</span>
+      <a class="topbar__soc" href="https://www.facebook.com/konsumativi.professional/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V8z"/></svg></a>
+      <a class="topbar__soc" href="https://vm.tiktok.com/ZNdmBVR7o/" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.5 2.5 4.5 5 4.8"/></svg></a>
     </div>
   </div>
 </div>
 
 <!-- ============ HEADER ============ -->
 <header class="header" id="header">
-  <div class="wrap header__in">
-    <a href="#top" class="brand" aria-label="Paper Converting Professional — начало">
-      <img src="assets/img/logo.jpg" alt="" width="52" height="52" class="brand__logo">
-      <span class="brand__word">
-        <b>PAPER CONVERTING</b>
-        <small>professional</small>
-      </span>
+  <div class="wrap header__main">
+    <button type="button" class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="drawer"><i></i><i></i><i></i></button>
+
+    <a href="#top" class="brand" aria-label="Paper Converting Professional, начало">
+      <img src="assets/img/logo.jpg" alt="" width="54" height="54" class="brand__logo">
+      <span class="brand__word"><b>Paper Converting</b><small>professional</small></span>
     </a>
 
-    <nav class="nav" aria-label="Основно меню">
-      <ul class="nav__list">
-        <li class="nav__item has-mega">
-          <button type="button" class="nav__link" aria-expanded="false" aria-controls="mega-products">Продукти <i class="chev"></i></button>
-          <div class="mega" id="mega-products">
-            <div class="mega__grid">
-              <div class="mega__col">
-                <p class="mega__eyebrow"><span class="tag tag--gold">Собствено производство</span></p>
-                <h3 class="mega__title">Хартия</h3>
-                <ul>
-                  <li><a href="#own">Тоалетна хартия</a><small>на пачки · на ролки · мини джъмбо</small></li>
-                  <li><a href="#pull">Кърпи за ръце V и Z</a><small>къси · широки · на ролка</small></li>
-                  <li><a href="#own">Кухненски ролки</a><small>бели · избелени · за магазини</small></li>
-                  <li><a href="#napkins">Салфетки</a><small>24×24 · 33×33 · 40×40</small></li>
-                  <li><a href="#catalog">Медицински ролки</a><small>с фолио · без фолио</small></li>
-                  <li><a href="#catalog">Индустриални ролки</a><small>1, 2 и 3 пласта</small></li>
-                </ul>
-              </div>
-              <div class="mega__col">
-                <p class="mega__eyebrow">Хигиена</p>
-                <h3 class="mega__title">Дозатори и пълнители</h3>
-                <ul>
-                  <li><a href="#catalog">Бели дозатори</a></li>
-                  <li><a href="#catalog">Черни дозатори</a></li>
-                  <li><a href="#catalog">Инокс дозатори</a></li>
-                  <li><a href="#catalog">Сензорни дозатори</a></li>
-                  <li><a href="#catalog">Течен сапун и пяна</a></li>
-                  <li><a href="#catalog">Дезинфектанти за ръце</a></li>
-                  <li><a href="#catalog">Ароматизатори</a></li>
-                </ul>
-              </div>
-              <div class="mega__col">
-                <p class="mega__eyebrow">Почистване</p>
-                <h3 class="mega__title">Препарати</h3>
-                <ul>
-                  <li><a href="#catalog">За кухня</a></li>
-                  <li><a href="#catalog">За под</a></li>
-                  <li><a href="#catalog">За WC и баня</a></li>
-                  <li><a href="#catalog">За стъкла</a></li>
-                  <li><a href="#catalog">Перилни препарати</a></li>
-                  <li><a href="#catalog">Чували за смет</a></li>
-                  <li><a href="#catalog">Хигиенни колички</a></li>
-                </ul>
-              </div>
-              <div class="mega__col">
-                <p class="mega__eyebrow">Професионални</p>
-                <h3 class="mega__title">Консумативи</h3>
-                <ul>
-                  <li><a href="#catalog">Лични предпазни средства</a></li>
-                  <li><a href="#catalog">Хотелски консумативи</a></li>
-                  <li><a href="#catalog">Козметични кърпи</a></li>
-                  <li><a href="#catalog">Еднократни прибори</a></li>
-                  <li><a href="#catalog">Покривки за маса</a></li>
-                  <li><a href="#catalog">Kimtech кърпи</a></li>
-                </ul>
-              </div>
-              <aside class="mega__promo">
-                <div class="mega__promo-roll" aria-hidden="true"><i></i></div>
-                <p class="mega__promo-kicker">Бързи връзки</p>
-                <div class="mega__chips">
-                  <a href="#bestsellers" class="chip chip--gold">Ново</a>
-                  <a href="#bestsellers" class="chip">Промоции</a>
-                  <a href="#bestsellers" class="chip">Разпродажба</a>
-                  <a href="#bestsellers" class="chip">Най-продавани</a>
-                </div>
-              </aside>
-            </div>
-          </div>
-        </li>
-        <li class="nav__item has-drop">
-          <button type="button" class="nav__link" aria-expanded="false">Дозатори <i class="chev"></i></button>
-          <ul class="drop">
-            <li><a href="#catalog">Бели</a></li>
-            <li><a href="#catalog">Черни</a></li>
-            <li><a href="#catalog">Инокс</a></li>
-            <li><a href="#catalog">Сензорни</a></li>
-            <li><a href="#catalog">Аксесоари за WC</a></li>
-            <li><a href="#catalog">Индустриални</a></li>
-          </ul>
-        </li>
-        <li class="nav__item has-drop">
-          <button type="button" class="nav__link" aria-expanded="false">Салфетки <i class="chev"></i></button>
-          <ul class="drop">
-            <li><a href="#napkins">Бар салфетки 24×24</a></li>
-            <li><a href="#napkins">Салфетки 33×33</a></li>
-            <li><a href="#napkins">Салфетки 40×40</a></li>
-            <li><a href="#napkins">Цветни салфетки</a></li>
-            <li><a href="#napkins">С печат Santia</a></li>
-            <li><a href="#napkins">Салфетки с шевица</a></li>
-            <li><a href="#napkins">Коледни и великденски</a></li>
-          </ul>
-        </li>
-        <li class="nav__item"><a class="nav__link" href="#catalog">Почистващи</a></li>
-        <li class="nav__item"><a class="nav__link" href="#catalog">ЛПС</a></li>
-        <li class="nav__item"><a class="nav__link" href="#process">За нас</a></li>
-        <li class="nav__item"><a class="nav__link" href="#contact">Контакт</a></li>
-      </ul>
-    </nav>
+    <form class="search" id="searchForm" role="search" autocomplete="off">
+      <label class="sr" for="q">Търсене на продукти</label>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+      <input id="q" type="search" placeholder="Търсете кърпи, салфетки, дозатори…" aria-controls="searchDrop" aria-expanded="false">
+      <button type="submit" class="search__btn">Търси</button>
+      <div class="search__drop" id="searchDrop" hidden></div>
+    </form>
+
+    <a class="hcall" href="tel:+359882027070">
+      <span class="hcall__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+      <span><small>Поръчки по телефона</small><b>0882 027 070</b></span>
+    </a>
 
     <div class="header__actions">
-      <button type="button" class="icon-btn" id="searchOpen" aria-label="Търсене">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
-      </button>
-      <a href="#contact" class="icon-btn icon-btn--hide-s" aria-label="Профил">
+      <a class="hicon hicon--hide-s" href="https://paper-professional.com/login.html" aria-label="Вход в профила">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
       </a>
-      <button type="button" class="icon-btn" id="cartOpen" aria-label="Количка">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1.3"/><circle cx="17" cy="20.5" r="1.3"/></svg>
-        <span class="badge" id="cartCount">0</span>
+      <button type="button" class="hcart" id="cartOpen" aria-label="Количка">
+        <span class="hcart__icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1.3"/><circle cx="17" cy="20.5" r="1.3"/></svg>
+          <span class="badge" id="cartCount">0</span>
+        </span>
+        <span class="hcart__txt"><small>Количка</small><b id="cartSum">€0.00</b></span>
       </button>
-      <a href="#contact" class="btn btn--gold btn--sm header__cta magnetic"><span>Оферта</span></a>
-      <button type="button" class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="drawer"><i></i><i></i><i></i></button>
     </div>
   </div>
+
+  <nav class="catnav" aria-label="Категории">
+    <div class="wrap catnav__in">
+      <div class="allcats" id="allcats">
+        <button type="button" class="allcats__btn" id="allCatsBtn" aria-expanded="false" aria-controls="mega">
+          <span class="allcats__ico"><i></i><i></i><i></i></span> Всички категории
+        </button>
+        <div class="mega" id="mega" hidden>
+          <ul class="mega__list" id="megaList"></ul>
+          <div class="mega__panel" id="megaPanel"></div>
+        </div>
+      </div>
+      <ul class="catnav__list">
+        <li><a href="https://paper-professional.com/category/187/karpi-za-ratse.html">Кърпи за ръце</a></li>
+        <li><a href="https://paper-professional.com/category/191/toaletni-hartii.html">Тоалетна хартия</a></li>
+        <li><a href="https://paper-professional.com/category/251/kuhnenski-rolki.html">Кухненски ролки</a></li>
+        <li><a href="https://paper-professional.com/category/341/salfetki.html">Салфетки</a></li>
+        <li><a href="https://paper-professional.com/category/180/dozatori.html">Дозатори</a></li>
+        <li><a href="https://paper-professional.com/category/391/preparati-i-pochistvashti-sredstva.html">Почистващи</a></li>
+        <li><a href="https://paper-professional.com/category/193/lichni-predpazni-sredstva.html">ЛПС</a></li>
+        <li><a href="https://paper-professional.com/category/411/hotelski-konsumativi.html">Хотелски</a></li>
+      </ul>
+      <div class="catnav__extra">
+        <a href="https://paper-professional.com/new_products.html">Ново</a>
+        <a class="catnav__promo" href="https://paper-professional.com/all_promotions.html">Промоции</a>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <!-- Mobile drawer -->
 <div class="drawer" id="drawer" aria-hidden="true">
   <div class="drawer__panel">
     <div class="drawer__head">
-      <span class="mono">МЕНЮ</span>
-      <button type="button" class="icon-btn" data-close-drawer aria-label="Затвори">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-      </button>
+      <b>Категории</b>
+      <button type="button" class="hicon" data-close aria-label="Затвори менюто"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     </div>
-    <nav class="drawer__nav" aria-label="Мобилно меню">
-      <details open>
-        <summary>Хартия <span class="tag tag--gold">Производство</span></summary>
-        <a href="#own">Тоалетна хартия</a><a href="#pull">Кърпи за ръце V и Z</a><a href="#own">Кухненски ролки</a><a href="#napkins">Салфетки</a><a href="#catalog">Медицински и индустриални ролки</a>
-      </details>
-      <details>
-        <summary>Дозатори</summary>
-        <a href="#catalog">Бели</a><a href="#catalog">Черни</a><a href="#catalog">Инокс</a><a href="#catalog">Сензорни</a>
-      </details>
-      <details>
-        <summary>Почистващи</summary>
-        <a href="#catalog">За кухня</a><a href="#catalog">За под</a><a href="#catalog">За WC и баня</a><a href="#catalog">За стъкла</a><a href="#catalog">Перилни</a>
-      </details>
-      <details>
-        <summary>Професионални</summary>
-        <a href="#catalog">ЛПС</a><a href="#catalog">Хотелски консумативи</a><a href="#catalog">Чували за смет</a><a href="#catalog">Еднократни прибори</a>
-      </details>
-      <a class="drawer__link" href="#bestsellers">Най-продавани</a>
-      <a class="drawer__link" href="#process">За нас</a>
-      <a class="drawer__link" href="#contact">Контакт</a>
-    </nav>
+    <nav class="drawer__nav" id="drawerNav" aria-label="Мобилно меню"></nav>
     <div class="drawer__foot">
-      <a href="tel:+359882027070" class="btn btn--gold"><span>Обади се: 0882 027 070</span></a>
+      <a class="btn btn--dark btn--block" href="tel:+359882027070">Обадете се: 0882 027 070</a>
+      <a class="btn btn--line btn--block" href="#contact" data-close>Поискайте оферта</a>
     </div>
-  </div>
-</div>
-
-<!-- Search overlay -->
-<div class="search" id="search" aria-hidden="true" role="dialog" aria-label="Търсене">
-  <div class="search__box">
-    <label for="searchInput" class="mono search__label">Търсене в каталога</label>
-    <div class="search__field">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
-      <input type="search" id="searchInput" placeholder="напр. кърпи Z, салфетки 40×40, дозатор…" autocomplete="off">
-      <button type="button" class="icon-btn" id="searchClose" aria-label="Затвори търсенето">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-      </button>
-    </div>
-    <ul class="search__results" id="searchResults"></ul>
   </div>
 </div>
 
@@ -229,16 +117,15 @@
 <aside class="cart" id="cart" aria-hidden="true" aria-label="Количка">
   <div class="cart__panel">
     <div class="drawer__head">
-      <span class="mono">КОЛИЧКА</span>
-      <button type="button" class="icon-btn" data-close-cart aria-label="Затвори количката">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-      </button>
+      <b>Количка</b>
+      <button type="button" class="hicon" data-close aria-label="Затвори количката"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     </div>
     <ul class="cart__list" id="cartList"></ul>
     <div class="cart__foot">
-      <div class="cart__total"><span>Общо <small id="cartVatLabel">с ДДС</small></span><b id="cartTotal">€0.00</b></div>
-      <a href="#contact" class="btn btn--gold btn--block" data-close-cart><span>Към поръчка</span></a>
-      <p class="cart__note">Демо количка. Онлайн поръчките ще бъдат свързани с каталога.</p>
+      <div class="cart__row"><span>Без ДДС</span><span id="cartNet">€0.00</span></div>
+      <div class="cart__row cart__row--total"><span>Общо с ДДС</span><b id="cartTotal">€0.00</b></div>
+      <button type="button" class="btn btn--dark btn--block" id="cartToQuote">Изпрати като запитване</button>
+      <p class="cart__note">Ще се свържем с вас, за да потвърдим наличност, цена и доставка.</p>
     </div>
   </div>
 </aside>
@@ -249,624 +136,431 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
-  <canvas class="hero__dust" id="dust" aria-hidden="true"></canvas>
-  <div class="hero__grid" aria-hidden="true"></div>
-  <div class="wrap hero__in">
-    <div class="hero__copy">
-      <p class="eyebrow"><span class="pulse"></span> Професионална хигиена · София</p>
-      <h1 class="hero__title">
-        <span class="line"><span>Хартия</span></span>
-        <span class="line"><span>от ново</span></span>
-        <span class="line"><span class="gold-text">поколение.</span></span>
-      </h1>
-      <p class="hero__lead">Произвеждаме тоалетна хартия, кърпи за ръце V и Z, кухненски ролки и салфетки от джъмбо ролки. Към тях добавяме дозатори, почистващи препарати и консумативи за хотели, ресторанти, офиси и индустрия. На едро и дребно.</p>
-      <div class="hero__ctas">
-        <a href="#own" class="btn btn--gold magnetic"><span>Разгледай продуктите</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#contact" class="btn btn--ghost magnetic"><span>Поискай оферта</span></a>
+  <div class="wrap hero__grid">
+    <div class="slider" id="slider" aria-roledescription="carousel" aria-label="Нашите продукти">
+      <div class="slider__track">
+
+        <article class="slide is-active" id="slide-0" role="tabpanel" aria-roledescription="slide" aria-label="1 от 3">
+          <div class="slide__copy">
+            <p class="kicker"><span class="kicker__dot"></span>Собствено производство</p>
+            <h1 class="slide__title">Кърпи за ръце <em>V и Z</em></h1>
+            <p class="slide__text">От 100% целулоза, в 2 пласта. Размери 21×21 и 24×21 см, по 20 пакета в кашон. Изтегляте една и следващата излиза сама.</p>
+            <p class="slide__price">от <b>€19.50</b> без ДДС за кашон</p>
+            <div class="slide__ctas">
+              <a class="btn btn--dark" href="https://paper-professional.com/category/187/karpi-za-ratse.html">Виж кърпите за ръце</a>
+              <a class="btn btn--line" href="#contact">Цена на едро</a>
+            </div>
+          </div>
+          <div class="slide__art art-towel" id="artTowel">
+            <div class="disp">
+              <div class="disp__cover">
+                <span class="disp__badge"><img src="assets/img/logo.jpg" alt=""></span>
+                <span class="disp__window"><span class="disp__stack" id="dispStack"></span></span>
+              </div>
+              <span class="disp__slot"></span>
+            </div>
+            <div class="disp__out">
+              <div class="towel" id="towel" role="button" tabindex="0" aria-label="Изтеглете кърпа">
+                <div class="tp tp1"><div class="tp tp2"></div></div>
+              </div>
+            </div>
+            <span class="art-hint">Дръпнете кърпата надолу</span>
+          </div>
+        </article>
+
+        <article class="slide" id="slide-1" role="tabpanel" aria-roledescription="slide" aria-label="2 от 3">
+          <div class="slide__copy">
+            <p class="kicker"><span class="kicker__dot"></span>Собствено производство</p>
+            <h2 class="slide__title">Тоалетна хартия <em>за дома и офиса</em></h2>
+            <p class="slide__text">Малки ролки, мини джъмбо, Smart One и хартия на пачки. Бяла от 100% целулоза, избелена или рециклирана, в 2 и 3 пласта.</p>
+            <p class="slide__price">от <b>€5.62</b> без ДДС за 24 ролки</p>
+            <div class="slide__ctas">
+              <a class="btn btn--dark" href="https://paper-professional.com/category/191/toaletni-hartii.html">Виж тоалетната хартия</a>
+              <a class="btn btn--line" href="#contact">Цена на едро</a>
+            </div>
+          </div>
+          <div class="slide__art art-roll">
+            <svg class="roll" id="rollSvg" viewBox="0 0 520 600" role="group" aria-label="Ролка тоалетна хартия. Дръпнете листа надолу, за да го откъснете.">
+              <defs>
+                <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#c9c1b4"/>
+                  <stop offset=".18" stop-color="#ece6dc"/>
+                  <stop offset=".45" stop-color="#ffffff"/>
+                  <stop offset=".75" stop-color="#ebe5da"/>
+                  <stop offset="1" stop-color="#b3aa9b"/>
+                </linearGradient>
+                <linearGradient id="gBodyEnd" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#5a4a30" stop-opacity=".22"/>
+                  <stop offset=".22" stop-color="#5a4a30" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="gSheet" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#e2dbcf"/>
+                  <stop offset=".12" stop-color="#fbf9f5"/>
+                  <stop offset=".55" stop-color="#ffffff"/>
+                  <stop offset=".9" stop-color="#f3efe7"/>
+                  <stop offset="1" stop-color="#d9d1c3"/>
+                </linearGradient>
+                <linearGradient id="gSheetTop" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#5a4a30" stop-opacity=".28"/>
+                  <stop offset="1" stop-color="#5a4a30" stop-opacity="0"/>
+                </linearGradient>
+                <radialGradient id="gCap" cx=".5" cy=".5" r=".5">
+                  <stop offset="0" stop-color="#efe9df"/>
+                  <stop offset=".85" stop-color="#fbf8f2"/>
+                  <stop offset="1" stop-color="#d8cfc0"/>
+                </radialGradient>
+                <linearGradient id="gBrass" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#e9cf98"/>
+                  <stop offset=".5" stop-color="#b48c4c"/>
+                  <stop offset="1" stop-color="#7d5d2a"/>
+                </linearGradient>
+                <pattern id="embossBody" width="18" height="18" patternUnits="userSpaceOnUse">
+                  <circle cx="4.5" cy="4.5" r="1.5" fill="#6b5838" fill-opacity=".10"/>
+                  <circle cx="13.5" cy="13.5" r="1.5" fill="#6b5838" fill-opacity=".10"/>
+                </pattern>
+                <pattern id="embossSheet" width="18" height="18" patternUnits="userSpaceOnUse">
+                  <circle cx="4.5" cy="4.5" r="1.4" fill="#6b5838" fill-opacity=".09"/>
+                  <circle cx="13.5" cy="13.5" r="1.4" fill="#6b5838" fill-opacity=".09"/>
+                </pattern>
+              </defs>
+              <!-- wall plate + arm -->
+              <rect x="452" y="56" width="26" height="128" rx="10" fill="url(#gBrass)"/>
+              <rect x="384" y="112" width="84" height="14" rx="7" fill="url(#gBrass)"/>
+              <!-- roll body -->
+              <path d="M130 20 H390 A30 100 0 0 1 390 220 H130 A30 100 0 0 1 130 20 Z" fill="url(#gBody)"/>
+              <path id="bodyEmboss" d="M130 20 H390 A30 100 0 0 1 390 220 H130 A30 100 0 0 1 130 20 Z" fill="url(#embossBody)"/>
+              <path d="M130 20 H390 A30 100 0 0 1 390 220 H130 A30 100 0 0 1 130 20 Z" fill="url(#gBodyEnd)"/>
+              <!-- hanging sheet -->
+              <g id="sheet">
+                <path id="sheetPaper" fill="url(#gSheet)"/>
+                <path id="sheetEmboss" fill="url(#embossSheet)"/>
+                <rect x="134" y="210" width="252" height="28" fill="url(#gSheetTop)"/>
+                <g id="perfs" class="perfs"></g>
+              </g>
+              <!-- end cap -->
+              <ellipse cx="390" cy="120" rx="30" ry="100" fill="url(#gCap)"/>
+              <g class="cap-rings" id="capRings">
+                <ellipse cx="390" cy="120" rx="26" ry="87"/>
+                <ellipse cx="390" cy="120" rx="22" ry="74"/>
+                <ellipse cx="390" cy="120" rx="18" ry="61"/>
+                <ellipse cx="390" cy="120" rx="14.5" ry="49"/>
+              </g>
+              <ellipse cx="390" cy="120" rx="11.5" ry="37" fill="#b08a55"/>
+              <ellipse cx="391.5" cy="120" rx="8.5" ry="30" fill="#4a3b26"/>
+              <g id="pullHint" class="pull-hint">
+                <rect x="196" y="0" width="128" height="30" rx="15"/>
+                <text x="260" y="19.5" text-anchor="middle">Дръпнете ↓</text>
+              </g>
+            </svg>
+          </div>
+        </article>
+
+        <article class="slide" id="slide-2" role="tabpanel" aria-roledescription="slide" aria-label="3 от 3">
+          <div class="slide__copy">
+            <p class="kicker"><span class="kicker__dot"></span>Santia и Paper Converting</p>
+            <h2 class="slide__title">Салфетки <em>за всяка маса</em></h2>
+            <p class="slide__text">Бели, цветни, с печат и с шевици. Размери 24×24, 33×33 и 40×40 см, сгънати на 1/4 или 1/8, в 1 или 2 пласта.</p>
+            <p class="slide__price">от <b>€1.00</b> без ДДС за 40 броя</p>
+            <div class="slide__ctas">
+              <a class="btn btn--dark" href="https://paper-professional.com/category/341/salfetki.html">Виж салфетките</a>
+              <a class="btn btn--line" href="#napkins">Избери цвят</a>
+            </div>
+          </div>
+          <div class="slide__art art-fan" id="artFan"></div>
+        </article>
       </div>
-      <ul class="hero__facts">
-        <li><b>Собствено</b><span>производство</span></li>
-        <li><b>100%</b><span>целулоза</span></li>
-        <li><b>Speedy · Econt</b><span>доставка в цялата страна</span></li>
-      </ul>
+
+      <div class="slider__tabs" role="tablist" aria-label="Избор на слайд">
+        <button type="button" role="tab" class="slider__tab is-active" aria-selected="true" aria-controls="slide-0"><span>Кърпи за ръце</span><i></i></button>
+        <button type="button" role="tab" class="slider__tab" aria-selected="false" aria-controls="slide-1"><span>Тоалетна хартия</span><i></i></button>
+        <button type="button" role="tab" class="slider__tab" aria-selected="false" aria-controls="slide-2"><span>Салфетки</span><i></i></button>
+      </div>
     </div>
 
-    <div class="hero__stage" id="rollStage">
-      <div class="hero__glow" aria-hidden="true"></div>
-      <svg class="roll" id="rollSvg" viewBox="0 0 520 720" role="group" aria-label="Анимирана ролка тоалетна хартия. Дръпнете листа надолу, за да я развиете.">
-        <defs>
-          <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#8a8276"/>
-            <stop offset=".16" stop-color="#d6cfc1"/>
-            <stop offset=".44" stop-color="#fffdf8"/>
-            <stop offset=".72" stop-color="#e4ddd0"/>
-            <stop offset="1" stop-color="#6f685c"/>
-          </linearGradient>
-          <linearGradient id="gBodyEnd" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#000" stop-opacity=".38"/>
-            <stop offset=".22" stop-color="#000" stop-opacity="0"/>
-          </linearGradient>
-          <linearGradient id="gSheet" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#d9d2c5"/>
-            <stop offset=".1" stop-color="#f8f5ee"/>
-            <stop offset=".55" stop-color="#fffdf9"/>
-            <stop offset=".9" stop-color="#f1ece2"/>
-            <stop offset="1" stop-color="#cfc7b8"/>
-          </linearGradient>
-          <linearGradient id="gSheetTop" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#2b2418" stop-opacity=".45"/>
-            <stop offset="1" stop-color="#2b2418" stop-opacity="0"/>
-          </linearGradient>
-          <radialGradient id="gCap" cx=".5" cy=".5" r=".5">
-            <stop offset="0" stop-color="#e9e1d1"/>
-            <stop offset=".8" stop-color="#f6f1e7"/>
-            <stop offset="1" stop-color="#cfc6b6"/>
-          </radialGradient>
-          <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#f6dd9e"/>
-            <stop offset=".5" stop-color="#d6ae5c"/>
-            <stop offset="1" stop-color="#8f6a2c"/>
-          </linearGradient>
-          <pattern id="embossBody" width="18" height="18" patternUnits="userSpaceOnUse">
-            <circle cx="4.5" cy="4.5" r="1.5" fill="#5b4a2e" fill-opacity=".10"/>
-            <circle cx="13.5" cy="13.5" r="1.5" fill="#5b4a2e" fill-opacity=".10"/>
-          </pattern>
-          <pattern id="embossSheet" width="18" height="18" patternUnits="userSpaceOnUse">
-            <circle cx="4.5" cy="4.5" r="1.4" fill="#5b4a2e" fill-opacity=".085"/>
-            <circle cx="13.5" cy="13.5" r="1.4" fill="#5b4a2e" fill-opacity=".085"/>
-            <path d="M9 0v3M9 15v3M0 9h3M15 9h3" stroke="#5b4a2e" stroke-opacity=".05"/>
-          </pattern>
-        </defs>
-
-        <!-- orbit rings -->
-        <g class="orbit" aria-hidden="true">
-          <circle cx="262" cy="300" r="236" class="orbit__ring orbit__ring--a"/>
-          <circle cx="262" cy="300" r="196" class="orbit__ring orbit__ring--b"/>
-          <circle cx="262" cy="64" r="4" class="orbit__dot"/>
-        </g>
-
-        <!-- holder rod -->
-        <g class="rod">
-          <rect x="384" y="204" width="96" height="12" rx="6" fill="url(#gGold)"/>
-          <circle cx="482" cy="210" r="10" fill="url(#gGold)"/>
-          <circle cx="482" cy="210" r="4" class="rod__led"/>
-        </g>
-
-        <!-- roll body -->
-        <path class="roll__body" d="M130 110 H390 A30 100 0 0 1 390 310 H130 A30 100 0 0 1 130 110 Z" fill="url(#gBody)"/>
-        <path id="bodyEmboss" d="M130 110 H390 A30 100 0 0 1 390 310 H130 A30 100 0 0 1 130 110 Z" fill="url(#embossBody)"/>
-        <path d="M130 110 H390 A30 100 0 0 1 390 310 H130 A30 100 0 0 1 130 110 Z" fill="url(#gBodyEnd)"/>
-
-        <!-- hanging sheet -->
-        <g id="sheet">
-          <path id="sheetPaper" fill="url(#gSheet)"/>
-          <path id="sheetEmboss" fill="url(#embossSheet)"/>
-          <rect x="134" y="300" width="252" height="34" fill="url(#gSheetTop)"/>
-          <g id="perfs" class="perfs"></g>
-        </g>
-
-        <!-- end cap -->
-        <ellipse cx="390" cy="210" rx="30" ry="100" fill="url(#gCap)"/>
-        <g class="cap-rings" id="capRings">
-          <ellipse cx="390" cy="210" rx="26" ry="87"/>
-          <ellipse cx="390" cy="210" rx="22" ry="74"/>
-          <ellipse cx="390" cy="210" rx="18" ry="61"/>
-          <ellipse cx="390" cy="210" rx="14.5" ry="49"/>
-        </g>
-        <ellipse cx="390" cy="210" rx="11.5" ry="37" fill="#9a7745"/>
-        <ellipse cx="391.5" cy="210" rx="8.5" ry="30" fill="#1c160f"/>
-
-        <!-- pull hint -->
-        <g id="pullHint" class="pull-hint">
-          <rect x="216" y="0" width="88" height="26" rx="13"/>
-          <text x="260" y="17.5" text-anchor="middle">ДРЪПНИ ↓</text>
-        </g>
-
-        <!-- HUD callouts -->
-        <g class="hud" aria-hidden="true">
-          <path d="M168 150 L150 74 H18"/>
-          <circle cx="168" cy="150" r="4"/>
-          <text x="18" y="64">3 ПЛАСТА</text>
-          <text x="18" y="92" class="hud__sub">мекота и здравина</text>
-
-          <path d="M408 146 L436 96 H512"/>
-          <circle cx="408" cy="146" r="4"/>
-          <text x="512" y="86" text-anchor="end">100% ЦЕЛУЛОЗА</text>
-
-          <path d="M384 430 L428 470 H512"/>
-          <circle cx="384" cy="430" r="4"/>
-          <text x="512" y="460" text-anchor="end">ПЕРФОРАЦИЯ</text>
-          <text x="512" y="488" text-anchor="end" class="hud__sub" id="sheetCount">листа: 0</text>
-        </g>
-      </svg>
+    <div class="hero__side">
+      <a class="promo-tile" href="https://paper-professional.com/category/186/mokri-karpichki-s-logo.html">
+        <img src="assets/img/banners/wet-wipes-logo.jpg" alt="Луксозни ресторантски мокри кърпички, персонализирани с вашето лого. Размери 6×8, 7×12 и 16×6,5 см. Запитване за цена." width="448" height="250">
+      </a>
+      <a class="promo-tile" href="https://paper-professional.com/category/411/hotelski-konsumativi.html">
+        <img src="assets/img/banners/hotel.jpg" alt="Луксозни хотелски консумативи: шампоани и балсами, ароматни сапуни, меки хотелски чехли, санитарни ленти и пликове." width="453" height="250">
+      </a>
     </div>
   </div>
-  <a href="#own" class="hero__scroll" aria-label="Надолу">
-    <span class="mono">SCROLL</span>
-    <i></i>
-  </a>
+
+  <!-- USPs -->
+  <div class="wrap">
+    <ul class="usps">
+      <li>
+        <span class="usps__ico"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="4"/><path d="M27 16h3M16 27v3"/></svg></span>
+        <div><b>Собствено производство</b><span>Кърпи за ръце, тоалетна хартия и кухненски ролки</span></div>
+      </li>
+      <li>
+        <span class="usps__ico"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 9h16v12H3zM19 13h5l4 4v4h-9"/><circle cx="9" cy="23" r="2.4"/><circle cx="23" cy="23" r="2.4"/></svg></span>
+        <div><b>Доставка за 1–4 дни</b><span>С Еконт или Спиди, до офис или адрес</span></div>
+      </li>
+      <li>
+        <span class="usps__ico"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 9h22v16H5zM5 14h22M10 20h5"/></svg></span>
+        <div><b>На едро и дребно</b><span>Цени с и без ДДС за фирми и обекти</span></div>
+      </li>
+      <li>
+        <span class="usps__ico"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 4h14v16a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2zM12 22v4h8v-4M13 9h6"/></svg></span>
+        <div><b>Kimberly-Clark Professional</b><span>Дозатори и пълнители за тях</span></div>
+      </li>
+    </ul>
+  </div>
 </section>
 
-<!-- ============ TICKER ============ -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker__track">
-    <span>Тоалетна хартия</span><i></i><span>Кърпи за ръце V &amp; Z</span><i></i><span>Кухненски ролки</span><i></i><span>Салфетки</span><i></i><span>Дозатори</span><i></i><span>Почистващи препарати</span><i></i><span>ЛПС</span><i></i><span>Хотелски консумативи</span><i></i>
-    <span>Тоалетна хартия</span><i></i><span>Кърпи за ръце V &amp; Z</span><i></i><span>Кухненски ролки</span><i></i><span>Салфетки</span><i></i><span>Дозатори</span><i></i><span>Почистващи препарати</span><i></i><span>ЛПС</span><i></i><span>Хотелски консумативи</span><i></i>
-  </div>
-</div>
-
-<!-- ============ OWN PRODUCTION ============ -->
-<section class="section" id="own">
+<!-- ============ CATEGORIES ============ -->
+<section class="section" id="categories">
   <div class="wrap">
-    <header class="sec-head" data-reveal>
-      <p class="eyebrow">Собствено производство</p>
-      <h2 class="sec-title">Четири продукта.<br><span class="gold-text">Направени от нас.</span></h2>
-      <p class="sec-lead">Всяка ролка, кърпа и салфетка излиза от нашата преработвателна линия в София. Затова контролираме размера, пластовете и опаковката.</p>
+    <header class="sec-head">
+      <div>
+        <p class="kicker">Каталог</p>
+        <h2 class="sec-title">Пазарувайте <em>по категория</em></h2>
+      </div>
+      <button type="button" class="link-arrow" id="allCatsLink">Всички категории</button>
     </header>
 
-    <div class="own-grid">
-      <article class="own-card" data-reveal>
-        <div class="own-card__viz viz-tp" aria-hidden="true">
-          <div class="viz-tp__roll"><i class="viz-tp__cap"></i></div>
-          <div class="viz-tp__sheet"></div>
-        </div>
-        <div class="own-card__body">
-          <p class="mono own-card__code">TP · 01</p>
-          <h3>Тоалетна хартия</h3>
-          <p>На пачки, малки ролки и мини джъмбо. Бяла от 100% целулоза, избелена или рециклирана.</p>
-          <ul class="specs"><li>2–3 пласта</li><li>Мини джъмбо</li><li>Smart One</li></ul>
-          <a href="#bestsellers" class="link-arrow">Виж продуктите</a>
-        </div>
-      </article>
-
-      <article class="own-card" data-reveal>
-        <div class="own-card__viz viz-vz" aria-hidden="true">
-          <div class="viz-vz__stack">
-            <i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-          <div class="viz-vz__pop"></div>
-        </div>
-        <div class="own-card__body">
-          <p class="mono own-card__code">HT · 02</p>
-          <h3>Кърпи за ръце V и Z</h3>
-          <p>Взаимно сгънати. Изтегляте една и следващата излиза сама от дозатора.</p>
-          <ul class="specs"><li>21×21 см</li><li>24×21 см</li><li>1–2 пласта</li></ul>
-          <a href="#pull" class="link-arrow">Пробвай дозатора</a>
-        </div>
-      </article>
-
-      <article class="own-card" data-reveal>
-        <div class="own-card__viz viz-kr" aria-hidden="true">
-          <div class="viz-kr__roll"><i></i></div>
-          <div class="viz-kr__sheet"></div>
-        </div>
-        <div class="own-card__body">
-          <p class="mono own-card__code">KR · 03</p>
-          <h3>Кухненски ролки</h3>
-          <p>Попиващи ролки за професионални кухни, офиси и търговски вериги.</p>
-          <ul class="specs"><li>Бели</li><li>Избелени</li><li>За магазини</li></ul>
-          <a href="#bestsellers" class="link-arrow">Виж продуктите</a>
-        </div>
-      </article>
-
-      <article class="own-card" data-reveal>
-        <div class="own-card__viz viz-np" aria-hidden="true">
-          <i style="--c:#c8102e"></i><i style="--c:#e9d3a3"></i><i style="--c:#1f5fbf"></i><i style="--c:#2f8f4e"></i><i style="--c:#f2c230"></i>
-        </div>
-        <div class="own-card__body">
-          <p class="mono own-card__code">NP · 04</p>
-          <h3>Салфетки</h3>
-          <p>Бели, цветни, с печат и шевици. За бара, масата и празниците.</p>
-          <ul class="specs"><li>24×24</li><li>33×33</li><li>40×40 см</li></ul>
-          <a href="#napkins" class="link-arrow">Виж цветовете</a>
-        </div>
-      </article>
+    <div class="cats">
+      <a class="cat" href="https://paper-professional.com/category/187/karpi-za-ratse.html" data-reveal><span class="cat__img"><img src="assets/img/products/p5892.jpg" alt="" loading="lazy"></span><span class="cat__name">Кърпи за ръце</span><span class="cat__sub">V, Z и на ролка</span></a>
+      <a class="cat" href="https://paper-professional.com/category/191/toaletni-hartii.html" data-reveal><span class="cat__img"><img src="assets/img/products/p3835.jpg" alt="" loading="lazy"></span><span class="cat__name">Тоалетна хартия</span><span class="cat__sub">Ролки, мини джъмбо, пачки</span></a>
+      <a class="cat" href="https://paper-professional.com/category/251/kuhnenski-rolki.html" data-reveal><span class="cat__img"><img src="assets/img/products/p5945.jpg" alt="" loading="lazy"></span><span class="cat__name">Кухненски ролки</span><span class="cat__sub">Бели, избелени, за магазини</span></a>
+      <a class="cat" href="https://paper-professional.com/category/341/salfetki.html" data-reveal><span class="cat__img"><img src="assets/img/categories/napkins.jpg" alt="" loading="lazy"></span><span class="cat__name">Салфетки</span><span class="cat__sub">24×24, 33×33, 40×40 см</span></a>
+      <a class="cat" href="https://paper-professional.com/category/180/dozatori.html" data-reveal><span class="cat__img"><img src="assets/img/products/p6312.jpg" alt="" loading="lazy"></span><span class="cat__name">Дозатори</span><span class="cat__sub">Бели, черни, инокс, сензорни</span></a>
+      <a class="cat" href="https://paper-professional.com/category/199/sapun-pyana-500ml-1l-5l.html" data-reveal><span class="cat__img"><img src="assets/img/categories/soap.jpg" alt="" loading="lazy"></span><span class="cat__name">Течен сапун и пяна</span><span class="cat__sub">500 мл, 1 л и 5 л</span></a>
+      <a class="cat" href="https://paper-professional.com/category/391/preparati-i-pochistvashti-sredstva.html" data-reveal><span class="cat__img"><img src="assets/img/categories/cleaning.jpg" alt="" loading="lazy"></span><span class="cat__name">Почистващи препарати</span><span class="cat__sub">Кухня, под, баня, стъкла</span></a>
+      <a class="cat" href="https://paper-professional.com/category/256/aromatizatori.html" data-reveal><span class="cat__img"><img src="assets/img/categories/air.jpg" alt="" loading="lazy"></span><span class="cat__name">Ароматизатори</span><span class="cat__sub">Kimberly-Clark и за WC</span></a>
+      <a class="cat" href="https://paper-professional.com/category/413/dezinfektanti.html" data-reveal><span class="cat__img"><img src="assets/img/categories/disinfect.jpg" alt="" loading="lazy"></span><span class="cat__name">Дезинфектанти</span><span class="cat__sub">За ръце и повърхности</span></a>
+      <a class="cat" href="https://paper-professional.com/category/193/lichni-predpazni-sredstva.html" data-reveal><span class="cat__img"><img src="assets/img/products/p3590.jpg" alt="" loading="lazy"></span><span class="cat__name">Лични предпазни средства</span><span class="cat__sub">Ръкавици, маски, калцуни</span></a>
+      <a class="cat" href="https://paper-professional.com/category/412/chuvali.html" data-reveal><span class="cat__img"><img src="assets/img/categories/bags.jpg" alt="" loading="lazy"></span><span class="cat__name">Чували за смет</span><span class="cat__sub">От 20 до 300 литра</span></a>
+      <a class="cat" href="https://paper-professional.com/category/206/industrialni-rolki.html" data-reveal><span class="cat__img"><img src="assets/img/categories/industrial.jpg" alt="" loading="lazy"></span><span class="cat__name">Индустриални ролки</span><span class="cat__sub">1, 2 и 3 пласта</span></a>
     </div>
   </div>
 </section>
 
-<!-- ============ PROCESS (scroll-driven) ============ -->
-<section class="process" id="process">
-  <div class="process__sticky">
-    <div class="wrap process__in">
-      <div class="process__copy">
-        <p class="eyebrow">Как работим</p>
-        <h2 class="sec-title">От джъмбо ролка<br><span class="gold-text">до готов продукт.</span></h2>
-        <ol class="steps" id="steps">
-          <li class="is-active"><span class="mono">01</span><div><h3>Джъмбо ролка</h3><p>Започваме с големи ролки хартия, тежащи стотици килограми.</p></div></li>
-          <li><span class="mono">02</span><div><h3>Развиване и пластове</h3><p>Линията развива хартията и съединява пластовете за мекота и здравина.</p></div></li>
-          <li><span class="mono">03</span><div><h3>Перфорация и рязане</h3><p>Режем точно по размер: 21×21, 24×21, 33×33 см и още.</p></div></li>
-          <li><span class="mono">04</span><div><h3>Сгъване и навиване</h3><p>V и Z сгъване за кърпите, навиване за тоалетната хартия и кухненските ролки.</p></div></li>
-          <li><span class="mono">05</span><div><h3>Опаковане и доставка</h3><p>Пакетираме, палетизираме и доставяме до вашия обект.</p></div></li>
-        </ol>
-        <div class="process__bar"><i id="processBar"></i></div>
+<!-- ============ PRODUCTS ============ -->
+<section class="section section--linen" id="products">
+  <div class="wrap">
+    <header class="sec-head">
+      <div>
+        <p class="kicker">Най-продавани</p>
+        <h2 class="sec-title">Най-поръчваните <em>продукти</em></h2>
       </div>
-      <div class="process__scene">
-        <svg id="line" viewBox="0 70 960 480" role="img" aria-label="Анимация на преработвателна линия: джъмбо ролка, ролки за пластове, нож и конвейер с готови продукти.">
-          <defs>
-            <radialGradient id="gJumbo" cx=".5" cy=".5" r=".5">
-              <stop offset="0" stop-color="#cfc6b4"/>
-              <stop offset=".7" stop-color="#efe8db"/>
-              <stop offset="1" stop-color="#bfb5a2"/>
-            </radialGradient>
-            <linearGradient id="gMetal" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#3a352e"/>
-              <stop offset=".5" stop-color="#1b1916"/>
-              <stop offset="1" stop-color="#0f0e0c"/>
-            </linearGradient>
-            <linearGradient id="gGold2" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#f6dd9e"/>
-              <stop offset=".5" stop-color="#d6ae5c"/>
-              <stop offset="1" stop-color="#8f6a2c"/>
-            </linearGradient>
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="6" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-
-          <!-- floor grid -->
-          <g class="floor">
-            <path d="M0 500 H960 M0 530 H960"/>
-          </g>
-
-          <!-- stage labels -->
-          <g class="stage-labels">
-            <text x="190" y="88" data-stage="0" text-anchor="middle">01 · UNWIND</text>
-            <text x="470" y="250" data-stage="1" text-anchor="middle">02 · PLY</text>
-            <text x="650" y="250" data-stage="2" text-anchor="middle">03 · CUT</text>
-            <text x="800" y="250" data-stage="3" text-anchor="middle">04 · FOLD</text>
-            <text x="825" y="522" data-stage="4" text-anchor="middle">05 · PACK</text>
-          </g>
-
-          <!-- jumbo stand -->
-          <path class="stand" d="M190 270 L120 500 M190 270 L260 500" />
-
-          <!-- web (paper) -->
-          <path id="web" class="web"/>
-          <path id="webFlow" class="web-flow"/>
-
-          <!-- jumbo roll -->
-          <g id="jumbo" data-stage="0" class="m-part">
-            <circle id="jumboOuter" cx="190" cy="270" r="170" fill="url(#gJumbo)"/>
-            <g id="jumboRings"></g>
-            <g id="jumboSpin">
-              <circle cx="190" cy="270" r="34" fill="url(#gGold2)"/>
-              <circle cx="190" cy="270" r="22" fill="#14110d"/>
-              <path d="M190 248 V292 M168 270 H212 M174.4 254.4 L205.6 285.6 M205.6 254.4 L174.4 285.6" stroke="#d6ae5c" stroke-width="3"/>
-              <path id="jumboMark" d="M190 236 V108" stroke="#9a8f7c" stroke-width="2" stroke-dasharray="3 6"/>
-            </g>
-          </g>
-
-          <!-- idler -->
-          <g class="roller" data-roller="14" transform="translate(400 414)">
-            <circle r="14" fill="url(#gMetal)" stroke="#5a5144"/>
-            <path class="roller__spokes" d="M0 -10 V10 M-10 0 H10" stroke="#d6ae5c" stroke-width="2"/>
-          </g>
-
-          <!-- ply / emboss rollers -->
-          <g data-stage="1" class="m-part">
-            <rect x="430" y="300" width="80" height="140" rx="10" class="housing"/>
-            <g class="roller" data-roller="26" transform="translate(470 372)">
-              <circle r="26" fill="url(#gGold2)"/>
-              <circle r="26" class="knurl"/>
-              <path class="roller__spokes" d="M0 -18 V18 M-18 0 H18" stroke="#3a2c14" stroke-width="3"/>
-            </g>
-            <g class="roller" data-roller="26" transform="translate(470 428)">
-              <circle r="26" fill="url(#gGold2)"/>
-              <circle r="26" class="knurl"/>
-              <path class="roller__spokes" d="M0 -18 V18 M-18 0 H18" stroke="#3a2c14" stroke-width="3"/>
-            </g>
-            <circle cx="500" cy="312" r="3" class="led"/>
-          </g>
-
-          <!-- cutter -->
-          <g data-stage="2" class="m-part">
-            <rect x="612" y="280" width="76" height="70" rx="10" class="housing"/>
-            <g class="blade" id="blade">
-              <path d="M626 350 H674 L650 388 Z" fill="url(#gGold2)"/>
-            </g>
-            <circle cx="650" cy="400" r="6" class="spark" id="spark"/>
-            <rect x="612" y="414" width="76" height="22" rx="6" class="housing"/>
-            <circle cx="676" cy="294" r="3" class="led"/>
-          </g>
-
-          <!-- fold / rewind unit -->
-          <g data-stage="3" class="m-part">
-            <rect x="742" y="280" width="116" height="172" rx="14" class="housing"/>
-            <g class="roller" data-roller="22" transform="translate(800 344)">
-              <circle r="22" fill="#efe8db"/>
-              <circle r="22" class="knurl knurl--paper"/>
-              <circle r="8" fill="url(#gGold2)"/>
-            </g>
-            <path id="zig" class="zig" d="M760 392 l12 10 l12 -10 l12 10 l12 -10 l12 10 l12 -10 l12 10 l12 -10"/>
-            <circle cx="846" cy="294" r="3" class="led"/>
-          </g>
-
-          <!-- conveyor -->
-          <g data-stage="4" class="m-part">
-            <rect x="700" y="470" width="250" height="18" rx="9" class="belt"/>
-            <path id="beltFlow" class="belt-flow" d="M712 479 H938"/>
-            <circle cx="712" cy="479" r="7" class="belt-roll"/>
-            <circle cx="938" cy="479" r="7" class="belt-roll"/>
-          </g>
-          <g id="items"></g>
-        </svg>
+      <div class="tabs" role="tablist" aria-label="Филтър на продуктите" id="prodTabs">
+        <button type="button" role="tab" class="tab is-on" aria-selected="true" data-filter="all">Най-продавани</button>
+        <button type="button" role="tab" class="tab" aria-selected="false" data-filter="paper">Хартия</button>
+        <button type="button" role="tab" class="tab" aria-selected="false" data-filter="hygiene">Хигиена и дозатори</button>
       </div>
-    </div>
+    </header>
+    <div class="products" id="productGrid"></div>
   </div>
 </section>
 
-<!-- ============ PULL DEMO (V/Z) ============ -->
-<section class="section pull" id="pull">
-  <div class="wrap pull__in">
-    <div class="pull__stage" data-reveal>
-      <div class="disp" id="disp" data-fold="v">
-        <div class="disp__box">
-          <div class="disp__brand"><img src="assets/img/logo.jpg" alt=""><span class="mono">PROFESSIONAL</span></div>
-          <div class="disp__window"><div class="disp__stack" id="dispStack"></div></div>
-          <span class="disp__led" id="dispLed"></span>
-          <div class="disp__slot"></div>
-        </div>
-        <div class="disp__out" id="dispOut">
-          <div class="towel" id="towel" role="button" tabindex="0" aria-label="Изтегли кърпа">
-            <div class="tp tp1"><div class="tp tp2"><div class="tp tp3"></div></div></div>
-          </div>
-        </div>
-      </div>
-      <p class="pull__hint mono">Хвани кърпата и дръпни надолу</p>
-    </div>
+<!-- ============ V / Z ============ -->
+<section class="section" id="towels">
+  <div class="wrap">
+    <header class="sec-head sec-head--center">
+      <p class="kicker">Кърпи за ръце</p>
+      <h2 class="sec-title">V или Z сгъване: <em>коя кърпа ви трябва?</em></h2>
+      <p class="sec-lead">И двата вида са сгънати една в друга. Когато издърпате кърпа от дозатора, тя изтегля края на следващата, затова винаги излиза точно по една.</p>
+    </header>
 
-    <div class="pull__copy">
-      <header class="sec-head sec-head--left" data-reveal>
-        <p class="eyebrow">Интерактивно</p>
-        <h2 class="sec-title">Дръпни една.<br><span class="gold-text">Следващата е готова.</span></h2>
-        <p class="sec-lead">Кърпите ни са взаимно сгънати: всяка захваща края на следващата. Така дозаторът подава точно по една, без да се късат и без да падат на пода.</p>
-      </header>
-
-      <div class="fold-toggle" role="tablist" aria-label="Тип сгъване" data-reveal>
-        <button type="button" role="tab" class="fold-toggle__btn is-on" data-fold="v" aria-selected="true">V сгъване</button>
-        <button type="button" role="tab" class="fold-toggle__btn" data-fold="z" aria-selected="false">Z сгъване</button>
-        <i class="fold-toggle__pill"></i>
-      </div>
-
-      <div class="pull__panel" data-reveal>
-        <div class="pull__diagram">
-          <svg id="foldDiagram" viewBox="0 0 320 250" role="img" aria-label="Схема на взаимно сгънати кърпи в дозатор">
-            <defs><clipPath id="diagClip"><rect x="0" y="22" width="320" height="228"/></clipPath></defs>
-            <path class="diag-box" d="M40 20 V214 H138 M182 214 H280 V20"/>
-            <g id="diagSheets" clip-path="url(#diagClip)"></g>
-          </svg>
-          <span class="mono pull__diagram-cap">Напречен разрез на дозатора</span>
+    <div class="folds">
+      <article class="fold" data-reveal>
+        <div class="fold__art" aria-hidden="true">
+          <div class="ftowel ftowel--v"><i class="fp fp1"><i class="fp fp2"></i></i></div>
+          <span class="fold__tag">2 панела</span>
         </div>
-        <div class="pull__specs">
-          <p id="foldText">Всяка кърпа е сгъната на две и захваща следващата. Компактна и икономична, за повечето стандартни дозатори.</p>
+        <div class="fold__body">
+          <h3>V сгъване</h3>
+          <p>Всяка кърпа е сгъната на две. Компактна и икономична, побира се в повечето стандартни дозатори.</p>
           <dl class="kv">
-            <div><dt>Размер</dt><dd id="foldSize">21×21 · 24×21 см</dd></div>
-            <div><dt>Пластове</dt><dd>1 или 2</dd></div>
-            <div><dt>Панели</dt><dd id="foldPanels">2</dd></div>
-            <div><dt>Изтеглени</dt><dd><b id="pulledCount">0</b></dd></div>
+            <div><dt>Размери</dt><dd>21×21 см (къси), 24×21 см (широки)</dd></div>
+            <div><dt>Пластове</dt><dd>2</dd></div>
+            <div><dt>Опаковка</dt><dd>20 пакета в кашон</dd></div>
           </dl>
-          <button type="button" class="btn btn--ghost btn--sm" id="pullBtn"><span>Изтегли кърпа</span></button>
+          <a class="link-arrow" href="https://paper-professional.com/category/423/v-karpi-za-ratse-kasi.html">Виж V кърпите</a>
         </div>
-      </div>
+      </article>
+
+      <article class="fold" data-reveal>
+        <div class="fold__art" aria-hidden="true">
+          <div class="ftowel ftowel--z"><i class="fp fp1"><i class="fp fp2"><i class="fp fp3"></i></i></i></div>
+          <span class="fold__tag">3 панела</span>
+        </div>
+        <div class="fold__body">
+          <h3>Z сгъване</h3>
+          <p>Всяка кърпа е сгъната на три. По-голяма площ за подсушаване, подава се плавно дори от пълен дозатор.</p>
+          <dl class="kv">
+            <div><dt>Размер</dt><dd>21×21 см</dd></div>
+            <div><dt>Пластове</dt><dd>2, плътни или тънки</dd></div>
+            <div><dt>Опаковка</dt><dd>20 пакета в кашон</dd></div>
+          </dl>
+          <a class="link-arrow" href="https://paper-professional.com/category/487/z-karpi-za-ratse.html">Виж Z кърпите</a>
+        </div>
+      </article>
+
+      <article class="fold fold--product" data-reveal>
+        <p class="kicker">Подходящ дозатор</p>
+        <a class="fold__img" href="https://paper-professional.com/product/4788/dozator-za-karpi-za-ratse-viali-za-z-i-v-karpi-21h21.html">
+          <img src="assets/img/products/p6196.jpg" alt="Дозатор за кърпи за ръце Виали" loading="lazy">
+        </a>
+        <h3>Дозатор Виали за Z и V кърпи 21×21</h3>
+        <div class="price"><b>€13.20</b><span>с ДДС · €11.00 без ДДС</span></div>
+        <button type="button" class="btn btn--dark btn--block" data-add="dispViali">Добави в количката</button>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- ============ NAPKINS ============ -->
-<section class="section napkins" id="napkins" style="--nc:#c8102e">
-  <div class="napkins__wash" aria-hidden="true"></div>
+<section class="section section--linen napkins" id="napkins">
   <div class="wrap napkins__in">
     <div class="napkins__copy">
-      <header class="sec-head sec-head--left" data-reveal>
-        <p class="eyebrow">Цветни салфетки</p>
-        <h2 class="sec-title">Сгънати точно.<br><span class="nc-text" id="napkinName">Червено.</span></h2>
-        <p class="sec-lead">Бели, цветни и с печат. Сгъване 1/4 или 1/8, в един или два пласта. Изберете цвят и вижте как се сгъва.</p>
-      </header>
-      <div class="swatches" id="swatches" role="radiogroup" aria-label="Цвят на салфетката" data-reveal></div>
-      <ul class="specs specs--lg" data-reveal>
-        <li>24×24 см · бар</li><li>33×33 см</li><li>40×40 см</li><li>1/4 и 1/8 сгъване</li><li>1 или 2 пласта</li><li>С печат Santia</li><li>Шевици</li><li>Коледни и великденски</li>
-      </ul>
-    </div>
-    <div class="napkins__stage" aria-hidden="true">
-      <div class="fold3d">
-        <div class="fold3d__napkin">
-          <div class="fq-top">
-            <div class="fq fq-tl"></div>
-            <div class="fq-wrap fq-wrap--t"><div class="fq fq-tr"></div></div>
-          </div>
-          <div class="fq-bottom">
-            <div class="fq fq-bl"></div>
-            <div class="fq-wrap fq-wrap--b"><div class="fq fq-br"></div></div>
-          </div>
-        </div>
-        <div class="fold3d__shadow"></div>
+      <p class="kicker">Салфетки</p>
+      <h2 class="sec-title">Изберете цвета <em>на вашата маса</em></h2>
+      <p class="sec-lead">Цветни салфетки Santia в два пласта, 33×33 и 40×40 см. За ресторанти, хотели, кетъринг и вкъщи.</p>
+      <div class="swatches" id="swatches" role="radiogroup" aria-label="Цвят на салфетките"></div>
+      <div class="napkins__links">
+        <a class="link-arrow" href="https://paper-professional.com/category/343/tsvetni-salfetki-33-33.html">Всички цветни салфетки</a>
+        <a class="link-arrow" href="https://paper-professional.com/category/385/salfetki-s-shevitsi.html">Салфетки с шевици</a>
       </div>
-      <div class="fan" id="fan"></div>
-      <p class="mono fold3d__label"><span id="foldStep">1/1</span> · <span id="foldMm">400 × 400 mm</span></p>
+    </div>
+    <div class="napkins__card" id="napCard">
+      <a class="napkins__img" id="napLink" href="https://paper-professional.com/product/2313/cherveni-salfetki-2-plasta-33h33-40-br.html">
+        <img id="napImg" src="assets/img/products/p5580.jpg" alt="Червени салфетки Santia">
+      </a>
+      <div class="napkins__info">
+        <p class="napkins__color" id="napColor">Червено</p>
+        <h3 id="napTitle">Червени салфетки, 2 пласта, 33×33 см, 40 бр.</h3>
+        <div class="price"><b id="napPrice">€1.20</b><span id="napNet">с ДДС · €1.00 без ДДС</span></div>
+        <button type="button" class="btn btn--dark" id="napAdd" data-add="np-red">Добави в количката</button>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CATALOG (bought-in products) ============ -->
-<section class="section" id="catalog">
+<!-- ============ PROMO BANNERS ============ -->
+<section class="section section--tight">
   <div class="wrap">
-    <header class="sec-head" data-reveal>
-      <p class="eyebrow">Освен хартия</p>
-      <h2 class="sec-title">Всичко за професионалната<br><span class="gold-text">хигиена на едно място.</span></h2>
-      <p class="sec-lead">Подбираме дозатори, препарати и консумативи от доказани производители, за да поръчвате всичко от един доставчик.</p>
-    </header>
-
-    <div class="bento">
-      <a href="#bestsellers" class="tile tile--xl" data-reveal>
-        <div class="tile__viz tile__viz--disp" aria-hidden="true">
-          <span class="d d--w"></span><span class="d d--b"></span><span class="d d--s"></span>
-        </div>
-        <div class="tile__body">
-          <p class="mono tile__code">DSP</p>
-          <h3>Дозатори</h3>
-          <p>За кърпи, тоалетна хартия, сапун и пяна. Бели, черни, инокс и сензорни.</p>
-          <ul class="specs"><li>Бели</li><li>Черни</li><li>Инокс</li><li>Сензорни</li></ul>
-        </div>
-        <span class="tile__go" aria-hidden="true"></span>
-      </a>
-
-      <a href="#bestsellers" class="tile tile--wide" data-reveal>
-        <div class="tile__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M18 14h10l4 6v22a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2V22l4-8zM18 14V8h8v6M26 8h8M34 6v4"/><path d="M18 30h10M18 36h7"/></svg></div>
-        <div class="tile__body">
-          <p class="mono tile__code">CLN</p>
-          <h3>Почистващи препарати</h3>
-          <p>За кухня, под, WC и баня, стъкла и мебели. Плюс гъби, мопове и кофи.</p>
-        </div>
-        <span class="tile__go" aria-hidden="true"></span>
-      </a>
-
-      <a href="#bestsellers" class="tile" data-reveal>
-        <div class="tile__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c6 8 12 14 12 22a12 12 0 0 1-24 0c0-8 6-14 12-22z"/><path d="M18 30a6 6 0 0 0 6 6"/></svg></div>
-        <div class="tile__body"><p class="mono tile__code">DSF</p><h3>Дезинфектанти</h3><p>За ръце, под и повърхности.</p></div>
-        <span class="tile__go" aria-hidden="true"></span>
-      </a>
-      <a href="#bestsellers" class="tile" data-reveal>
-        <div class="tile__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M18 18h12v24a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2zM21 18v-6h6v6M27 12h8v4"/><path d="M22 28h4"/></svg></div>
-        <div class="tile__body"><p class="mono tile__code">SOP</p><h3>Сапун и пяна</h3><p>Пълнители 500 мл, 1 л и 5 л.</p></div>
-        <span class="tile__go" aria-hidden="true"></span>
-      </a>
-      <a href="#bestsellers" class="tile" data-reveal>
-        <div class="tile__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M16 44V24l-4-6a3 3 0 0 1 5-3l3 4V8a3 3 0 0 1 6 0v10V6a3 3 0 0 1 6 0v12-8a3 3 0 0 1 6 0v22a12 12 0 0 1-12 12z"/></svg></div>
-        <div class="tile__body"><p class="mono tile__code">PPE</p><h3>ЛПС</h3><p>Ръкавици, маски, престилки, очила.</p></div>
-        <span class="tile__go" aria-hidden="true"></span>
-      </a>
-      <a href="#bestsellers" class="tile" data-reveal>
-        <div class="tile__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 36h32M10 36a14 14 0 0 1 28 0M24 22v-4M20 18h8"/><path d="M6 40h36"/></svg></div>
-        <div class="tile__body"><p class="mono tile__code">HTL</p><h3>Хотелски консумативи</h3><p>Козметика, чехли, санитарни.</p></div>
-        <span class="tile__go" aria-hidden="true"></span>
-      </a>
-
-      <a href="#bestsellers" class="tile" data-reveal>
-        <div class="tile__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 16h20l-2 26a2 2 0 0 1-2 2H18a2 2 0 0 1-2-2z"/><path d="M14 16c0-4 4-8 10-8s10 4 10 8M20 8l4 4 4-4"/></svg></div>
-        <div class="tile__body"><p class="mono tile__code">BAG</p><h3>Чували за смет</h3><p>От 20 до 300 литра.</p></div>
-        <span class="tile__go" aria-hidden="true"></span>
-      </a>
-      <a href="#bestsellers" class="tile" data-reveal>
-        <div class="tile__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M18 20h12v22H18zM20 20v-6h8v6M24 14V8"/><path d="M34 12c3 2 3 6 0 8M38 8c5 4 5 12 0 16"/></svg></div>
-        <div class="tile__body"><p class="mono tile__code">AIR</p><h3>Ароматизатори</h3><p>Kimberly-Clark и за WC.</p></div>
-        <span class="tile__go" aria-hidden="true"></span>
-      </a>
-      <a href="#bestsellers" class="tile" data-reveal>
-        <div class="tile__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="5"/><path d="M24 8v6M24 34v6M8 24h6M34 24h6"/></svg></div>
-        <div class="tile__body"><p class="mono tile__code">IND</p><h3>Индустриални ролки</h3><p>1, 2 и 3 пласта, стойки, Kimtech.</p></div>
-        <span class="tile__go" aria-hidden="true"></span>
-      </a>
-      <a href="#bestsellers" class="tile" data-reveal>
-        <div class="tile__icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 6v18a4 4 0 0 0 8 0V6M18 6v38M32 6c-4 4-4 14 0 18v20"/></svg></div>
-        <div class="tile__body"><p class="mono tile__code">ONE</p><h3>Еднократни прибори</h3><p>Прибори и покривки за маса.</p></div>
-        <span class="tile__go" aria-hidden="true"></span>
-      </a>
+    <a class="wide-banner" href="https://paper-professional.com/category/356/koledni-salfetki.html" data-reveal>
+      <img src="assets/img/banners/christmas-napkins.jpg" alt="Коледни салфетки Santia за празничната маса" width="1358" height="341" loading="lazy">
+    </a>
+    <div class="banners">
+      <a href="https://paper-professional.com/category/191/toaletni-hartii.html" data-reveal><img src="assets/img/banners/toilet-paper.jpg" alt="Луксозна тоалетна хартия: ролки, кубчета, мини джъмбо" width="453" height="250" loading="lazy"></a>
+      <a href="https://paper-professional.com/category/251/kuhnenski-rolki.html" data-reveal><img src="assets/img/banners/kitchen.jpg" alt="Z-сгънати кухненски кърпи и домакинска ролка. Поискайте оферта." width="448" height="250" loading="lazy"></a>
+      <a href="https://paper-professional.com/category/391/preparati-i-pochistvashti-sredstva.html" data-reveal><img src="assets/img/banners/cleaning.jpg" alt="Почистващи препарати и ароматизатори" width="453" height="250" loading="lazy"></a>
+      <a href="https://paper-professional.com/category/558/seria-lovely-home-luks-33h24-1-8-2-plasta-100-broya.html" data-reveal><img src="assets/img/banners/santia-stand.jpg" alt="Цветни салфетки Santia Lovely Home, 1/8 сгънати, 2 пласта, 100 бр. в пакет. За вашия магазин." width="448" height="250" loading="lazy"></a>
     </div>
   </div>
 </section>
 
-<!-- ============ BESTSELLERS (demo) ============ -->
-<section class="section bestsellers" id="bestsellers">
-  <div class="wrap">
-    <header class="sec-head sec-head--row" data-reveal>
-      <div>
-        <p class="eyebrow">Най-продавани <span class="tag">Демо</span></p>
-        <h2 class="sec-title">Поръчвани всяка седмица.</h2>
-      </div>
-      <div class="rail-nav">
-        <button type="button" class="icon-btn icon-btn--ring" data-rail="-1" aria-label="Назад"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-        <button type="button" class="icon-btn icon-btn--ring" data-rail="1" aria-label="Напред"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
-      </div>
-    </header>
-  </div>
-  <div class="rail" id="rail" tabindex="0" aria-label="Най-продавани продукти"></div>
-  <div class="wrap">
-    <p class="rail-note mono">Цените са примерни и са взети от текущия онлайн магазин. Каталогът ще бъде свързан по-късно.</p>
-  </div>
-</section>
-
-<!-- ============ SECTORS + STATS ============ -->
-<section class="section sectors">
-  <div class="wrap">
-    <header class="sec-head" data-reveal>
-      <p class="eyebrow">За кого работим</p>
-      <h2 class="sec-title">Там, където хигиената<br><span class="gold-text">не е по избор.</span></h2>
-    </header>
-    <div class="sector-grid">
-      <article class="sector" data-reveal><span class="mono">HoReCa</span><h3>Хотели и ресторанти</h3><p>Салфетки, кърпи, хотелска козметика и препарати за кухнята.</p></article>
-      <article class="sector" data-reveal><span class="mono">OFFICE</span><h3>Офиси и сгради</h3><p>Дозатори, кърпи за ръце, тоалетна хартия и ароматизатори.</p></article>
-      <article class="sector" data-reveal><span class="mono">MED</span><h3>Медицински обекти</h3><p>Медицински ролки, дезинфектанти, ръкавици и маски.</p></article>
-      <article class="sector" data-reveal><span class="mono">INDUSTRY</span><h3>Производство</h3><p>Индустриални ролки, Kimtech кърпи, индустриален сапун и ЛПС.</p></article>
-      <article class="sector" data-reveal><span class="mono">EDU</span><h3>Училища и градини</h3><p>Икономични хартии и дозатори, които издържат на много ръце.</p></article>
-      <article class="sector" data-reveal><span class="mono">RETAIL</span><h3>Търговци</h3><p>Кухненски ролки и тоалетна хартия в опаковки за магазини.</p></article>
+<!-- ============ ABOUT / PRODUCTION ============ -->
+<section class="section section--linen" id="about">
+  <div class="wrap about">
+    <div class="about__copy">
+      <p class="kicker">За нас</p>
+      <h2 class="sec-title">Преработваме хартия <em>в София</em></h2>
+      <p>Пейпър Конвертинг е производител на кърпи за ръце, тоалетна хартия и кухненски ролки. Купуваме хартия на големи джъмбо ролки и я преработваме сами: развиваме, режем, сгъваме и пакетираме.</p>
+      <p>Освен собствените продукти доставяме салфетки Santia, дозатори и консумативи Kimberly-Clark, почистващи препарати, ЛПС и хотелски консумативи. Така поръчвате всичко за хигиената на обекта от едно място.</p>
+      <a class="btn btn--dark" href="#contact">Поискайте оферта</a>
     </div>
-
-    <div class="stats" data-reveal>
-      <div class="stat"><b data-count="100" data-suffix="%">100%</b><span>целулоза в премиум линията</span></div>
-      <div class="stat"><b data-count="3">3</b><span>пласта максимум</span></div>
-      <div class="stat"><b data-count="10" data-suffix="+">10+</b><span>цвята салфетки</span></div>
-      <div class="stat"><b>24/7</b><span>онлайн поръчки</span></div>
+    <div class="about__line" aria-hidden="true">
+      <svg viewBox="0 0 620 260" id="lineSvg">
+        <defs>
+          <radialGradient id="gJumbo" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="#e6ded0"/><stop offset=".75" stop-color="#fbf8f2"/><stop offset="1" stop-color="#d6ccbb"/>
+          </radialGradient>
+          <linearGradient id="gBrass2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e9cf98"/><stop offset=".5" stop-color="#b48c4c"/><stop offset="1" stop-color="#7d5d2a"/>
+          </linearGradient>
+        </defs>
+        <path class="line-floor" d="M20 206 H600"/>
+        <path class="line-web" d="M110 196 C180 196 220 152 280 152 H420"/>
+        <path class="line-web-flow" d="M110 196 C180 196 220 152 280 152 H420"/>
+        <g class="line-jumbo">
+          <circle cx="110" cy="110" r="86" fill="url(#gJumbo)" stroke="#d6ccbb"/>
+          <circle cx="110" cy="110" r="66" class="line-ring"/>
+          <circle cx="110" cy="110" r="46" class="line-ring"/>
+          <circle cx="110" cy="110" r="18" fill="url(#gBrass2)"/>
+          <path d="M110 96 V124 M96 110 H124" stroke="#fbf8f2" stroke-width="3"/>
+        </g>
+        <g class="line-cutter">
+          <rect x="300" y="92" width="56" height="40" rx="8" class="line-box"/>
+          <path class="line-blade" d="M314 132 H342 L328 148 Z" fill="url(#gBrass2)"/>
+          <rect x="300" y="158" width="56" height="12" rx="5" class="line-box"/>
+        </g>
+        <g class="line-stack">
+          <rect x="452" y="182" width="116" height="20" rx="3"/>
+          <rect x="452" y="160" width="116" height="20" rx="3"/>
+          <rect x="452" y="138" width="116" height="20" rx="3"/>
+          <rect x="452" y="116" width="116" height="20" rx="3" class="line-stack__new"/>
+        </g>
+        <text x="110" y="240" text-anchor="middle">Джъмбо ролка</text>
+        <text x="328" y="240" text-anchor="middle">Рязане и сгъване</text>
+        <text x="510" y="240" text-anchor="middle">Готови пакети</text>
+      </svg>
     </div>
   </div>
 </section>
 
 <!-- ============ BRANDS ============ -->
-<div class="brands" aria-label="Марки, с които работим">
-  <div class="brands__track">
-    <span>Kimberly-Clark</span><span>Scott</span><span>Kimtech</span><span>Santia</span><span>Sano</span><span>Asevi</span><span>Medix</span><span>Relax</span><span>Paper Converting</span>
-    <span aria-hidden="true">Kimberly-Clark</span><span aria-hidden="true">Scott</span><span aria-hidden="true">Kimtech</span><span aria-hidden="true">Santia</span><span aria-hidden="true">Sano</span><span aria-hidden="true">Asevi</span><span aria-hidden="true">Medix</span><span aria-hidden="true">Relax</span><span aria-hidden="true">Paper Converting</span>
+<section class="brands" aria-label="Марки, които предлагаме">
+  <div class="wrap">
+    <p class="brands__title">Марки в нашия каталог</p>
+    <ul class="brands__list">
+      <li><img src="assets/img/brands/paper-converting.png" alt="Paper Converting" loading="lazy"></li>
+      <li><img src="assets/img/brands/kimberly-clark.png" alt="Kimberly-Clark Professional" loading="lazy"></li>
+      <li><img src="assets/img/brands/santia.png" alt="Santia" loading="lazy"></li>
+      <li><img src="assets/img/brands/scott.png" alt="Scott" loading="lazy"></li>
+      <li><img src="assets/img/brands/kleenex.png" alt="Kleenex" loading="lazy"></li>
+      <li><img src="assets/img/brands/wypall.png" alt="WypAll" loading="lazy"></li>
+      <li><img src="assets/img/brands/sano.png" alt="Sano" loading="lazy"></li>
+      <li><img src="assets/img/brands/marplast.png" alt="Mar Plast" loading="lazy"></li>
+    </ul>
   </div>
-</div>
+</section>
 
-<!-- ============ CONTACT ============ -->
-<section class="section contact" id="contact">
-  <div class="wrap contact__in">
-    <div class="contact__form-wrap" data-reveal>
-      <p class="eyebrow">Оферта</p>
-      <h2 class="sec-title">Кажете ни какво<br><span class="gold-text">ви трябва.</span></h2>
-      <p class="sec-lead">Ще ви изпратим цени на едро и предложение за дозатори според вашия обект.</p>
+<!-- ============ CONTACT / QUOTE ============ -->
+<section class="section" id="contact">
+  <div class="wrap contact">
+    <div class="contact__form">
+      <p class="kicker">За фирми и обекти</p>
+      <h2 class="sec-title">Поискайте <em>цени на едро</em></h2>
+      <p class="sec-lead">Работим с хотели, ресторанти, офиси, магазини, медицински и производствени обекти. Кажете ни какво ви трябва и ще ви изпратим оферта.</p>
 
       <form class="form" id="quoteForm" novalidate>
-        <fieldset class="form__chips">
-          <legend class="mono">Интересувам се от</legend>
-          <label><input type="checkbox" name="interest" value="Тоалетна хартия" id="i-tp"><span>Тоалетна хартия</span></label>
-          <label><input type="checkbox" name="interest" value="Кърпи за ръце" id="i-ht"><span>Кърпи за ръце</span></label>
-          <label><input type="checkbox" name="interest" value="Кухненски ролки" id="i-kr"><span>Кухненски ролки</span></label>
-          <label><input type="checkbox" name="interest" value="Салфетки" id="i-np"><span>Салфетки</span></label>
-          <label><input type="checkbox" name="interest" value="Дозатори" id="i-ds"><span>Дозатори</span></label>
-          <label><input type="checkbox" name="interest" value="Почистващи" id="i-cl"><span>Почистващи</span></label>
-        </fieldset>
         <div class="form__row">
-          <div class="field"><input id="f-name" name="name" required placeholder=" " autocomplete="name"><label for="f-name">Име</label></div>
-          <div class="field"><input id="f-company" name="company" placeholder=" " autocomplete="organization"><label for="f-company">Фирма</label></div>
+          <div class="field"><label for="f-name">Име *</label><input id="f-name" name="name" required autocomplete="name"></div>
+          <div class="field"><label for="f-company">Фирма</label><input id="f-company" name="company" autocomplete="organization"></div>
         </div>
         <div class="form__row">
-          <div class="field"><input id="f-phone" name="phone" type="tel" placeholder=" " autocomplete="tel"><label for="f-phone">Телефон</label></div>
-          <div class="field"><input id="f-email" name="email" type="email" required placeholder=" " autocomplete="email"><label for="f-email">Имейл</label></div>
+          <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+          <div class="field"><label for="f-email">Имейл *</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
         </div>
-        <div class="field"><textarea id="f-msg" name="message" rows="3" placeholder=" "></textarea><label for="f-msg">Съобщение</label></div>
-        <button type="submit" class="btn btn--gold magnetic"><span>Изпрати запитване</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <div class="field">
+          <label for="f-type">Тип обект</label>
+          <select id="f-type" name="type">
+            <option value="">Изберете…</option>
+            <option>Хотел</option><option>Ресторант или кафене</option><option>Офис или бизнес сграда</option>
+            <option>Медицински обект</option><option>Магазин или търговец</option><option>Производство</option><option>Друго</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-msg">Какво ви трябва?</label><textarea id="f-msg" name="message" rows="4" placeholder="Напр. 10 кашона Z кърпи 21×21 и 2 дозатора на месец"></textarea></div>
+        <button type="submit" class="btn btn--dark">Изпрати запитването</button>
         <p class="form__msg" id="formMsg" role="status"></p>
       </form>
     </div>
 
-    <aside class="contact__info" data-reveal>
-      <div class="map" aria-hidden="true">
-        <div class="map__sweep"></div>
-        <div class="map__pin"><i></i></div>
-        <span class="mono map__coords">СОФИЯ · ГАРА ИСКЪР</span>
-      </div>
+    <aside class="contact__card">
+      <h3>Контакти</h3>
       <dl class="info">
-        <div><dt class="mono">Адрес</dt><dd>гр. София, кв. Гара Искър<br>ул. Поручик Христо Топракчиев 10</dd></div>
-        <div><dt class="mono">Телефон</dt><dd><a href="tel:+359882027070">0882 027 070</a></dd></div>
-        <div><dt class="mono">Имейл</dt><dd><a href="mailto:office@paper-professional.com">office@paper-professional.com</a></dd></div>
-        <div><dt class="mono">Работно време</dt><dd>Понеделник – Петък: 8:30 – 17:30<br>Събота – Неделя: почивни дни<br><span class="open-pill" id="openPill">…</span></dd></div>
+        <div><dt>Телефон</dt><dd><a href="tel:+359882027070">0882 027 070</a></dd></div>
+        <div><dt>Имейл</dt><dd><a href="mailto:office@paper-professional.com">office@paper-professional.com</a></dd></div>
+        <div><dt>Адрес</dt><dd>гр. София, кв. Гара Искър,<br>ул. Поручик Христо Топракчиев 10</dd></div>
+        <div><dt>Работно време</dt><dd>Понеделник – Петък: 8:30 – 17:30<br>Събота и неделя: почивни дни<br><span class="open-pill" id="openPill">…</span></dd></div>
       </dl>
-      <a class="btn btn--ghost btn--block" href="https://www.google.com/maps/search/?api=1&amp;query=%D1%83%D0%BB.+%D0%9F%D0%BE%D1%80%D1%83%D1%87%D0%B8%D0%BA+%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%BE+%D0%A2%D0%BE%D0%BF%D1%80%D0%B0%D0%BA%D1%87%D0%B8%D0%B5%D0%B2+10%2C+%D0%A1%D0%BE%D1%84%D0%B8%D1%8F" target="_blank" rel="noopener"><span>Отвори в Google Maps</span></a>
+      <a class="btn btn--line btn--block" href="https://www.google.com/maps/search/?api=1&amp;query=%D1%83%D0%BB.+%D0%9F%D0%BE%D1%80%D1%83%D1%87%D0%B8%D0%BA+%D0%A5%D1%80%D0%B8%D1%81%D1%82%D0%BE+%D0%A2%D0%BE%D0%BF%D1%80%D0%B0%D0%BA%D1%87%D0%B8%D0%B5%D0%B2+10%2C+%D0%A1%D0%BE%D1%84%D0%B8%D1%8F" target="_blank" rel="noopener">Виж на картата</a>
     </aside>
   </div>
 </section>
@@ -875,41 +569,46 @@
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
-  <div class="perf-line" aria-hidden="true"></div>
   <div class="wrap footer__in">
     <div class="footer__brand">
-      <a href="#top" class="brand"><img src="assets/img/logo.jpg" alt="" width="52" height="52" class="brand__logo"><span class="brand__word"><b>PAPER CONVERTING</b><small>professional</small></span></a>
-      <p>Пейпър Конвертинг ООД. Производител на кърпи за ръце V и Z, тоалетна хартия, кухненски ролки и салфетки на едро и дребно.</p>
-      <div class="footer__social">
-        <a class="topbar__social" href="https://www.facebook.com/konsumativi.professional/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V8z"/></svg></a>
-        <a class="topbar__social" href="https://vm.tiktok.com/ZNdmBVR7o/" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.5 2.5 4.5 5 4.8"/></svg></a>
+      <a href="#top" class="brand brand--light"><img src="assets/img/logo.jpg" alt="" width="54" height="54" class="brand__logo"><span class="brand__word"><b>Paper Converting</b><small>professional</small></span></a>
+      <p>Пейпър Конвертинг ООД. Производител на кърпи за ръце V и Z, тоалетна хартия и кухненски ролки. Хартиени и почистващи консумативи на едро и дребно.</p>
+      <div class="footer__soc">
+        <a href="https://www.facebook.com/konsumativi.professional/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V8z"/></svg></a>
+        <a href="https://vm.tiktok.com/ZNdmBVR7o/" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.5 2.5 2.5 4.5 5 4.8"/></svg></a>
       </div>
     </div>
-    <nav class="footer__col" aria-label="Продукти">
-      <h4 class="mono">Продукти</h4>
-      <a href="#own">Тоалетна хартия</a><a href="#pull">Кърпи за ръце</a><a href="#own">Кухненски ролки</a><a href="#napkins">Салфетки</a><a href="#catalog">Дозатори</a><a href="#catalog">Почистващи</a>
+    <nav class="footer__col" aria-label="Категории">
+      <h4>Категории</h4>
+      <a href="https://paper-professional.com/category/187/karpi-za-ratse.html">Кърпи за ръце</a>
+      <a href="https://paper-professional.com/category/191/toaletni-hartii.html">Тоалетна хартия</a>
+      <a href="https://paper-professional.com/category/251/kuhnenski-rolki.html">Кухненски ролки</a>
+      <a href="https://paper-professional.com/category/341/salfetki.html">Салфетки</a>
+      <a href="https://paper-professional.com/category/180/dozatori.html">Дозатори</a>
+      <a href="https://paper-professional.com/category/391/preparati-i-pochistvashti-sredstva.html">Почистващи препарати</a>
     </nav>
     <nav class="footer__col" aria-label="Информация">
-      <h4 class="mono">Информация</h4>
-      <a href="#process">За нас</a><a href="#contact">Доставка</a><a href="#contact">Общи условия</a><a href="#contact">Поверителност</a><a href="#contact">Контакт</a>
+      <h4>Информация</h4>
+      <a href="https://paper-professional.com/page/3/za-nas.html">За нас</a>
+      <a href="https://paper-professional.com/page/9/dostavka-i-plashtane.html">Доставка и плащане</a>
+      <a href="https://paper-professional.com/page/5/obshti-uslovia.html">Общи условия</a>
+      <a href="https://paper-professional.com/page/12/otkaz-ot-pokupka.html">Отказ от покупка</a>
+      <a href="https://paper-professional.com/page/2/zashtita-na-lichnite-danni.html">Защита на личните данни</a>
     </nav>
     <div class="footer__col">
-      <h4 class="mono">Контакт</h4>
-      <a href="tel:+359882027070">0882 027 070</a>
-      <a href="mailto:office@paper-professional.com">office@paper-professional.com</a>
-      <span>кв. Гара Искър, София</span>
-      <span>Пон–Пет 8:30–17:30</span>
+      <h4>Бюлетин</h4>
+      <p>Промоции и нови продукти по имейл.</p>
+      <form class="news" id="newsForm" novalidate>
+        <label class="sr" for="news-email">Имейл за бюлетина</label>
+        <input id="news-email" type="email" placeholder="Вашият имейл" autocomplete="email">
+        <button type="submit" class="btn btn--gold">Абонирай се</button>
+      </form>
+      <p class="footer__ship">Доставка с <b>Еконт</b> и <b>Спиди</b></p>
     </div>
   </div>
-  <div class="wrap footer__big" aria-hidden="true">
-    <svg viewBox="0 0 1000 118" preserveAspectRatio="xMidYMid meet">
-      <defs><linearGradient id="gWord" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d6ae5c" stop-opacity=".34"/><stop offset="1" stop-color="#d6ae5c" stop-opacity=".02"/></linearGradient></defs>
-      <text x="500" y="104" text-anchor="middle" textLength="992" lengthAdjust="spacingAndGlyphs">PAPER CONVERTING</text>
-    </svg>
-  </div>
   <div class="wrap footer__bottom">
-    <span>© <span id="year">2026</span> Пейпър Конвертинг ООД</span>
-    <span class="mono">Доставка: Speedy · Econt</span>
+    <span>© <span id="year">2026</span> Пейпър Конвертинг ООД. Всички права запазени.</span>
+    <span>0882 027 070 · office@paper-professional.com</span>
   </div>
 </footer>
 
