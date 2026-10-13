@@ -4,6 +4,7 @@
   'use strict';
 
   const { $, $$, esc, reduce, IMG, getProduct, productCard, priceHtml, prodUrl, whileVisible, params, cartAsText } = window.PC;
+  const scriptUrl = document.currentScript && document.currentScript.src;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const wait = ms => new Promise(r => setTimeout(r, ms));
 
@@ -99,7 +100,7 @@
     elapsed = 0;
     slides.forEach((s, k) => { s.classList.toggle('is-active', k === cur); s.setAttribute('aria-hidden', String(k !== cur)); s.inert = k !== cur; });
     tabs.forEach((t, k) => { t.classList.toggle('is-active', k === cur); t.setAttribute('aria-selected', String(k === cur)); $('i', t).style.width = '0%'; });
-    if (cur === 1) roll.onShow();
+    if (cur === 1) (roll3d || roll).onShow();
   }
   tabs.forEach((t, i) => {
     t.addEventListener('click', () => { go(i); hold(); });
@@ -117,7 +118,7 @@
   // swipe between slides on touch, but not while pulling a towel or a sheet
   let sx = null, sy = 0;
   slider.addEventListener('touchstart', e => {
-    if (e.target.closest('.towel, #sheet, .fan-nap')) { sx = null; return; }
+    if (e.target.closest('.towel, #sheet, .fan-nap, .roll3d')) { sx = null; return; }
     sx = e.touches[0].clientX; sy = e.touches[0].clientY;
   }, { passive: true });
   slider.addEventListener('touchend', e => {
@@ -419,6 +420,22 @@
     };
   })();
 
+  /* the toilet paper in 3D when the browser can draw it; the flat drawing stays for the rest */
+  let roll3d = null;
+  function load3d() {
+    if (!scriptUrl || location.protocol === 'file:') return;
+    let gl = null;
+    try { const c = document.createElement('canvas'); gl = c.getContext('webgl2') || c.getContext('webgl'); } catch { /* no WebGL */ }
+    if (!gl) return;
+    import(new URL('roll3d.js', scriptUrl).href).then(m => {
+      const host = $('#slide-1 .slide__art');
+      roll3d = m.createRoll(host, { reduce, hold });
+      host.classList.add('has-3d');
+      if (cur === 1) roll3d.onShow();
+    }).catch(() => { /* keep the flat drawing */ });
+  }
+  if ('requestIdleCallback' in window) requestIdleCallback(load3d, { timeout: 2000 }); else setTimeout(load3d, 1000);
+
   /* ---------------- slide 3: napkin fan ---------------- */
   (function fan() {
     const art = $('#artFan');
@@ -454,7 +471,7 @@
       }
     }
     if (running && cur === 0) towelArt.frame(t);
-    if (running && cur === 1) roll.frame(t);
+    if (running && cur === 1) (roll3d || roll).frame(t);
     requestAnimationFrame(tick);
   }
   go(0);
