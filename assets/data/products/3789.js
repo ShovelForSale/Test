@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":3789,"code":"9893","weight":"1.000","desc":["Белина Перлин 1000 мл.","Опаковка стек: 10 броя"],"more":[],"specs":[],"options":[],"photos":["catalog/5280.jpg"],"crumbs":[391,409,420],"related":[]});

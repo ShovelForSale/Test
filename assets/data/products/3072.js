@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":3072,"code":"30015","weight":"0.200","desc":["Алуминиева дръжка за моп 140 см., професионална"],"more":[],"specs":[],"options":[],"photos":["catalog/3714.jpg","catalog/3715.jpg"],"crumbs":[391,405,394],"related":[3071,5021,3073,2685,3531,3036]});

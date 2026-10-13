@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":3071,"code":"0413","weight":"0.250","desc":["Професионален моп за почистване на под, микрофибърен 40 см."],"more":[],"specs":[],"options":[],"photos":["catalog/5507.jpg"],"crumbs":[391,405,394],"related":[4277,3072,3073]});

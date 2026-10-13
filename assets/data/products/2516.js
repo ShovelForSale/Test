@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":2516,"code":"3800","weight":"0.300","desc":["Четка за WC - БЯЛА"],"more":["МАТЕРИАЛ: ПЛАСТМАСА"],"specs":[["Вид","Кошчета"]],"options":[],"photos":["catalog/3097.jpg"],"crumbs":[180,401,378],"related":[]});

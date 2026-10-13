@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":2552,"code":"VEC159ПУЛ","weight":"0.200","desc":["Дръжка за гъба с абразив 35 см."],"more":["Материал - здрава пластмаса"],"specs":[],"options":[],"photos":["catalog/3126.jpg"],"crumbs":[391],"related":[2558,2551,2553,2554]});

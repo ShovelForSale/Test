@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":3484,"code":"ч160","weight":"0.100","desc":["Еднократни пластмасови чаши 100 броя в пакет"],"more":[],"specs":[],"options":[],"photos":["catalog/5643.jpg"],"crumbs":[391,497],"related":[3442,3445,3498,3497,3543,3537,5336]});

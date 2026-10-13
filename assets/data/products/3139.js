@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":3139,"code":"241","weight":"0.260","desc":["Ароматизатор спрей КУИКЛАЙН, AIR FRESHENER Watefall - водапад 260мл."],"more":["Ароматизатор спрей КУИК, AIR FRESHENER Watefall - водапад 260мл."],"specs":[["Вид","Ароматизатори"]],"options":[],"photos":["catalog/3795.jpg"],"crumbs":[391,409,256,421],"related":[617]});

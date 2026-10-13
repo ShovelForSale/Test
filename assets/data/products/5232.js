@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":5232,"code":"05130012","weight":"0.300","desc":["Лопатка с дълга дръжка Аго за събиране на боклук."],"more":[],"specs":[],"options":[],"photos":["catalog/6767.jpg"],"crumbs":[391,405,394],"related":[]});

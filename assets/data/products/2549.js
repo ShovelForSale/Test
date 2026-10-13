@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":2549,"code":"БС500","weight":"0.500","desc":["Препарат за стъкла Бене помпа 500мл."],"more":["препарат за почистване на сткъла и гладки повърхности"],"specs":[],"options":[],"photos":["catalog/3122.jpg"],"crumbs":[391],"related":[605]});

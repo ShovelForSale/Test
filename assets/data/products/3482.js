@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":3482,"code":"И750","weight":"0.750","desc":["Астониш - препарат за почистване на иноксови повърхностти 750 мл. помпа"],"more":[],"specs":[],"options":[],"photos":["catalog/5714.jpg"],"crumbs":[391,539,540],"related":[]});

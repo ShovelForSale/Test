@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":5183,"code":"10001- Р-1","weight":"0.300","desc":[],"more":[],"specs":[],"options":[{"name":"Цвят","values":["Оранжев","Зелен","Син","Лилав"]}],"photos":["catalog/6674.jpg"],"crumbs":[193,195],"related":[4506]});

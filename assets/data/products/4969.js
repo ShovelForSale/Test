@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":4969,"code":"А99530","weight":"0.200","desc":["Покривала за тоалетна чиния, 200 листа в пакет","Съответстващ дозатор: 910 - Mar Plast","Брой пакети в кашон: 25 пакета"],"more":[],"specs":[],"options":[],"photos":["catalog/6351.jpg"],"crumbs":[180,401,344],"related":[]});

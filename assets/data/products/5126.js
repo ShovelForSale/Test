@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":5126,"code":"100100","weight":"0.500","desc":["Таблетки за съдомиялна машина Finish 70 броя. Изключителен блясък на съдовете."],"more":[],"specs":[],"options":[],"photos":["catalog/6585.jpg"],"crumbs":[391,410,528],"related":[]});

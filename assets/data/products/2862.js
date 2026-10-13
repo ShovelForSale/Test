@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":2862,"code":"СЛ","weight":"0.300","desc":["Санитарни ленти за поставяне след почистване и дезинфекция"],"more":[],"specs":[],"options":[],"photos":["catalog/3349.jpg"],"crumbs":[411],"related":[]});

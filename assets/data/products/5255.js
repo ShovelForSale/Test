@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":5255,"code":"9803","weight":"10.000","desc":["Обезмаслител за силно замърсени"],"more":[],"specs":[],"options":[],"photos":["catalog/6810.jpg"],"crumbs":[391,410,429],"related":[]});

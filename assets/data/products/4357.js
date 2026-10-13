@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":4357,"code":"12","weight":"12.000","desc":["Основен, измиващ препарат за съдомиялни машини Май Оушън Матик - 12 кг."],"more":[],"specs":[],"options":[],"photos":["catalog/5697.jpg"],"crumbs":[391,410,528],"related":[4356]});

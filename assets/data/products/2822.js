@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":2822,"code":"6123-XL","weight":"0.050","desc":["Престилка нетъкан текстил - полипропилен PP - с връзки отзад","Цвят - синя"],"more":[],"specs":[["Вид","Престилки"]],"options":[{"name":"Размери","values":["М","L","XL"]}],"photos":["catalog/3315.jpg"],"crumbs":[193],"related":[725,2780,2976]});

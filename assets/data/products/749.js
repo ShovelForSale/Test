@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":749,"code":"8154","weight":"0.300","desc":["8154 - Защитни очила за открито Kleenguard*V40 - опушена леща"],"more":[],"specs":[["Вид","Очила"],["Марка","KLEENGUARD"],["Опаковка кашон","12 кут. Х 12 бр."],["Леща","Тъмна"]],"options":[],"photos":["catalog/2224.jpg"],"crumbs":[193,196,279],"related":[]});

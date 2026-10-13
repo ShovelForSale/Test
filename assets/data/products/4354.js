@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":4354,"code":"7290102993369","weight":"1.000","desc":["Веро Sano spark с помпа, зелен цвят - 1л."],"more":["Веро Сано с помпа, зелен цвят - 700 мл."],"specs":[],"options":[{"name":"Цвят","values":["Зелен","Жълт"]}],"photos":["catalog/6302.jpg","catalog/5686.jpg"],"crumbs":[391,410,428],"related":[2612,3076,694,4885,2609,5292]});

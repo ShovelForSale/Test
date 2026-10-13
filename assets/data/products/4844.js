@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":4844,"code":"7290102992027-","weight":"1.000","desc":["Омекотители Сано Максима 1л. концентрат - 40 пранета.","Свеж аромат на цветя и след изпиране."],"more":[],"specs":[],"options":[{"name":"Цвят","values":["Розов","Син","Лилав"]}],"photos":["catalog/6252.jpg","catalog/6253.jpg","catalog/6254.jpg"],"crumbs":[391,462,465],"related":[5013]});

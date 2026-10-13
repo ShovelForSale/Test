@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":4456,"code":"364","weight":"5.000","desc":["Дезинфектант за ръце без отмиване, гел"],"more":[],"specs":[["Вид","Дезинфектанти"]],"options":[],"photos":["catalog/6201.jpg"],"crumbs":[418],"related":[4455,2939]});

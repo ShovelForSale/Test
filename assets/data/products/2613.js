@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":2613,"code":"9895-2","weight":"0.100","desc":["Домакински гъби - 2 броя"],"more":[],"specs":[],"options":[],"photos":["catalog/3176.jpg"],"crumbs":[391],"related":[2579,3107,2773,5143,3061,2772]});

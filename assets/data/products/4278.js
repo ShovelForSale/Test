@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":4278,"code":"50080","weight":"0.200","desc":["Микрофибърна лента за моп Soke Ekonomic, бяла със сини ленти"],"more":[],"specs":[],"options":[],"photos":["catalog/5512.jpg"],"crumbs":[391,405,394],"related":[4277,4276]});

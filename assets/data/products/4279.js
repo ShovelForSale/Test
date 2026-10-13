@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":4279,"code":"50085","weight":"0.200","desc":["Микрофибърна лента за моп Extra, цвят бял"],"more":[],"specs":[],"options":[],"photos":["catalog/5513.jpg"],"crumbs":[391,405,394],"related":[4277,4276]});

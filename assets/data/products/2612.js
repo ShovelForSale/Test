@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":2612,"code":"9895","weight":"0.300","desc":["Домакински гъби 10 броя в пакет - Гъби с канал"],"more":[],"specs":[],"options":[],"photos":["catalog/3175.jpg"],"crumbs":[391],"related":[2579,2584,2585,3107,3076,2773,5143,3061,2772,5329,4354]});

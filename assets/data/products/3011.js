@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":3011,"code":"4897011585052","weight":"0.300","desc":["Табела за хлъзгав, мокър под за поставяне при почистване"],"more":[],"specs":[],"options":[],"photos":["catalog/3648.jpg"],"crumbs":[391,405],"related":[2615,2617,605,2616]});

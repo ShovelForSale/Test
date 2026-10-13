@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Onest:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body data-page="home">
 
 <a class="skip" href="#main">Към съдържанието</a>
 
@@ -96,18 +96,18 @@
         </div>
       </div>
       <ul class="catnav__list">
-        <li><a href="https://paper-professional.com/category/187/karpi-za-ratse.html">Кърпи за ръце</a></li>
-        <li><a href="https://paper-professional.com/category/191/toaletni-hartii.html">Тоалетна хартия</a></li>
-        <li><a href="https://paper-professional.com/category/251/kuhnenski-rolki.html">Кухненски ролки</a></li>
-        <li><a href="https://paper-professional.com/category/341/salfetki.html">Салфетки</a></li>
-        <li><a href="https://paper-professional.com/category/180/dozatori.html">Дозатори</a></li>
-        <li><a href="https://paper-professional.com/category/391/preparati-i-pochistvashti-sredstva.html">Почистващи</a></li>
-        <li><a href="https://paper-professional.com/category/193/lichni-predpazni-sredstva.html">ЛПС</a></li>
-        <li><a href="https://paper-professional.com/category/411/hotelski-konsumativi.html">Хотелски</a></li>
+        <li><a href="category.html?id=187">Кърпи за ръце</a></li>
+        <li><a href="category.html?id=191">Тоалетна хартия</a></li>
+        <li><a href="category.html?id=251">Кухненски ролки</a></li>
+        <li><a href="category.html?id=341">Салфетки</a></li>
+        <li><a href="category.html?id=180">Дозатори</a></li>
+        <li><a href="category.html?id=391">Почистващи</a></li>
+        <li><a href="category.html?id=193">ЛПС</a></li>
+        <li><a href="category.html?id=411">Хотелски</a></li>
       </ul>
       <div class="catnav__extra">
-        <a href="https://paper-professional.com/new_products.html">Ново</a>
-        <a class="catnav__promo" href="https://paper-professional.com/all_promotions.html">Промоции</a>
+        <a href="category.html?id=new">Ново</a>
+        <a class="catnav__promo" href="category.html?id=promo">Промоции</a>
       </div>
     </div>
   </nav>
@@ -137,8 +137,9 @@
     </div>
     <ul class="cart__list" id="cartList"></ul>
     <div class="cart__foot">
-      <div class="cart__row"><span>Без ДДС</span><span id="cartNet">€0.00</span></div>
-      <div class="cart__row cart__row--total"><span>Общо с ДДС</span><b id="cartTotal">€0.00</b></div>
+      <div class="cart__row cart__row--total"><span>Общо без ДДС</span><b id="cartNet">€0.00</b></div>
+      <div class="cart__row"><span>ДДС 20%</span><span id="cartVat">€0.00</span></div>
+      <div class="cart__row"><span>Общо с ДДС</span><span id="cartTotal">€0.00</span></div>
       <button type="button" class="btn btn--dark btn--block" id="cartToQuote">Изпрати като запитване</button>
       <p class="cart__note">Ще се свържем с вас, за да потвърдим наличност, цена и доставка.</p>
     </div>
@@ -162,7 +163,7 @@
             <p class="slide__text">От 100% целулоза, в 2 пласта. Размери 21×21 и 24×21 см, по 20 пакета в кашон. Изтегляте една и следващата излиза сама.</p>
             <p class="slide__price">от <b>€19.50</b> без ДДС за кашон</p>
             <div class="slide__ctas">
-              <a class="btn btn--dark" href="https://paper-professional.com/category/187/karpi-za-ratse.html">Виж кърпите за ръце</a>
+              <a class="btn btn--dark" href="category.html?id=187">Виж кърпите за ръце</a>
               <a class="btn btn--line" href="#contact">Цена на едро</a>
             </div>
           </div>
@@ -190,7 +191,7 @@
             <p class="slide__text">Малки ролки, мини джъмбо, Smart One и хартия на пачки. Бяла от 100% целулоза, избелена или рециклирана, в 2 и 3 пласта.</p>
             <p class="slide__price">от <b>€5.62</b> без ДДС за 24 ролки</p>
             <div class="slide__ctas">
-              <a class="btn btn--dark" href="https://paper-professional.com/category/191/toaletni-hartii.html">Виж тоалетната хартия</a>
+              <a class="btn btn--dark" href="category.html?id=191">Виж тоалетната хартия</a>
               <a class="btn btn--line" href="#contact">Цена на едро</a>
             </div>
           </div>
@@ -277,7 +278,7 @@
             <p class="slide__text">Бели, цветни, с печат и с шевици. Размери 24×24, 33×33 и 40×40 см, сгънати на 1/4 или 1/8, в 1 или 2 пласта.</p>
             <p class="slide__price">от <b>€1.00</b> без ДДС за 40 броя</p>
             <div class="slide__ctas">
-              <a class="btn btn--dark" href="https://paper-professional.com/category/341/salfetki.html">Виж салфетките</a>
+              <a class="btn btn--dark" href="category.html?id=341">Виж салфетките</a>
               <a class="btn btn--line" href="#napkins">Избери цвят</a>
             </div>
           </div>
@@ -293,10 +294,10 @@
     </div>
 
     <div class="hero__side">
-      <a class="promo-tile" href="https://paper-professional.com/category/186/mokri-karpichki-s-logo.html">
+      <a class="promo-tile" href="category.html?id=186">
         <img src="assets/img/banners/wet-wipes-logo.jpg" alt="Луксозни ресторантски мокри кърпички, персонализирани с вашето лого. Размери 6×8, 7×12 и 16×6,5 см. Запитване за цена." width="448" height="250">
       </a>
-      <a class="promo-tile" href="https://paper-professional.com/category/411/hotelski-konsumativi.html">
+      <a class="promo-tile" href="category.html?id=411">
         <img src="assets/img/banners/hotel.jpg" alt="Луксозни хотелски консумативи: шампоани и балсами, ароматни сапуни, меки хотелски чехли, санитарни ленти и пликове." width="453" height="250">
       </a>
     </div>
@@ -333,22 +334,22 @@
         <p class="kicker">Каталог</p>
         <h2 class="sec-title">Пазарувайте <em>по категория</em></h2>
       </div>
-      <button type="button" class="link-arrow" id="allCatsLink">Всички категории</button>
+      <a class="link-arrow" href="category.html">Всички категории</a>
     </header>
 
     <div class="cats">
-      <a class="cat" href="https://paper-professional.com/category/187/karpi-za-ratse.html" data-reveal><span class="cat__img"><img src="assets/img/products/p5892.jpg" alt="" loading="lazy"></span><span class="cat__name">Кърпи за ръце</span><span class="cat__sub">V, Z и на ролка</span></a>
-      <a class="cat" href="https://paper-professional.com/category/191/toaletni-hartii.html" data-reveal><span class="cat__img"><img src="assets/img/products/p3835.jpg" alt="" loading="lazy"></span><span class="cat__name">Тоалетна хартия</span><span class="cat__sub">Ролки, мини джъмбо, пачки</span></a>
-      <a class="cat" href="https://paper-professional.com/category/251/kuhnenski-rolki.html" data-reveal><span class="cat__img"><img src="assets/img/products/p5945.jpg" alt="" loading="lazy"></span><span class="cat__name">Кухненски ролки</span><span class="cat__sub">Бели, избелени, за магазини</span></a>
-      <a class="cat" href="https://paper-professional.com/category/341/salfetki.html" data-reveal><span class="cat__img"><img src="assets/img/categories/napkins.jpg" alt="" loading="lazy"></span><span class="cat__name">Салфетки</span><span class="cat__sub">24×24, 33×33, 40×40 см</span></a>
-      <a class="cat" href="https://paper-professional.com/category/180/dozatori.html" data-reveal><span class="cat__img"><img src="assets/img/products/p6312.jpg" alt="" loading="lazy"></span><span class="cat__name">Дозатори</span><span class="cat__sub">Бели, черни, инокс, сензорни</span></a>
-      <a class="cat" href="https://paper-professional.com/category/199/sapun-pyana-500ml-1l-5l.html" data-reveal><span class="cat__img"><img src="assets/img/categories/soap.jpg" alt="" loading="lazy"></span><span class="cat__name">Течен сапун и пяна</span><span class="cat__sub">500 мл, 1 л и 5 л</span></a>
-      <a class="cat" href="https://paper-professional.com/category/391/preparati-i-pochistvashti-sredstva.html" data-reveal><span class="cat__img"><img src="assets/img/categories/cleaning.jpg" alt="" loading="lazy"></span><span class="cat__name">Почистващи препарати</span><span class="cat__sub">Кухня, под, баня, стъкла</span></a>
-      <a class="cat" href="https://paper-professional.com/category/256/aromatizatori.html" data-reveal><span class="cat__img"><img src="assets/img/categories/air.jpg" alt="" loading="lazy"></span><span class="cat__name">Ароматизатори</span><span class="cat__sub">Kimberly-Clark и за WC</span></a>
-      <a class="cat" href="https://paper-professional.com/category/413/dezinfektanti.html" data-reveal><span class="cat__img"><img src="assets/img/categories/disinfect.jpg" alt="" loading="lazy"></span><span class="cat__name">Дезинфектанти</span><span class="cat__sub">За ръце и повърхности</span></a>
-      <a class="cat" href="https://paper-professional.com/category/193/lichni-predpazni-sredstva.html" data-reveal><span class="cat__img"><img src="assets/img/products/p3590.jpg" alt="" loading="lazy"></span><span class="cat__name">Лични предпазни средства</span><span class="cat__sub">Ръкавици, маски, калцуни</span></a>
-      <a class="cat" href="https://paper-professional.com/category/412/chuvali.html" data-reveal><span class="cat__img"><img src="assets/img/categories/bags.jpg" alt="" loading="lazy"></span><span class="cat__name">Чували за смет</span><span class="cat__sub">От 20 до 300 литра</span></a>
-      <a class="cat" href="https://paper-professional.com/category/206/industrialni-rolki.html" data-reveal><span class="cat__img"><img src="assets/img/categories/industrial.jpg" alt="" loading="lazy"></span><span class="cat__name">Индустриални ролки</span><span class="cat__sub">1, 2 и 3 пласта</span></a>
+      <a class="cat" href="category.html?id=187" data-reveal><span class="cat__img"><img src="assets/img/products/p5892.jpg" alt="" loading="lazy"></span><span class="cat__name">Кърпи за ръце</span><span class="cat__sub">V, Z и на ролка</span></a>
+      <a class="cat" href="category.html?id=191" data-reveal><span class="cat__img"><img src="assets/img/products/p3835.jpg" alt="" loading="lazy"></span><span class="cat__name">Тоалетна хартия</span><span class="cat__sub">Ролки, мини джъмбо, пачки</span></a>
+      <a class="cat" href="category.html?id=251" data-reveal><span class="cat__img"><img src="assets/img/products/p5945.jpg" alt="" loading="lazy"></span><span class="cat__name">Кухненски ролки</span><span class="cat__sub">Бели, избелени, за магазини</span></a>
+      <a class="cat" href="category.html?id=341" data-reveal><span class="cat__img"><img src="assets/img/categories/napkins.jpg" alt="" loading="lazy"></span><span class="cat__name">Салфетки</span><span class="cat__sub">24×24, 33×33, 40×40 см</span></a>
+      <a class="cat" href="category.html?id=180" data-reveal><span class="cat__img"><img src="assets/img/products/p6312.jpg" alt="" loading="lazy"></span><span class="cat__name">Дозатори</span><span class="cat__sub">Бели, черни, инокс, сензорни</span></a>
+      <a class="cat" href="category.html?id=199" data-reveal><span class="cat__img"><img src="assets/img/categories/soap.jpg" alt="" loading="lazy"></span><span class="cat__name">Течен сапун и пяна</span><span class="cat__sub">500 мл, 1 л и 5 л</span></a>
+      <a class="cat" href="category.html?id=391" data-reveal><span class="cat__img"><img src="assets/img/categories/cleaning.jpg" alt="" loading="lazy"></span><span class="cat__name">Почистващи препарати</span><span class="cat__sub">Кухня, под, баня, стъкла</span></a>
+      <a class="cat" href="category.html?id=256" data-reveal><span class="cat__img"><img src="assets/img/categories/air.jpg" alt="" loading="lazy"></span><span class="cat__name">Ароматизатори</span><span class="cat__sub">Kimberly-Clark и за WC</span></a>
+      <a class="cat" href="category.html?id=413" data-reveal><span class="cat__img"><img src="assets/img/categories/disinfect.jpg" alt="" loading="lazy"></span><span class="cat__name">Дезинфектанти</span><span class="cat__sub">За ръце и повърхности</span></a>
+      <a class="cat" href="category.html?id=193" data-reveal><span class="cat__img"><img src="assets/img/products/p3590.jpg" alt="" loading="lazy"></span><span class="cat__name">Лични предпазни средства</span><span class="cat__sub">Ръкавици, маски, калцуни</span></a>
+      <a class="cat" href="category.html?id=412" data-reveal><span class="cat__img"><img src="assets/img/categories/bags.jpg" alt="" loading="lazy"></span><span class="cat__name">Чували за смет</span><span class="cat__sub">От 20 до 300 литра</span></a>
+      <a class="cat" href="category.html?id=206" data-reveal><span class="cat__img"><img src="assets/img/categories/industrial.jpg" alt="" loading="lazy"></span><span class="cat__name">Индустриални ролки</span><span class="cat__sub">1, 2 и 3 пласта</span></a>
     </div>
   </div>
 </section>
@@ -394,7 +395,7 @@
             <div><dt>Пластове</dt><dd>2</dd></div>
             <div><dt>Опаковка</dt><dd>20 пакета в кашон</dd></div>
           </dl>
-          <a class="link-arrow" href="https://paper-professional.com/category/423/v-karpi-za-ratse-kasi.html">Виж V кърпите</a>
+          <a class="link-arrow" href="category.html?id=423">Виж V кърпите</a>
         </div>
       </article>
 
@@ -411,18 +412,18 @@
             <div><dt>Пластове</dt><dd>2, плътни или тънки</dd></div>
             <div><dt>Опаковка</dt><dd>20 пакета в кашон</dd></div>
           </dl>
-          <a class="link-arrow" href="https://paper-professional.com/category/487/z-karpi-za-ratse.html">Виж Z кърпите</a>
+          <a class="link-arrow" href="category.html?id=487">Виж Z кърпите</a>
         </div>
       </article>
 
       <article class="fold fold--product" data-reveal>
         <p class="kicker">Подходящ дозатор</p>
-        <a class="fold__img" href="https://paper-professional.com/product/4788/dozator-za-karpi-za-ratse-viali-za-z-i-v-karpi-21h21.html">
+        <a class="fold__img" href="product.html?id=4788">
           <img src="assets/img/products/p6196.jpg" alt="Дозатор за кърпи за ръце Виали" loading="lazy">
         </a>
         <h3>Дозатор Виали за Z и V кърпи 21×21</h3>
-        <div class="price"><b>€13.20</b><span>с ДДС · €11.00 без ДДС</span></div>
-        <button type="button" class="btn btn--dark btn--block" data-add="dispViali">Добави в количката</button>
+        <div class="price" data-price="4788"><p class="price__main"><b>€11.00</b><em>без ДДС</em></p><span>с ДДС: €13.20 · 25.82 лв.</span></div>
+        <button type="button" class="btn btn--dark btn--block" data-add="4788">Добави в количката</button>
       </article>
     </div>
   </div>
@@ -437,19 +438,19 @@
       <p class="sec-lead">Цветни салфетки Santia в два пласта, 33×33 и 40×40 см. За ресторанти, хотели, кетъринг и вкъщи.</p>
       <div class="swatches" id="swatches" role="radiogroup" aria-label="Цвят на салфетките"></div>
       <div class="napkins__links">
-        <a class="link-arrow" href="https://paper-professional.com/category/343/tsvetni-salfetki-33-33.html">Всички цветни салфетки</a>
-        <a class="link-arrow" href="https://paper-professional.com/category/385/salfetki-s-shevitsi.html">Салфетки с шевици</a>
+        <a class="link-arrow" href="category.html?id=343">Всички цветни салфетки</a>
+        <a class="link-arrow" href="category.html?id=385">Салфетки с шевици</a>
       </div>
     </div>
     <div class="napkins__card" id="napCard">
-      <a class="napkins__img" id="napLink" href="https://paper-professional.com/product/2313/cherveni-salfetki-2-plasta-33h33-40-br.html">
+      <a class="napkins__img" id="napLink" href="product.html?id=2313">
         <img id="napImg" src="assets/img/products/p5580.jpg" alt="Червени салфетки Santia">
       </a>
       <div class="napkins__info">
         <p class="napkins__color" id="napColor">Червено</p>
         <h3 id="napTitle">Червени салфетки, 2 пласта, 33×33 см, 40 бр.</h3>
-        <div class="price"><b id="napPrice">€1.20</b><span id="napNet">с ДДС · €1.00 без ДДС</span></div>
-        <button type="button" class="btn btn--dark" id="napAdd" data-add="np-red">Добави в количката</button>
+        <div class="price" id="napPrice"><p class="price__main"><b>€1.00</b><em>без ДДС</em></p><span>с ДДС: €1.20 · 2.35 лв.</span></div>
+        <button type="button" class="btn btn--dark" id="napAdd" data-add="2313">Добави в количката</button>
       </div>
     </div>
   </div>
@@ -458,14 +459,14 @@
 <!-- ============ PROMO BANNERS ============ -->
 <section class="section section--tight">
   <div class="wrap">
-    <a class="wide-banner" href="https://paper-professional.com/category/356/koledni-salfetki.html" data-reveal>
+    <a class="wide-banner" href="category.html?id=356" data-reveal>
       <img src="assets/img/banners/christmas-napkins.jpg" alt="Коледни салфетки Santia за празничната маса" width="1358" height="341" loading="lazy">
     </a>
     <div class="banners">
-      <a href="https://paper-professional.com/category/191/toaletni-hartii.html" data-reveal><img src="assets/img/banners/toilet-paper.jpg" alt="Луксозна тоалетна хартия: ролки, кубчета, мини джъмбо" width="453" height="250" loading="lazy"></a>
-      <a href="https://paper-professional.com/category/251/kuhnenski-rolki.html" data-reveal><img src="assets/img/banners/kitchen.jpg" alt="Z-сгънати кухненски кърпи и домакинска ролка. Поискайте оферта." width="448" height="250" loading="lazy"></a>
-      <a href="https://paper-professional.com/category/391/preparati-i-pochistvashti-sredstva.html" data-reveal><img src="assets/img/banners/cleaning.jpg" alt="Почистващи препарати и ароматизатори" width="453" height="250" loading="lazy"></a>
-      <a href="https://paper-professional.com/category/558/seria-lovely-home-luks-33h24-1-8-2-plasta-100-broya.html" data-reveal><img src="assets/img/banners/santia-stand.jpg" alt="Цветни салфетки Santia Lovely Home, 1/8 сгънати, 2 пласта, 100 бр. в пакет. За вашия магазин." width="448" height="250" loading="lazy"></a>
+      <a href="category.html?id=191" data-reveal><img src="assets/img/banners/toilet-paper.jpg" alt="Луксозна тоалетна хартия: ролки, кубчета, мини джъмбо" width="453" height="250" loading="lazy"></a>
+      <a href="category.html?id=251" data-reveal><img src="assets/img/banners/kitchen.jpg" alt="Z-сгънати кухненски кърпи и домакинска ролка. Поискайте оферта." width="448" height="250" loading="lazy"></a>
+      <a href="category.html?id=391" data-reveal><img src="assets/img/banners/cleaning.jpg" alt="Почистващи препарати и ароматизатори" width="453" height="250" loading="lazy"></a>
+      <a href="category.html?id=558" data-reveal><img src="assets/img/banners/santia-stand.jpg" alt="Цветни салфетки Santia Lovely Home, 1/8 сгънати, 2 пласта, 100 бр. в пакет. За вашия магазин." width="448" height="250" loading="lazy"></a>
     </div>
   </div>
 </section>
@@ -602,16 +603,16 @@
     </div>
     <nav class="footer__col" aria-label="Категории">
       <h4>Категории</h4>
-      <a href="https://paper-professional.com/category/187/karpi-za-ratse.html">Кърпи за ръце</a>
-      <a href="https://paper-professional.com/category/191/toaletni-hartii.html">Тоалетна хартия</a>
-      <a href="https://paper-professional.com/category/251/kuhnenski-rolki.html">Кухненски ролки</a>
-      <a href="https://paper-professional.com/category/341/salfetki.html">Салфетки</a>
-      <a href="https://paper-professional.com/category/180/dozatori.html">Дозатори</a>
-      <a href="https://paper-professional.com/category/391/preparati-i-pochistvashti-sredstva.html">Почистващи препарати</a>
+      <a href="category.html?id=187">Кърпи за ръце</a>
+      <a href="category.html?id=191">Тоалетна хартия</a>
+      <a href="category.html?id=251">Кухненски ролки</a>
+      <a href="category.html?id=341">Салфетки</a>
+      <a href="category.html?id=180">Дозатори</a>
+      <a href="category.html?id=391">Почистващи препарати</a>
     </nav>
     <nav class="footer__col" aria-label="Информация">
       <h4>Информация</h4>
-      <a href="https://paper-professional.com/page/3/za-nas.html">За нас</a>
+      <a href="#about">За нас</a>
       <a href="https://paper-professional.com/page/9/dostavka-i-plashtane.html">Доставка и плащане</a>
       <a href="https://paper-professional.com/page/5/obshti-uslovia.html">Общи условия</a>
       <a href="https://paper-professional.com/page/12/otkaz-ot-pokupka.html">Отказ от покупка</a>
@@ -634,6 +635,8 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js" defer></script>
+<script src="assets/data/catalog.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/home.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":5013,"code":"7290102993352","weight":"1.000","desc":[],"more":[],"specs":[],"options":[],"photos":["catalog/6414.jpg"],"crumbs":[391,462,465],"related":[3785,4849,4844]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":2859,"code":"6697-6","weight":"3.600","desc":["Кърпи за ръце на ролка 190 метра, 1 пласт, SCOTT* 6697"],"more":[],"specs":[["Вид","Кърпи за ръце - на ролки"],["Марка","Kimberly-Clark SCOTT"]],"options":[{"name":"Опаковка","values":["Чувал"]}],"photos":["catalog/3348.jpg","catalog/3346.jpg"],"crumbs":[187],"related":[653]});

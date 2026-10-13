@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":3855,"code":"мм","weight":"0.250","desc":["Препарат за мебели Медикс, Крем за почистване с пчелен восък"],"more":[],"specs":[],"options":[],"photos":["catalog/4799.jpg"],"crumbs":[391,405,494],"related":[4360,3496,4775]});

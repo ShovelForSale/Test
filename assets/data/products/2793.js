@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":2793,"code":"М800","weight":"0.900","desc":["Кремообразен течен сапун Medix Sensitive с деликатно ухание. Подходящ за чувствителна кожа. Обогатен с екстракт от Алое Вера."],"more":[],"specs":[],"options":[],"photos":["catalog/5701.jpg"],"crumbs":[],"related":[576,575,3063,4232]});

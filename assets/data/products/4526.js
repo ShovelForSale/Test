@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":4526,"code":"40226","weight":"3.000","desc":["Хотелски шампоан шишенце 30 мл., Марка: Relax / релакс / Аромат: ванилия","100 броя в стек"],"more":[],"specs":[["Вид","Шампоан"]],"options":[],"photos":["catalog/6009.jpg","catalog/6012.jpg"],"crumbs":[411,435],"related":[3766,3385,2864]});

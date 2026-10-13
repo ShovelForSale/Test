@@ -1,0 +1,1 @@
+window.PC_PRODUCT&&PC_PRODUCT({"id":5235,"code":"7290005425943","weight":"2.000","desc":["Прах за пране Гел, Марка: сано Аромат : сензитив - бебе","Туба: 2 л."],"more":[],"specs":[],"options":[],"photos":["catalog/6770.jpg"],"crumbs":[391,462],"related":[]});
