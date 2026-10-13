@@ -168,110 +168,155 @@
             </div>
           </div>
           <div class="slide__art art-disp" id="artTowel">
-            <svg class="disp" id="dispSvg" viewBox="0 0 400 560" role="group" aria-label="Дозатор за кърпи за ръце. Дръпнете кърпата надолу и следващата излиза сама.">
+            <svg class="disp" id="dispSvg" viewBox="0 0 400 470" role="group" aria-label="Дозатор за кърпи за ръце. Дръпнете кърпата надолу и следващата излиза сама.">
               <defs>
+                <radialGradient id="dWallShadow" cx=".5" cy=".5" r=".5">
+                  <stop offset="0" stop-color="#5a4626" stop-opacity=".3"/>
+                  <stop offset=".55" stop-color="#5a4626" stop-opacity=".13"/>
+                  <stop offset="1" stop-color="#5a4626" stop-opacity="0"/>
+                </radialGradient>
                 <linearGradient id="dBody" x1="0" x2="1" y1="0" y2="0">
-                  <stop offset="0" stop-color="#d9d1c3"/>
-                  <stop offset=".14" stop-color="#f4f1eb"/>
-                  <stop offset=".42" stop-color="#ffffff"/>
-                  <stop offset=".8" stop-color="#f2eee7"/>
-                  <stop offset="1" stop-color="#d3cabb"/>
+                  <stop offset="0" stop-color="#ddd5c8"/>
+                  <stop offset=".1" stop-color="#f4f1ec"/>
+                  <stop offset=".34" stop-color="#ffffff"/>
+                  <stop offset=".76" stop-color="#f6f3ee"/>
+                  <stop offset="1" stop-color="#d9d1c3"/>
                 </linearGradient>
                 <linearGradient id="dLight" x1="0" x2="0" y1="0" y2="1">
                   <stop offset="0" stop-color="#ffffff" stop-opacity=".9"/>
-                  <stop offset=".12" stop-color="#ffffff" stop-opacity="0"/>
-                  <stop offset=".74" stop-color="#5a4626" stop-opacity="0"/>
-                  <stop offset="1" stop-color="#5a4626" stop-opacity=".16"/>
+                  <stop offset=".1" stop-color="#ffffff" stop-opacity="0"/>
+                  <stop offset=".68" stop-color="#5a4626" stop-opacity="0"/>
+                  <stop offset="1" stop-color="#5a4626" stop-opacity=".2"/>
                 </linearGradient>
-                <linearGradient id="dGlass" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0" stop-color="#433d37"/>
-                  <stop offset="1" stop-color="#211d1a"/>
+                <linearGradient id="dSide" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#c9bfaf"/>
+                  <stop offset="1" stop-color="#a99d8a"/>
+                </linearGradient>
+                <linearGradient id="dShine" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+                  <stop offset=".5" stop-color="#ffffff" stop-opacity=".95"/>
+                  <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="dInside" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#26211d"/>
+                  <stop offset="1" stop-color="#3b342d"/>
+                </linearGradient>
+                <linearGradient id="dTint" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#3a322a" stop-opacity=".34"/>
+                  <stop offset="1" stop-color="#3a322a" stop-opacity=".1"/>
                 </linearGradient>
                 <linearGradient id="dDepth" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0" stop-color="#120f0c" stop-opacity=".7"/>
-                  <stop offset=".4" stop-color="#120f0c" stop-opacity="0"/>
+                  <stop offset="0" stop-color="#0d0a08" stop-opacity=".6"/>
+                  <stop offset=".3" stop-color="#0d0a08" stop-opacity="0"/>
                 </linearGradient>
                 <linearGradient id="dGlare" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#ffffff" stop-opacity=".28"/>
-                  <stop offset=".44" stop-color="#ffffff" stop-opacity=".05"/>
-                  <stop offset=".45" stop-color="#ffffff" stop-opacity="0"/>
+                  <stop offset="0" stop-color="#ffffff" stop-opacity=".42"/>
+                  <stop offset=".38" stop-color="#ffffff" stop-opacity=".08"/>
+                  <stop offset=".39" stop-color="#ffffff" stop-opacity="0"/>
+                  <stop offset=".7" stop-color="#ffffff" stop-opacity="0"/>
+                  <stop offset="1" stop-color="#ffffff" stop-opacity=".12"/>
                 </linearGradient>
                 <linearGradient id="dLayer" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0" stop-color="#ece6dc"/>
-                  <stop offset="1" stop-color="#b9b0a2"/>
+                  <stop offset="0" stop-color="#fdfbf7"/>
+                  <stop offset="1" stop-color="#e2dacd"/>
                 </linearGradient>
                 <linearGradient id="dLayerSide" x1="0" x2="1" y1="0" y2="0">
-                  <stop offset="0" stop-color="#3a2e20" stop-opacity=".35"/>
-                  <stop offset=".12" stop-color="#3a2e20" stop-opacity="0"/>
-                  <stop offset=".88" stop-color="#3a2e20" stop-opacity="0"/>
-                  <stop offset="1" stop-color="#3a2e20" stop-opacity=".35"/>
+                  <stop offset="0" stop-color="#3a2e20" stop-opacity=".3"/>
+                  <stop offset=".1" stop-color="#3a2e20" stop-opacity="0"/>
+                  <stop offset=".9" stop-color="#3a2e20" stop-opacity="0"/>
+                  <stop offset="1" stop-color="#3a2e20" stop-opacity=".3"/>
                 </linearGradient>
-                <pattern id="dLines" width="12" height="4.6" patternUnits="userSpaceOnUse">
-                  <path d="M0 4.2 H12" stroke="#4a3a24" stroke-opacity=".2" stroke-width=".8"/>
+                <pattern id="dLines" width="12" height="7" patternUnits="userSpaceOnUse">
+                  <path d="M0 .6 H12" stroke="#fff" stroke-width="1"/>
+                  <path d="M0 6.4 H12" stroke="#5a4626" stroke-opacity=".2" stroke-width="1"/>
                 </pattern>
                 <linearGradient id="dSlot" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0" stop-color="#100d0a"/>
-                  <stop offset="1" stop-color="#3b332a"/>
+                  <stop offset="0" stop-color="#0e0b09"/>
+                  <stop offset="1" stop-color="#3d342b"/>
+                </linearGradient>
+                <linearGradient id="dGold" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#e3c68c"/>
+                  <stop offset=".5" stop-color="#b48c4c"/>
+                  <stop offset="1" stop-color="#8a6631"/>
                 </linearGradient>
                 <linearGradient id="tPaper" x1="0" x2="1" y1="0" y2="0">
-                  <stop offset="0" stop-color="#e2dbcf"/>
-                  <stop offset=".1" stop-color="#f7f4ef"/>
+                  <stop offset="0" stop-color="#e4ddd1"/>
+                  <stop offset=".1" stop-color="#f8f6f2"/>
                   <stop offset=".5" stop-color="#ffffff"/>
-                  <stop offset=".9" stop-color="#f3efe8"/>
-                  <stop offset="1" stop-color="#d9d1c3"/>
+                  <stop offset=".9" stop-color="#f4f0ea"/>
+                  <stop offset="1" stop-color="#dcd4c7"/>
+                </linearGradient>
+                <linearGradient id="tShadowX" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0" stop-color="#4a381a" stop-opacity="0"/>
+                  <stop offset=".18" stop-color="#4a381a" stop-opacity=".16"/>
+                  <stop offset=".82" stop-color="#4a381a" stop-opacity=".16"/>
+                  <stop offset="1" stop-color="#4a381a" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="tShadowY" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#4a381a" stop-opacity=".16"/>
+                  <stop offset="1" stop-color="#4a381a" stop-opacity="0"/>
                 </linearGradient>
                 <linearGradient id="tShade" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0" stop-color="#21180f" stop-opacity=".5"/>
-                  <stop offset="1" stop-color="#21180f" stop-opacity="0"/>
+                  <stop offset="0" stop-color="#1c140c" stop-opacity=".55"/>
+                  <stop offset="1" stop-color="#1c140c" stop-opacity="0"/>
                 </linearGradient>
                 <pattern id="tEmboss" width="10" height="10" patternUnits="userSpaceOnUse">
                   <circle cx="2.5" cy="2.5" r="1" fill="#6f5a3a" fill-opacity=".1"/>
                   <circle cx="7.5" cy="7.5" r="1" fill="#6f5a3a" fill-opacity=".1"/>
                 </pattern>
-                <clipPath id="dWinClip"><rect x="100" y="124" width="200" height="130" rx="20"/></clipPath>
-                <clipPath id="dBadgeClip"><circle cx="200" cy="78" r="23"/></clipPath>
-                <clipPath id="tClip"><rect x="0" y="308" width="400" height="900"/></clipPath>
-                <filter id="dWall" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="16"/></filter>
-                <filter id="tDrop" x="-30%" y="-20%" width="160%" height="150%"><feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#4a381a" flood-opacity=".2"/></filter>
+                <clipPath id="dBodyClip"><path d="M110 12 H290 C326 12 350 36 350 72 L348 232 C347 300 316 360 252 360 H148 C84 360 53 300 52 232 L50 72 C50 36 74 12 110 12 Z"/></clipPath>
+                <clipPath id="dWinClip"><path d="M122 92 H278 C302 92 316 106 316 130 L312 226 C311 250 296 264 272 264 H128 C104 264 89 250 88 226 L84 130 C84 106 98 92 122 92 Z"/></clipPath>
+                <clipPath id="dBadgeClip"><circle cx="200" cy="52" r="21"/></clipPath>
+                <clipPath id="tClip"><path d="M0 323 H106 Q200 339 294 323 H400 V1000 H0 Z"/></clipPath>
               </defs>
               <!-- shadow on the wall -->
-              <rect x="74" y="62" width="268" height="300" rx="56" fill="#5a4626" opacity=".24" filter="url(#dWall)"/>
-              <!-- body -->
-              <path d="M106 24 H294 C320 24 340 42 340 70 L335 282 C334 318 312 344 276 344 H124 C88 344 66 318 65 282 L60 70 C60 42 80 24 106 24 Z" fill="url(#dBody)" stroke="#d6cec1"/>
-              <path d="M106 24 H294 C320 24 340 42 340 70 L335 282 C334 318 312 344 276 344 H124 C88 344 66 318 65 282 L60 70 C60 42 80 24 106 24 Z" fill="url(#dLight)"/>
-              <path d="M108 27.5 H292 C316 27.5 336.5 44 336.5 70" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".9"/>
-              <!-- cover seam and key lock -->
-              <path d="M63.4 272 H336.6" stroke="#5a4626" stroke-opacity=".14"/>
-              <path d="M63.4 273.5 H336.6" stroke="#fff" stroke-opacity=".8"/>
-              <rect x="184" y="34" width="32" height="7" rx="3.5" fill="#d6cdbf"/>
-              <rect x="198" y="35.5" width="4" height="4" rx="1" fill="#9c907c"/>
+              <ellipse cx="214" cy="214" rx="196" ry="206" fill="url(#dWallShadow)"/>
+              <!-- the shell has depth: its side shows to the right -->
+              <path d="M118 18 H298 C334 18 358 42 358 78 L356 238 C355 306 324 366 260 366 H156 C92 366 61 306 60 238 L58 78 C58 42 82 18 118 18 Z" fill="url(#dSide)"/>
+              <!-- front cover -->
+              <path d="M110 12 H290 C326 12 350 36 350 72 L348 232 C347 300 316 360 252 360 H148 C84 360 53 300 52 232 L50 72 C50 36 74 12 110 12 Z" fill="url(#dBody)"/>
+              <g clip-path="url(#dBodyClip)">
+                <rect x="40" y="0" width="320" height="370" fill="url(#dLight)"/>
+                <rect x="70" y="20" width="34" height="320" fill="url(#dShine)" opacity=".7"/>
+              </g>
+              <path d="M112 15.5 H288 C322 15.5 346.5 38 346.5 72" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              <rect x="182" y="20" width="36" height="7" rx="3.5" fill="#d3cabb"/>
+              <rect x="197" y="21.5" width="6" height="4" rx="1.5" fill="#968a76"/>
               <!-- badge -->
-              <circle cx="200" cy="78" r="27" fill="#fff" stroke="#e2dacd"/>
-              <image href="assets/img/logo-badge.png" x="177" y="55" width="46" height="46" clip-path="url(#dBadgeClip)"/>
-              <!-- window with the stack of towels behind smoked glass -->
-              <rect x="100" y="124" width="200" height="130" rx="20" fill="url(#dGlass)"/>
+              <circle cx="200" cy="52" r="25.5" fill="url(#dGold)"/>
+              <circle cx="200" cy="52" r="23" fill="#fff"/>
+              <image href="assets/img/logo-badge.png" x="179" y="31" width="42" height="42" clip-path="url(#dBadgeClip)"/>
+              <!-- smoked window with the stack of towels inside -->
+              <path d="M122 92 H278 C302 92 316 106 316 130 L312 226 C311 250 296 264 272 264 H128 C104 264 89 250 88 226 L84 130 C84 106 98 92 122 92 Z" fill="url(#dInside)"/>
               <g clip-path="url(#dWinClip)">
                 <g id="dispStack">
-                  <rect id="stackPaper" x="112" y="160" width="176" height="90" rx="5" fill="url(#dLayer)"/>
-                  <rect id="stackLines" x="112" y="160" width="176" height="90" rx="5" fill="url(#dLines)"/>
-                  <rect id="stackSide" x="112" y="160" width="176" height="90" rx="5" fill="url(#dLayerSide)"/>
-                  <rect id="stackTop" x="114" y="160" width="172" height="2.4" rx="1.2" fill="#fbf8f3"/>
+                  <rect id="stackPaper" x="104" y="124" width="192" height="130" rx="6" fill="url(#dLayer)"/>
+                  <rect id="stackLines" x="104" y="124" width="192" height="130" rx="6" fill="url(#dLines)"/>
+                  <rect id="stackSide" x="104" y="124" width="192" height="130" rx="6" fill="url(#dLayerSide)"/>
+                  <rect id="stackTop" x="106" y="124" width="188" height="2.6" rx="1.3" fill="#fffdf9"/>
                 </g>
-                <rect x="100" y="124" width="200" height="130" fill="url(#dDepth)"/>
-                <rect x="100" y="124" width="200" height="130" fill="url(#dGlare)"/>
+                <rect x="80" y="88" width="240" height="180" fill="url(#dTint)"/>
+                <rect x="80" y="88" width="240" height="180" fill="url(#dDepth)"/>
+                <rect x="80" y="88" width="240" height="180" fill="url(#dGlare)"/>
               </g>
-              <rect x="99" y="123" width="202" height="132" rx="21" fill="none" stroke="#fff" stroke-width="1.5" opacity=".85"/>
-              <rect x="100.75" y="124.75" width="198.5" height="128.5" rx="19.5" fill="none" stroke="#000" stroke-opacity=".35" stroke-width="1.5"/>
+              <path d="M122 90.5 H278 C303 90.5 317.5 105 317.5 130 L313.5 226" fill="none" stroke="#fff" stroke-width="1.6" opacity=".9"/>
+              <path d="M122 92 H278 C302 92 316 106 316 130 L312 226 C311 250 296 264 272 264 H128 C104 264 89 250 88 226 L84 130 C84 106 98 92 122 92 Z" fill="none" stroke="#0d0a08" stroke-opacity=".45" stroke-width="1.4"/>
+              <!-- name plate -->
+              <text class="disp__name" x="200" y="293" text-anchor="middle">PAPER CONVERTING</text>
               <!-- dispensing slot -->
-              <rect x="92" y="300" width="216" height="16" rx="8" fill="url(#dSlot)"/>
-              <path d="M100 317 H300" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".9"/>
+              <path d="M114 323 Q200 339 286 323" fill="none" stroke="#120e0b" stroke-width="13" stroke-linecap="round"/>
+              <path d="M114 321 Q200 337 286 321" fill="none" stroke="#3d342b" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+              <path d="M112 332.5 Q200 348.5 288 332.5" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".9"/>
               <!-- towels: the next one waits folded into the one in front -->
               <g clip-path="url(#tClip)">
                 <g class="towel" id="towel" role="button" tabindex="0" aria-label="Изтеглете кърпа"></g>
-                <rect x="108" y="308" width="184" height="24" fill="url(#tShade)" pointer-events="none"/>
+                <path d="M122 323 Q200 339 278 323 V350 Q200 366 122 350 Z" fill="url(#tShade)" pointer-events="none"/>
               </g>
+              <g id="towelHint" class="pull-hint"><g class="pull-hint__in">
+                <rect x="128" y="0" width="144" height="30" rx="15"/>
+                <text x="200" y="19.5" text-anchor="middle">Дръпнете кърпата ↓</text>
+              </g></g>
             </svg>
-            <span class="art-hint" id="towelHint">Дръпнете кърпата надолу</span>
           </div>
         </article>
 
@@ -289,11 +334,26 @@
           <div class="slide__art art-roll">
             <svg class="roll" id="rollSvg" viewBox="0 0 520 600" role="group" aria-label="Ролка тоалетна хартия. Дръпнете листа надолу, за да го откъснете.">
               <defs>
+                <radialGradient id="rWallShadow" cx=".5" cy=".5" r=".5">
+                  <stop offset="0" stop-color="#5a4626" stop-opacity=".22"/>
+                  <stop offset=".6" stop-color="#5a4626" stop-opacity=".09"/>
+                  <stop offset="1" stop-color="#5a4626" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="rSheetShadowX" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0" stop-color="#5a4626" stop-opacity="0"/>
+                  <stop offset=".2" stop-color="#5a4626" stop-opacity=".11"/>
+                  <stop offset=".8" stop-color="#5a4626" stop-opacity=".11"/>
+                  <stop offset="1" stop-color="#5a4626" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="rSheetShadowY" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#5a4626" stop-opacity=".11"/>
+                  <stop offset="1" stop-color="#5a4626" stop-opacity="0"/>
+                </linearGradient>
                 <linearGradient id="rBody" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0" stop-color="#cbc1b1"/>
                   <stop offset=".1" stop-color="#e8e2d8"/>
                   <stop offset=".32" stop-color="#ffffff"/>
-                  <stop offset=".6" stop-color="#f8f5f0"/>
+                  <stop offset=".5" stop-color="#fbfaf7"/>
                   <stop offset=".86" stop-color="#e0d9cc"/>
                   <stop offset="1" stop-color="#b9ae9c"/>
                 </linearGradient>
@@ -322,15 +382,16 @@
                   <stop offset="1" stop-color="#6a4e22"/>
                 </radialGradient>
                 <linearGradient id="gSheet" x1="0" x2="1" y1="0" y2="0">
-                  <stop offset="0" stop-color="#e0d9cd"/>
-                  <stop offset=".1" stop-color="#f8f6f1"/>
-                  <stop offset=".5" stop-color="#ffffff"/>
-                  <stop offset=".9" stop-color="#f4f0e9"/>
-                  <stop offset="1" stop-color="#d8d0c2"/>
+                  <stop offset="0" stop-color="#ebe5db"/>
+                  <stop offset=".08" stop-color="#f9f7f3"/>
+                  <stop offset=".5" stop-color="#fdfcfa"/>
+                  <stop offset=".92" stop-color="#f6f3ed"/>
+                  <stop offset="1" stop-color="#e6dfd3"/>
                 </linearGradient>
-                <linearGradient id="gSheetTop" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stop-color="#3f301b" stop-opacity=".34"/>
-                  <stop offset="1" stop-color="#3f301b" stop-opacity="0"/>
+                <linearGradient id="gSheetFade" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#ffffff" stop-opacity=".0"/>
+                  <stop offset=".5" stop-color="#5a4626" stop-opacity=".05"/>
+                  <stop offset="1" stop-color="#5a4626" stop-opacity="0"/>
                 </linearGradient>
                 <pattern id="embossBody" width="24" height="24" patternUnits="userSpaceOnUse">
                   <path d="M0 0 L24 24 M24 0 L0 24" stroke="#6f5a3a" stroke-opacity=".07"/>
@@ -342,24 +403,24 @@
                   <path d="M0 1.2 L22.8 24 M24 1.2 L1.2 24" stroke="#fff" stroke-opacity=".65"/>
                   <g fill="#6f5a3a" fill-opacity=".1"><circle cx="12" cy="9.8" r="1.2"/><circle cx="12" cy="14.2" r="1.2"/><circle cx="9.8" cy="12" r="1.2"/><circle cx="14.2" cy="12" r="1.2"/></g>
                 </pattern>
-                <filter id="rWall" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="14"/></filter>
-                <filter id="rDrop" x="-20%" y="-10%" width="150%" height="130%"><feDropShadow dx="6" dy="9" stdDeviation="7" flood-color="#4a381a" flood-opacity=".16"/></filter>
               </defs>
-              <!-- shadow on the wall -->
-              <ellipse cx="300" cy="160" rx="150" ry="118" fill="#5a4626" opacity=".16" filter="url(#rWall)"/>
+              <!-- shadows on the wall -->
+              <ellipse cx="300" cy="150" rx="176" ry="140" fill="url(#rWallShadow)"/>
+              <rect id="sheetShadowX" x="170" y="246" width="226" height="200" fill="url(#rSheetShadowX)"/>
+              <rect id="sheetShadowY" x="182" y="446" width="200" height="10" fill="url(#rSheetShadowY)"/>
+              <ellipse cx="458" cy="140" rx="40" ry="40" fill="url(#rWallShadow)"/>
               <!-- holder on the wall -->
-              <circle cx="456" cy="132" r="31" fill="#5a4626" opacity=".18" filter="url(#rWall)"/>
               <circle cx="452" cy="132" r="28" fill="url(#rRose)"/>
               <circle cx="452" cy="132" r="20" fill="none" stroke="#f7e9c8" stroke-opacity=".55" stroke-width="1.5"/>
               <!-- roll -->
               <path d="M160 22 H380 A30 110 0 0 1 380 242 H160 A30 110 0 0 1 160 22 Z" fill="url(#rBody)"/>
               <path d="M160 22 H380 A30 110 0 0 1 380 242 H160 A30 110 0 0 1 160 22 Z" fill="url(#embossBody)"/>
               <path d="M160 22 H380 A30 110 0 0 1 380 242 H160 A30 110 0 0 1 160 22 Z" fill="url(#rFar)"/>
-              <!-- hanging sheet -->
-              <g id="sheet" filter="url(#rDrop)">
+              <!-- the sheet leaves the roll at its front and hangs down -->
+              <g id="sheet">
                 <path id="sheetPaper" fill="url(#gSheet)"/>
                 <path id="sheetEmboss" fill="url(#embossSheet)"/>
-                <rect x="160" y="238" width="220" height="30" fill="url(#gSheetTop)" pointer-events="none"/>
+                <rect x="160" y="132" width="220" height="110" fill="url(#gSheetFade)" pointer-events="none"/>
                 <g id="perfs" class="perfs"></g>
               </g>
               <!-- near end of the roll, cardboard core and the holder arm -->
@@ -374,10 +435,10 @@
               <ellipse cx="381.5" cy="132" rx="8.5" ry="34" fill="#35281a"/>
               <rect x="378" y="125" width="76" height="14" rx="7" fill="url(#rGold)"/>
               <path d="M386 127.5 H448" stroke="#fff6df" stroke-opacity=".7" stroke-width="1.5" stroke-linecap="round"/>
-              <g id="pullHint" class="pull-hint">
+              <g id="pullHint" class="pull-hint"><g class="pull-hint__in">
                 <rect x="206" y="0" width="128" height="30" rx="15"/>
                 <text x="270" y="19.5" text-anchor="middle">Дръпнете ↓</text>
-              </g>
+              </g></g>
             </svg>
           </div>
         </article>

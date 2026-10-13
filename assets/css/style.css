@@ -265,19 +265,15 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .promo-tile:hover img { transform: scale(1.04); }
 
 /* art: towel dispenser */
-.art-disp, .art-roll { display: flex; justify-content: center; align-items: flex-start; padding-top: 6px; }
-.disp { display: block; width: auto; height: 440px; max-width: 100%; overflow: visible; }
+.art-disp, .art-roll { display: flex; justify-content: center; align-items: flex-start; padding-top: 4px; }
+.disp { display: block; width: auto; height: 470px; max-width: 100%; overflow: visible; }
 .disp .towel { cursor: grab; touch-action: none; outline: none; }
 .disp.is-dragging .towel { cursor: grabbing; }
 .disp .towel:focus-visible .tw-paper { stroke: var(--gold-deep); stroke-width: 2; }
-#stackTop { transition: opacity .3s; }
-.art-hint { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 99px; background: rgba(255, 255, 255, .88); font-size: 13px; font-weight: 600; color: var(--ink-2); white-space: nowrap; box-shadow: var(--shadow); transition: opacity .3s; }
-.art-hint::before { content: "↓"; color: var(--gold-deep); animation: nudge 1.4s ease-in-out infinite; }
-.art-hint.is-hidden { opacity: 0; }
-@keyframes nudge { 50% { transform: translateY(3px); } }
+.disp__name { font-family: var(--font-body); font-size: 10.5px; font-weight: 700; letter-spacing: .34em; fill: var(--gold-deep); }
 
 /* art: toilet roll */
-.roll { display: block; width: auto; height: 430px; max-width: 100%; overflow: visible; }
+.roll { display: block; width: auto; height: 470px; max-width: 100%; overflow: visible; }
 .roll #sheet { cursor: grab; touch-action: none; outline: none; }
 .roll.is-dragging #sheet { cursor: grabbing; }
 .roll #sheet:focus-visible #sheetPaper { stroke: var(--gold-deep); stroke-width: 2; }
@@ -285,10 +281,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .cap-rings ellipse:nth-child(odd) { stroke-dasharray: 5 7; stroke: rgba(107, 88, 56, .2); }
 .perfs line { stroke: rgba(107, 88, 56, .3); stroke-width: 1.3; stroke-dasharray: 2.5 4; }
 .perfs line.hl { stroke: rgba(255, 255, 255, .9); stroke-dasharray: none; stroke-width: 1; }
+
+/* "pull" hints under the towel and the sheet */
+.pull-hint { transition: opacity .3s; pointer-events: none; }
+.pull-hint.is-hidden { opacity: 0; }
 .pull-hint rect { fill: #fff; stroke: var(--line); }
 .pull-hint text { fill: var(--ink-2); font-family: var(--font-body); font-weight: 600; font-size: 14px; }
-.pull-hint { transition: opacity .3s; }
-.pull-hint.is-hidden { opacity: 0; }
+.pull-hint__in { animation: hintBob 1.4s ease-in-out infinite; }
+@keyframes hintBob { 50% { transform: translateY(3px); } }
 
 /* art: napkin fan */
 .art-fan { position: relative; }
@@ -787,9 +787,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .slider { min-height: 0; }
   .slide { grid-template-columns: 1fr; padding: 26px 20px 8px; gap: 0; }
   .slide__copy { max-width: none; }
-  .slide__art { min-height: 320px; height: 320px; }
-  .disp { height: 312px; }
-  .roll { height: 300px; }
+  .slide__art { min-height: 340px; height: 340px; }
+  .disp { height: 340px; }
+  .roll { height: 340px; }
   .slider__tab { padding: 12px 6px; font-size: 13px; }
   .hero__side { grid-template-columns: 1fr; }
   .usps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }

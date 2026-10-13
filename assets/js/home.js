@@ -129,11 +129,11 @@
 
   /* ---------------- slide 1: towel dispenser ---------------- */
   const towelArt = (() => {
-    const svg = $('#dispSvg'), host = $('#towel'), stackG = $('#dispStack'), hint = $('#towelHint');
+    const svg = $('#dispSvg'), host = $('#towel'), hint = $('#towelHint');
     const NS = 'http://www.w3.org/2000/svg';
-    const SLOT = 308, X0 = 108, X1 = 292, CX = 200;
-    const PANEL = 84, FULL = PANEL * 3, REST = PANEL;   // a Z towel has three panels; one hangs out of the slot
-    const CAP = 12, AUTO_MS = 720;
+    const SLOT = 330, X0 = 122, X1 = 278, CX = 200;
+    const PANEL = 96, FULL = PANEL * 3, REST = PANEL;   // a Z towel has three panels; one hangs out of the slot
+    const CAP = 12, AUTO_MS = 760;
     const el = (tag, attrs, parent) => {
       const n = document.createElementNS(NS, tag);
       for (const k in attrs) n.setAttribute(k, attrs[k]);
@@ -141,63 +141,68 @@
       return n;
     };
 
-    // the stack of towels seen through the window goes down by one towel each time
-    const stackParts = ['#stackPaper', '#stackLines', '#stackSide'].map(s => $(s, stackG)), stackTop = $('#stackTop', stackG);
-    const FLOOR = 250, PER = 8.2;
+    // the stack of towels behind the window goes down by one towel each time
+    const stackParts = ['#stackPaper', '#stackLines', '#stackSide'].map(s => $(s, svg)), stackTop = $('#stackTop', svg);
+    const FLOOR = 254, PER = 10.5;
     let left = CAP, stackH = CAP * PER;
     function drawStack() {
-      stackH += (left * PER - stackH) * .12;
       const y = (FLOOR - stackH).toFixed(1), h = Math.max(0, stackH).toFixed(1);
       stackParts.forEach(r => { r.setAttribute('y', y); r.setAttribute('height', h); });
       stackTop.setAttribute('y', y);
-      stackTop.style.opacity = stackH > 3 ? 1 : 0;
+      stackTop.setAttribute('opacity', stackH > 3 ? 1 : 0);
     }
 
     // one towel, drawn from its lower edge (y = 0) up to its top (y = -FULL)
     function makeTowel() {
-      const g = el('g', { filter: 'url(#tDrop)' });
-      el('path', { class: 'tw-paper', d: `M${X0} ${-FULL} H${X1} V-3 Q${X1} 0 ${X1 - 3} 0 H${X0 + 3} Q${X0} 0 ${X0} -3 Z`, fill: 'url(#tPaper)' }, g);
-      el('rect', { x: X0, y: -FULL, width: X1 - X0, height: FULL, fill: 'url(#tEmboss)' }, g);
+      const g = el('g', {});
+      el('rect', { x: X0 + 2, y: -FULL, width: X1 - X0 + 8, height: FULL, fill: 'url(#tShadowX)', transform: 'translate(4 6)' }, g);
+      el('rect', { x: X0 + 10, y: 5, width: X1 - X0 - 8, height: 8, fill: 'url(#tShadowY)', opacity: '.7' }, g);
+      const d = `M${X0} ${-FULL} H${X1} V-2 Q${CX} 6 ${X0} -2 Z`;
+      el('path', { class: 'tw-paper', d, fill: 'url(#tPaper)' }, g);
+      el('path', { d, fill: 'url(#tEmboss)' }, g);
       for (let k = 1; k < 3; k++) {   // fold lines between the panels
         const y = -k * PANEL;
-        el('rect', { x: X0, y, width: X1 - X0, height: 9, fill: '#5a4626', 'fill-opacity': '.045' }, g);
+        el('rect', { x: X0, y, width: X1 - X0, height: 10, fill: '#5a4626', 'fill-opacity': '.045' }, g);
         el('line', { x1: X0, x2: X1, y1: y, y2: y, stroke: '#5a4626', 'stroke-opacity': '.2', 'stroke-width': 1.2 }, g);
         el('line', { x1: X0, x2: X1, y1: y + 1.5, y2: y + 1.5, stroke: '#fff', 'stroke-width': 1.2 }, g);
       }
-      el('line', { x1: X0 + 3, x2: X1 - 3, y1: -0.6, y2: -0.6, stroke: '#5a4626', 'stroke-opacity': '.14' }, g);
+      el('path', { d: `M${X1 - 1} -5 Q${CX} 3 ${X0 + 1} -5`, fill: 'none', stroke: '#fff', 'stroke-width': 1.4 }, g);
+      el('path', { d: `M${X1} -2 Q${CX} 6 ${X0} -2`, fill: 'none', stroke: '#5a4626', 'stroke-opacity': '.18' }, g);
       return { g, len: 0 };
     }
     let cur = makeTowel(), next = makeTowel();
     host.append(next.g, cur.g);   // the next towel waits behind, folded into this one
 
-    let L = REST, vel = 0, sway = 0, swayV = 0, mode = 'rest', busy = false, autoFrom = REST, autoT0 = 0;
+    let L = REST, vel = 0, sway = 0, swayV = 0, mode = 'rest', busy = false, autoFrom = REST, autoT0 = 0, still = false;
     const falling = [];
     const place = (tw, a) => tw.g.setAttribute('transform', `rotate(${a.toFixed(2)} ${CX} ${SLOT}) translate(0 ${(SLOT + tw.len).toFixed(1)})`);
     const ease = k => (k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2);
-    const unitsPerPx = () => { const r = svg.getBoundingClientRect(); return 1 / Math.min(r.width / 400, r.height / 560); };
+    const unitsPerPx = () => { const r = svg.getBoundingClientRect(); return 1 / Math.min(r.width / 400, r.height / 470); };
 
     function detach() {
       const g = cur.g, dir = Math.random() > .5 ? 1 : -1;
       if (reduce) g.remove();
-      else falling.push({ g, y: SLOT + FULL, vy: 2.5, rot: sway, vr: dir * .32, op: 1 });
+      else falling.push({ g, y: SLOT + FULL, vy: 2.5, rot: sway, vr: dir * .3, op: 1 });
       cur = next; cur.len = REST; L = REST; vel = 0;
       next = makeTowel();
       host.insertBefore(next.g, host.firstChild);
       swayV += dir * .9;   // the next towel swings as it is pulled out
       left = Math.max(0, left - 1);
-      if (!left) setTimeout(() => { left = CAP; }, 900);   // a fresh pack goes in
+      if (!left) setTimeout(() => { left = CAP; still = false; }, 900);   // a fresh pack goes in
       mode = 'rest';
+      still = false;
       setTimeout(() => { busy = false; hint.classList.remove('is-hidden'); }, 500);
     }
     function pull() {
       if (busy) return;
-      busy = true;
+      busy = true; still = false;
       hint.classList.add('is-hidden');
       if (reduce) { L = FULL; detach(); return; }
       autoFrom = L; autoT0 = performance.now(); mode = 'auto';
     }
 
     function frame(t = performance.now()) {
+      if (still && mode === 'rest') return;   // nothing moves: draw nothing
       if (mode === 'auto') {
         const k = Math.min(1, (t - autoT0) / AUTO_MS);
         L = autoFrom + (FULL + 2 - autoFrom) * ease(k);
@@ -208,11 +213,13 @@
       }
       swayV = (swayV - sway * .05) * .93;
       sway += swayV;
+      stackH += (left * PER - stackH) * .12;
       drawStack();
       cur.len = L;
       next.len = Math.max(0, Math.min(REST, L - (FULL - REST)));
       place(cur, sway);
       place(next, sway * .6);
+      hint.setAttribute('transform', `translate(0 ${(SLOT + L + 9).toFixed(1)})`);
       for (let i = falling.length - 1; i >= 0; i--) {
         const f = falling[i];
         f.vy += .38; f.y += f.vy; f.rot += f.vr; f.op -= .018;
@@ -220,13 +227,19 @@
         f.g.setAttribute('transform', `translate(0 ${f.y.toFixed(1)}) rotate(${f.rot.toFixed(2)} ${CX} ${-FULL / 2})`);
         f.g.setAttribute('opacity', f.op.toFixed(2));
       }
+      if (mode === 'rest' && !falling.length && Math.abs(L - REST) < .02 && Math.abs(vel) < .02
+        && Math.abs(sway) < .01 && Math.abs(swayV) < .01 && Math.abs(stackH - left * PER) < .02) {
+        L = REST; sway = 0; stackH = left * PER;
+        drawStack(); cur.len = L; place(cur, 0); place(next, 0);
+        still = true;
+      }
     }
 
     // drag the towel down to pull it
     let y0 = 0, x0 = 0, l0 = 0, moved = 0;
     host.addEventListener('pointerdown', e => {
       if (busy) return;
-      mode = 'drag'; y0 = e.clientY; x0 = e.clientX; l0 = L; moved = 0; hold();
+      mode = 'drag'; still = false; y0 = e.clientY; x0 = e.clientX; l0 = L; moved = 0; hold();
       svg.classList.add('is-dragging');
       hint.classList.add('is-hidden');
       host.setPointerCapture?.(e.pointerId);
@@ -240,7 +253,6 @@
       if (L >= FULL) {
         busy = true;
         svg.classList.remove('is-dragging');
-        hint.classList.add('is-hidden');
         detach();
       }
     });
@@ -254,6 +266,7 @@
     host.addEventListener('pointerup', up);
     host.addEventListener('pointercancel', up);
     host.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hold(); pull(); } });
+    host.addEventListener('touchstart', e => e.preventDefault(), { passive: false });   // pulling must not scroll the page
     frame();
     return { pull, frame, get busy() { return busy || mode === 'drag'; } };
   })();
@@ -263,8 +276,9 @@
     const svg = $('#rollSvg'), sheet = $('#sheet'), paper = $('#sheetPaper'), emb = $('#sheetEmboss'), perfG = $('#perfs');
     const patBody = $('#embossBody'), patSheet = $('#embossSheet'), rings = $$('#capRings ellipse'), hint = $('#pullHint');
     const NS = 'http://www.w3.org/2000/svg';
-    const TOP = 238, X0 = 160, X1 = 380, PERF = 150, MIN = 150, MAXL = 330;
-    let base = 205, L = base, U = 0, drag = 0, dragging = false, startY = 0, moved = 0, auto = false, demoed = false, hintT;
+    const TOP = 132, EDGE = 242, X0 = 160, X1 = 380, PERF = 150, MIN = 150, MAXL = 370;   // TOP: where the sheet leaves the roll; EDGE: bottom of the roll
+    const shadowX = $('#sheetShadowX'), shadowY = $('#sheetShadowY');
+    let base = 240, L = base, U = 0, drag = 0, dragging = false, startY = 0, moved = 0, auto = false, demoed = false, hintT, drawn = '';
 
     const perfs = Array.from({ length: 4 }, () => {
       const a = document.createElementNS(NS, 'line'), b = document.createElementNS(NS, 'line');
@@ -282,19 +296,22 @@
       for (let i = 1; i <= n; i++) d += ` L${(from + step * i).toFixed(1)} ${(y + (i % 2 ? amp : 0)).toFixed(1)}`;
       return d;
     };
-    // the sheet narrows a little as it hangs, like real paper
-    const shape = (top, len) => {
-      const b = top + len, i = Math.min(3, len * .012);
-      return `M${X0} ${top} H${X1} C${X1} ${(top + len * .45).toFixed(1)} ${X1 - i} ${(top + len * .7).toFixed(1)} ${X1 - i} ${b.toFixed(1)}`
-        + zig(b, X1 - i, X0 + i, 3.2) + ` C${X0 + i} ${(top + len * .7).toFixed(1)} ${X0} ${(top + len * .45).toFixed(1)} ${X0} ${top} Z`;
+    // straight down the front of the roll, then the sheet narrows a little as it hangs, like real paper
+    const shape = len => {
+      const b = TOP + len, h = Math.max(0, b - EDGE), i = Math.min(3, h * .014);
+      return `M${X0} ${TOP} H${X1} V${EDGE} C${X1} ${(EDGE + h * .45).toFixed(1)} ${X1 - i} ${(EDGE + h * .7).toFixed(1)} ${X1 - i} ${b.toFixed(1)}`
+        + zig(b, X1 - i, X0 + i, 3.2) + ` C${X0 + i} ${(EDGE + h * .7).toFixed(1)} ${X0} ${(EDGE + h * .45).toFixed(1)} ${X0} ${EDGE} Z`;
     };
     function perfDists() {
       const off = ((U % PERF) + PERF) % PERF, out = [];
       for (let d = off; d < L - 10; d += PERF) if (d > 18) out.push(d);
       return out;
     }
-    function render(t = 0) {
-      const d = shape(TOP, L);
+    function render() {
+      const key = L.toFixed(2) + '|' + U.toFixed(2);
+      if (key === drawn) return;   // nothing moved: draw nothing
+      drawn = key;
+      const d = shape(L);
       paper.setAttribute('d', d);
       emb.setAttribute('d', d);
       const ds = perfDists();
@@ -307,8 +324,9 @@
       patSheet.setAttribute('patternTransform', shift);
       patBody.setAttribute('patternTransform', shift);
       rings.forEach((r, i) => { r.style.strokeDashoffset = (-U * (.3 + i * .1)).toFixed(1); });
-      const bob = reduce ? 0 : Math.sin(t / 380) * 3;
-      hint.setAttribute('transform', `translate(0 ${(TOP + L + 18 + bob).toFixed(1)})`);
+      shadowX.setAttribute('height', Math.max(0, TOP + L - 246).toFixed(1));
+      shadowY.setAttribute('y', (TOP + L).toFixed(1));
+      hint.setAttribute('transform', `translate(0 ${(TOP + L + 18).toFixed(1)})`);
     }
     function setL(v, moving = true) {
       v = Math.max(60, Math.min(MAXL, v));
@@ -319,13 +337,12 @@
 
     function tear() {
       // tear at the perforation that leaves the sheet closest to its usual length
-      const cands = perfDists().filter(d => d >= MIN - 40 && d <= L - 50);
-      const cut = cands.length ? cands.reduce((a, b) => (Math.abs(b - 205) < Math.abs(a - 205) ? b : a)) : Math.max(MIN, L - PERF);
+      const cands = perfDists().filter(d => d >= MIN && d <= L - 50);
+      const cut = cands.length ? cands.reduce((a, b) => (Math.abs(b - 240) < Math.abs(a - 240) ? b : a)) : Math.max(MIN, L - PERF);
       const len = L - cut, top = TOP + cut;
       const g = document.createElementNS(NS, 'g');
       const dd = `M${X0 + 2} ${top}${zig(top, X0 + 2, X1 - 2, 2.6)} L${X1 - 3} ${top + len}${zig(top + len, X1 - 3, X0 + 3, 3.2)} Z`;
       g.innerHTML = `<path d="${dd}" fill="url(#gSheet)"/><path d="${dd}" fill="url(#embossSheet)"/>`;
-      g.setAttribute('filter', 'url(#rDrop)');
       svg.insertBefore(g, hint);
       g.style.transformBox = 'fill-box';
       g.style.transformOrigin = '50% 0%';
@@ -338,7 +355,7 @@
       ], { duration: reduce ? 1 : 1500, easing: 'cubic-bezier(.4,0,.7,.6)' });
       a.onfinish = () => g.remove();
       setL(cut, false);
-      base = Math.max(MIN, Math.min(250, cut));
+      base = Math.max(MIN, Math.min(290, cut));
       drag = 0;
       hint.classList.add('is-hidden');
       clearTimeout(hintT);
@@ -382,12 +399,14 @@
     sheet.addEventListener('pointerup', up);
     sheet.addEventListener('pointercancel', up);
     sheet.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hold(); autoPull(); } });
+    sheet.addEventListener('touchstart', e => e.preventDefault(), { passive: false });   // pulling must not scroll the page
 
-    function frame(t) {
+    function frame() {
       const target = Math.max(base, base + drag);
-      if (Math.abs(target - L) > .05) setL(L + (target - L) * (dragging ? .45 : .12));
-      if (!dragging && !auto && drag > 0) drag *= .86;   // a short tug springs back
-      render(t);
+      if (dragging) setL(target);   // the sheet follows the finger
+      else if (Math.abs(target - L) > .05) setL(L + (target - L) * .14);
+      if (!dragging && !auto && drag > 0) drag = drag < .5 ? 0 : drag * .86;   // a short tug springs back
+      render();
     }
     render();
     return {
