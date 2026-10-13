@@ -133,8 +133,8 @@
     const svg = $('#dispSvg'), host = $('#towel'), hint = $('#towelHint');
     const NS = 'http://www.w3.org/2000/svg';
     const SLOT = 330, X0 = 122, X1 = 278, CX = 200;
-    const PANEL = 96, FULL = PANEL * 3, REST = PANEL;   // a Z towel has three panels; one hangs out of the slot
-    const CAP = 12, AUTO_MS = 760;
+    const PANEL = 100, FULL = PANEL * 2, REST = PANEL;   // a V towel is folded once: two panels, one hangs out of the slot
+    const CAP = 12, AUTO_MS = 640;
     const el = (tag, attrs, parent) => {
       const n = document.createElementNS(NS, tag);
       for (const k in attrs) n.setAttribute(k, attrs[k]);
@@ -161,7 +161,7 @@
       const d = `M${X0} ${-FULL} H${X1} V-2 Q${CX} 6 ${X0} -2 Z`;
       el('path', { class: 'tw-paper', d, fill: 'url(#tPaper)' }, g);
       el('path', { d, fill: 'url(#tEmboss)' }, g);
-      for (let k = 1; k < 3; k++) {   // fold lines between the panels
+      for (let k = 1; k < FULL / PANEL; k++) {   // the fold in the middle of the towel
         const y = -k * PANEL;
         el('rect', { x: X0, y, width: X1 - X0, height: 10, fill: '#5a4626', 'fill-opacity': '.045' }, g);
         el('line', { x1: X0, x2: X1, y1: y, y2: y, stroke: '#5a4626', 'stroke-opacity': '.2', 'stroke-width': 1.2 }, g);
