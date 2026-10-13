@@ -45,3 +45,4 @@ assets/img/                logo, product photos, category photos, banners, brand
 - The cart stays in the browser. "Изпрати като запитване" fills the quote form with the cart items.
 - The quote form has no backend. It opens an email to office@paper-professional.com.
 - The newsletter form is not connected.
+- The link-preview tags (`og:url`, `og:image` in `index.html`) point to https://shovelforsale.github.io/Test/. Change them when the site moves to its own domain.
