@@ -393,15 +393,27 @@
                   <stop offset=".5" stop-color="#5a4626" stop-opacity=".05"/>
                   <stop offset="1" stop-color="#5a4626" stop-opacity="0"/>
                 </linearGradient>
-                <pattern id="embossBody" width="24" height="24" patternUnits="userSpaceOnUse">
-                  <path d="M0 0 L24 24 M24 0 L0 24" stroke="#6f5a3a" stroke-opacity=".07"/>
-                  <path d="M0 1.2 L22.8 24 M24 1.2 L1.2 24" stroke="#fff" stroke-opacity=".65"/>
-                  <g fill="#6f5a3a" fill-opacity=".1"><circle cx="12" cy="9.8" r="1.2"/><circle cx="12" cy="14.2" r="1.2"/><circle cx="9.8" cy="12" r="1.2"/><circle cx="14.2" cy="12" r="1.2"/></g>
+                <!-- embossing like the real paper: fine dots plus flowers, leaves and curling vines -->
+                <g id="tpMotif" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1">
+                  <ellipse cx="12" cy="7.8" rx="2.6" ry="5"/>
+                  <ellipse cx="12" cy="7.8" rx="2.6" ry="5" transform="rotate(72 12 13)"/>
+                  <ellipse cx="12" cy="7.8" rx="2.6" ry="5" transform="rotate(144 12 13)"/>
+                  <ellipse cx="12" cy="7.8" rx="2.6" ry="5" transform="rotate(216 12 13)"/>
+                  <ellipse cx="12" cy="7.8" rx="2.6" ry="5" transform="rotate(288 12 13)"/>
+                  <circle cx="12" cy="13" r="1.6"/>
+                  <path d="M12 18.5 C13 27 19 31 25 33 C31 35 33 41 29 44 C26 46 23 43 25.5 41 C27 40 28.5 41.5 27.6 42.8"/>
+                  <path d="M17 28 C13 25 13 20 17 18.5 C19.5 22 19.5 25.5 17 28 Z M17 28 C17.5 24.5 17.8 21.5 17 18.5"/>
+                  <path d="M31 13 C31 9.5 35.5 9 36.5 12 C37.5 15 34 16.5 32.5 14.7"/>
+                  <path d="M6 48 C4 43 7 39 11 39 C11 43 9.5 46.5 6 48 Z M6 48 C7.5 45 9 42 11 39"/>
+                </g>
+                <pattern id="paperDots" width="5" height="5" patternUnits="userSpaceOnUse">
+                  <circle cx="2.5" cy="2.5" r=".85" fill="#6f5a3a" fill-opacity=".07"/>
                 </pattern>
-                <pattern id="embossSheet" width="24" height="24" patternUnits="userSpaceOnUse">
-                  <path d="M0 0 L24 24 M24 0 L0 24" stroke="#6f5a3a" stroke-opacity=".07"/>
-                  <path d="M0 1.2 L22.8 24 M24 1.2 L1.2 24" stroke="#fff" stroke-opacity=".65"/>
-                  <g fill="#6f5a3a" fill-opacity=".1"><circle cx="12" cy="9.8" r="1.2"/><circle cx="12" cy="14.2" r="1.2"/><circle cx="9.8" cy="12" r="1.2"/><circle cx="14.2" cy="12" r="1.2"/></g>
+                <pattern id="paperFlowers" width="78" height="120" patternUnits="userSpaceOnUse">
+                  <use href="#tpMotif" transform="translate(4.7 6.7)" stroke="#6f5a3a" stroke-opacity=".2"/>
+                  <use href="#tpMotif" transform="translate(4 6)" stroke="#fff" stroke-opacity=".95"/>
+                  <use href="#tpMotif" transform="translate(43.7 66.7)" stroke="#6f5a3a" stroke-opacity=".2"/>
+                  <use href="#tpMotif" transform="translate(43 66)" stroke="#fff" stroke-opacity=".95"/>
                 </pattern>
               </defs>
               <!-- shadows on the wall -->
@@ -414,12 +426,14 @@
               <circle cx="452" cy="132" r="20" fill="none" stroke="#f7e9c8" stroke-opacity=".55" stroke-width="1.5"/>
               <!-- roll -->
               <path d="M160 22 H380 A30 110 0 0 1 380 242 H160 A30 110 0 0 1 160 22 Z" fill="url(#rBody)"/>
-              <path d="M160 22 H380 A30 110 0 0 1 380 242 H160 A30 110 0 0 1 160 22 Z" fill="url(#embossBody)"/>
+              <path d="M160 22 H380 A30 110 0 0 1 380 242 H160 A30 110 0 0 1 160 22 Z" fill="url(#paperDots)"/>
+              <path d="M160 22 H380 A30 110 0 0 1 380 242 H160 A30 110 0 0 1 160 22 Z" fill="url(#paperFlowers)"/>
               <path d="M160 22 H380 A30 110 0 0 1 380 242 H160 A30 110 0 0 1 160 22 Z" fill="url(#rFar)"/>
               <!-- the sheet leaves the roll at its front and hangs down -->
               <g id="sheet">
                 <path id="sheetPaper" fill="url(#gSheet)"/>
-                <path id="sheetEmboss" fill="url(#embossSheet)"/>
+                <path id="sheetDots" fill="url(#paperDots)"/>
+                <path id="sheetEmboss" fill="url(#paperFlowers)"/>
                 <rect x="160" y="132" width="220" height="110" fill="url(#gSheetFade)" pointer-events="none"/>
                 <g id="perfs" class="perfs"></g>
               </g>

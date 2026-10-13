@@ -273,8 +273,9 @@
 
   /* ---------------- slide 2: toilet roll ---------------- */
   const roll = (() => {
-    const svg = $('#rollSvg'), sheet = $('#sheet'), paper = $('#sheetPaper'), emb = $('#sheetEmboss'), perfG = $('#perfs');
-    const patBody = $('#embossBody'), patSheet = $('#embossSheet'), rings = $$('#capRings ellipse'), hint = $('#pullHint');
+    const svg = $('#rollSvg'), sheet = $('#sheet'), perfG = $('#perfs');
+    const sheetParts = ['#sheetPaper', '#sheetDots', '#sheetEmboss'].map(id => $(id));
+    const patterns = [$('#paperDots'), $('#paperFlowers')], rings = $$('#capRings ellipse'), hint = $('#pullHint');
     const NS = 'http://www.w3.org/2000/svg';
     const TOP = 132, EDGE = 242, X0 = 160, X1 = 380, PERF = 150, MIN = 150, MAXL = 370;   // TOP: where the sheet leaves the roll; EDGE: bottom of the roll
     const shadowX = $('#sheetShadowX'), shadowY = $('#sheetShadowY');
@@ -312,17 +313,15 @@
       if (key === drawn) return;   // nothing moved: draw nothing
       drawn = key;
       const d = shape(L);
-      paper.setAttribute('d', d);
-      emb.setAttribute('d', d);
+      sheetParts.forEach(part => part.setAttribute('d', d));
       const ds = perfDists();
       perfs.forEach(([a, b], i) => {
         const on = i < ds.length;
         a.style.display = b.style.display = on ? '' : 'none';
         if (on) { a.setAttribute('y1', TOP + ds[i]); a.setAttribute('y2', TOP + ds[i]); b.setAttribute('y1', TOP + ds[i] + 1.6); b.setAttribute('y2', TOP + ds[i] + 1.6); }
       });
-      const shift = `translate(0 ${(U % 24).toFixed(2)})`;
-      patSheet.setAttribute('patternTransform', shift);
-      patBody.setAttribute('patternTransform', shift);
+      const shift = `translate(0 ${(U % 120).toFixed(2)})`;   // the embossing moves as the paper unrolls
+      patterns.forEach(pat => pat.setAttribute('patternTransform', shift));
       rings.forEach((r, i) => { r.style.strokeDashoffset = (-U * (.3 + i * .1)).toFixed(1); });
       shadowX.setAttribute('height', Math.max(0, TOP + L - 246).toFixed(1));
       shadowY.setAttribute('y', (TOP + L).toFixed(1));
@@ -342,7 +341,7 @@
       const len = L - cut, top = TOP + cut;
       const g = document.createElementNS(NS, 'g');
       const dd = `M${X0 + 2} ${top}${zig(top, X0 + 2, X1 - 2, 2.6)} L${X1 - 3} ${top + len}${zig(top + len, X1 - 3, X0 + 3, 3.2)} Z`;
-      g.innerHTML = `<path d="${dd}" fill="url(#gSheet)"/><path d="${dd}" fill="url(#embossSheet)"/>`;
+      g.innerHTML = `<path d="${dd}" fill="url(#gSheet)"/><path d="${dd}" fill="url(#paperDots)"/><path d="${dd}" fill="url(#paperFlowers)"/>`;
       svg.insertBefore(g, hint);
       g.style.transformBox = 'fill-box';
       g.style.transformOrigin = '50% 0%';
