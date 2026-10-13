@@ -61,4 +61,4 @@ tools/build_pages.py       makes category.html and product.html from index.html
 - The newsletter form is not connected.
 - "Вход" and the pages under "Информация" (delivery, terms, returns, privacy) still open the current site.
 - Some product options (for example a box instead of a pack) may change the price in the current shop. The product page says the price will be confirmed.
-- The link-preview tags (`og:url`, `og:image` in `index.html`) point to https://shovelforsale.github.io/Test/. Change them when the site moves to its own domain.
+- The link-preview tags (`og:url`, `og:image` in `index.html`) point to https://shovelforsale.github.io/paper-professional/. Change them when the site moves to its own domain.
