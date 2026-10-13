@@ -129,75 +129,148 @@
 
   /* ---------------- slide 1: towel dispenser ---------------- */
   const towelArt = (() => {
-    const towel = $('#towel'), stack = $('#dispStack');
-    const CAP = 10, TAB = -60;
-    let left = CAP, busy = false;
-    for (let i = 0; i < CAP; i++) stack.appendChild(document.createElement('i'));
-    const bars = [...stack.children];
-    const setY = (y, ms = 0, ease = 'cubic-bezier(.2,.7,.1,1)') => {
-      towel.style.transition = ms ? `transform ${ms}ms ${ease}, opacity 500ms` : 'none';
-      towel.style.transform = `translateY(${y}px)`;
+    const svg = $('#dispSvg'), host = $('#towel'), stackG = $('#dispStack'), hint = $('#towelHint');
+    const NS = 'http://www.w3.org/2000/svg';
+    const SLOT = 308, X0 = 108, X1 = 292, CX = 200;
+    const PANEL = 84, FULL = PANEL * 3, REST = PANEL;   // a Z towel has three panels; one hangs out of the slot
+    const CAP = 12, AUTO_MS = 720;
+    const el = (tag, attrs, parent) => {
+      const n = document.createElementNS(NS, tag);
+      for (const k in attrs) n.setAttribute(k, attrs[k]);
+      if (parent) parent.appendChild(n);
+      return n;
     };
-    const sync = () => bars.forEach((b, i) => b.classList.toggle('gone', i >= left));
-    async function pull() {
+
+    // the stack of towels seen through the window goes down by one towel each time
+    const stackParts = ['#stackPaper', '#stackLines', '#stackSide'].map(s => $(s, stackG)), stackTop = $('#stackTop', stackG);
+    const FLOOR = 250, PER = 8.2;
+    let left = CAP, stackH = CAP * PER;
+    function drawStack() {
+      stackH += (left * PER - stackH) * .12;
+      const y = (FLOOR - stackH).toFixed(1), h = Math.max(0, stackH).toFixed(1);
+      stackParts.forEach(r => { r.setAttribute('y', y); r.setAttribute('height', h); });
+      stackTop.setAttribute('y', y);
+      stackTop.style.opacity = stackH > 3 ? 1 : 0;
+    }
+
+    // one towel, drawn from its lower edge (y = 0) up to its top (y = -FULL)
+    function makeTowel() {
+      const g = el('g', { filter: 'url(#tDrop)' });
+      el('path', { class: 'tw-paper', d: `M${X0} ${-FULL} H${X1} V-3 Q${X1} 0 ${X1 - 3} 0 H${X0 + 3} Q${X0} 0 ${X0} -3 Z`, fill: 'url(#tPaper)' }, g);
+      el('rect', { x: X0, y: -FULL, width: X1 - X0, height: FULL, fill: 'url(#tEmboss)' }, g);
+      for (let k = 1; k < 3; k++) {   // fold lines between the panels
+        const y = -k * PANEL;
+        el('rect', { x: X0, y, width: X1 - X0, height: 9, fill: '#5a4626', 'fill-opacity': '.045' }, g);
+        el('line', { x1: X0, x2: X1, y1: y, y2: y, stroke: '#5a4626', 'stroke-opacity': '.2', 'stroke-width': 1.2 }, g);
+        el('line', { x1: X0, x2: X1, y1: y + 1.5, y2: y + 1.5, stroke: '#fff', 'stroke-width': 1.2 }, g);
+      }
+      el('line', { x1: X0 + 3, x2: X1 - 3, y1: -0.6, y2: -0.6, stroke: '#5a4626', 'stroke-opacity': '.14' }, g);
+      return { g, len: 0 };
+    }
+    let cur = makeTowel(), next = makeTowel();
+    host.append(next.g, cur.g);   // the next towel waits behind, folded into this one
+
+    let L = REST, vel = 0, sway = 0, swayV = 0, mode = 'rest', busy = false, autoFrom = REST, autoT0 = 0;
+    const falling = [];
+    const place = (tw, a) => tw.g.setAttribute('transform', `rotate(${a.toFixed(2)} ${CX} ${SLOT}) translate(0 ${(SLOT + tw.len).toFixed(1)})`);
+    const ease = k => (k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2);
+    const unitsPerPx = () => { const r = svg.getBoundingClientRect(); return 1 / Math.min(r.width / 400, r.height / 560); };
+
+    function detach() {
+      const g = cur.g, dir = Math.random() > .5 ? 1 : -1;
+      if (reduce) g.remove();
+      else falling.push({ g, y: SLOT + FULL, vy: 2.5, rot: sway, vr: dir * .32, op: 1 });
+      cur = next; cur.len = REST; L = REST; vel = 0;
+      next = makeTowel();
+      host.insertBefore(next.g, host.firstChild);
+      swayV += dir * .9;   // the next towel swings as it is pulled out
+      left = Math.max(0, left - 1);
+      if (!left) setTimeout(() => { left = CAP; }, 900);   // a fresh pack goes in
+      mode = 'rest';
+      setTimeout(() => { busy = false; hint.classList.remove('is-hidden'); }, 500);
+    }
+    function pull() {
       if (busy) return;
       busy = true;
-      towel.classList.add('is-open');
-      setY(4, 420);
-      await wait(reduce ? 0 : 900);
-      towel.style.transition = 'transform 700ms cubic-bezier(.5,0,.75,0), opacity 600ms';
-      towel.style.transform = `translateY(300px) rotate(${Math.random() > .5 ? 6 : -6}deg)`;
-      towel.style.opacity = '0';
-      await wait(reduce ? 0 : 650);
-      left = left > 1 ? left - 1 : CAP; // a fresh pack goes in when the last towel is taken
-      sync();
-      towel.classList.remove('is-open');
-      setY(-120);
-      void towel.offsetWidth;
-      towel.style.opacity = '1';
-      setY(TAB, 560, 'cubic-bezier(.34,1.56,.64,1)');
-      await wait(reduce ? 0 : 560);
-      busy = false;
+      hint.classList.add('is-hidden');
+      if (reduce) { L = FULL; detach(); return; }
+      autoFrom = L; autoT0 = performance.now(); mode = 'auto';
     }
-    // drag the tab down to pull
-    let dragging = false, y0 = 0, dy = 0;
-    towel.addEventListener('pointerdown', e => {
+
+    function frame(t = performance.now()) {
+      if (mode === 'auto') {
+        const k = Math.min(1, (t - autoT0) / AUTO_MS);
+        L = autoFrom + (FULL + 2 - autoFrom) * ease(k);
+        if (L >= FULL) detach();
+      } else if (mode === 'rest') {
+        vel = (vel + (REST - L) * .16) * .7;   // a short tug springs back
+        L += vel;
+      }
+      swayV = (swayV - sway * .05) * .93;
+      sway += swayV;
+      drawStack();
+      cur.len = L;
+      next.len = Math.max(0, Math.min(REST, L - (FULL - REST)));
+      place(cur, sway);
+      place(next, sway * .6);
+      for (let i = falling.length - 1; i >= 0; i--) {
+        const f = falling[i];
+        f.vy += .38; f.y += f.vy; f.rot += f.vr; f.op -= .018;
+        if (f.op <= 0) { f.g.remove(); falling.splice(i, 1); continue; }
+        f.g.setAttribute('transform', `translate(0 ${f.y.toFixed(1)}) rotate(${f.rot.toFixed(2)} ${CX} ${-FULL / 2})`);
+        f.g.setAttribute('opacity', f.op.toFixed(2));
+      }
+    }
+
+    // drag the towel down to pull it
+    let y0 = 0, x0 = 0, l0 = 0, moved = 0;
+    host.addEventListener('pointerdown', e => {
       if (busy) return;
-      dragging = true; y0 = e.clientY; dy = 0; hold();
-      towel.setPointerCapture?.(e.pointerId);
+      mode = 'drag'; y0 = e.clientY; x0 = e.clientX; l0 = L; moved = 0; hold();
+      svg.classList.add('is-dragging');
+      hint.classList.add('is-hidden');
+      host.setPointerCapture?.(e.pointerId);
     });
-    towel.addEventListener('pointermove', e => {
-      if (!dragging) return;
-      dy = clamp(e.clientY - y0, 0, 120);
-      setY(TAB + dy);
-      if (dy > 50) { dragging = false; pull(); }
+    host.addEventListener('pointermove', e => {
+      if (mode !== 'drag') return;
+      const k = unitsPerPx(), dy = (e.clientY - y0) * k, dx = (e.clientX - x0) * k;
+      moved = Math.max(moved, Math.abs(dy), Math.abs(dx));
+      L = Math.max(REST, Math.min(FULL + 2, l0 + dy));
+      sway = Math.max(-6, Math.min(6, dx * .06)); swayV = 0;
+      if (L >= FULL) {
+        busy = true;
+        svg.classList.remove('is-dragging');
+        hint.classList.add('is-hidden');
+        detach();
+      }
     });
-    const end = () => {
-      if (!dragging) return;
-      dragging = false;
-      if (dy < 6) pull(); else setY(TAB, 380, 'cubic-bezier(.34,1.56,.64,1)');
+    const up = () => {
+      if (mode !== 'drag') return;
+      mode = 'rest';
+      svg.classList.remove('is-dragging');
+      if (moved < 6 || L > REST + 46) pull();   // a tap, or a long enough pull, finishes it
+      else hint.classList.remove('is-hidden');
     };
-    towel.addEventListener('pointerup', end);
-    towel.addEventListener('pointercancel', end);
-    towel.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hold(); pull(); } });
-    setY(TAB);
-    sync();
-    return { pull, get busy() { return busy || dragging; } };
+    host.addEventListener('pointerup', up);
+    host.addEventListener('pointercancel', up);
+    host.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hold(); pull(); } });
+    frame();
+    return { pull, frame, get busy() { return busy || mode === 'drag'; } };
   })();
 
   /* ---------------- slide 2: toilet roll ---------------- */
   const roll = (() => {
     const svg = $('#rollSvg'), sheet = $('#sheet'), paper = $('#sheetPaper'), emb = $('#sheetEmboss'), perfG = $('#perfs');
-    const patBody = $('#embossBody'), patSheet = $('#embossSheet'), caps = $$('#capRings ellipse'), hint = $('#pullHint');
+    const patBody = $('#embossBody'), patSheet = $('#embossSheet'), rings = $$('#capRings ellipse'), hint = $('#pullHint');
     const NS = 'http://www.w3.org/2000/svg';
-    const TOP = 210, X0 = 134, X1 = 386, PERF = 90, BASE = 210, MAXL = 330;
-    let L = BASE, U = 0, drag = 0, dragging = false, startY = 0, moved = 0, auto = false, demoed = false, hintT;
+    const TOP = 238, X0 = 160, X1 = 380, PERF = 150, MIN = 150, MAXL = 330;
+    let base = 205, L = base, U = 0, drag = 0, dragging = false, startY = 0, moved = 0, auto = false, demoed = false, hintT;
 
-    const perfLines = Array.from({ length: 5 }, () => {
-      const l = document.createElementNS(NS, 'line');
-      l.setAttribute('x1', X0); l.setAttribute('x2', X1);
-      perfG.appendChild(l);
-      return l;
+    const perfs = Array.from({ length: 4 }, () => {
+      const a = document.createElementNS(NS, 'line'), b = document.createElementNS(NS, 'line');
+      b.setAttribute('class', 'hl');
+      [a, b].forEach(l => { l.setAttribute('x1', X0 + 4); l.setAttribute('x2', X1 - 4); perfG.appendChild(l); });
+      return [a, b];
     });
     sheet.setAttribute('tabindex', '0');
     sheet.setAttribute('role', 'button');
@@ -205,80 +278,92 @@
 
     const zig = (y, from, to, amp) => {
       let d = '';
-      const n = 18, step = (to - from) / n;
+      const n = 22, step = (to - from) / n;
       for (let i = 1; i <= n; i++) d += ` L${(from + step * i).toFixed(1)} ${(y + (i % 2 ? amp : 0)).toFixed(1)}`;
       return d;
     };
-    const shape = len => `M${X0} ${TOP} H${X1} V${TOP + len}${zig(TOP + len, X1, X0, 3.5)} Z`;
+    // the sheet narrows a little as it hangs, like real paper
+    const shape = (top, len) => {
+      const b = top + len, i = Math.min(3, len * .012);
+      return `M${X0} ${top} H${X1} C${X1} ${(top + len * .45).toFixed(1)} ${X1 - i} ${(top + len * .7).toFixed(1)} ${X1 - i} ${b.toFixed(1)}`
+        + zig(b, X1 - i, X0 + i, 3.2) + ` C${X0 + i} ${(top + len * .7).toFixed(1)} ${X0} ${(top + len * .45).toFixed(1)} ${X0} ${top} Z`;
+    };
     function perfDists() {
       const off = ((U % PERF) + PERF) % PERF, out = [];
-      for (let d = off; d < L - 8; d += PERF) if (d > 14) out.push(d);
+      for (let d = off; d < L - 10; d += PERF) if (d > 18) out.push(d);
       return out;
     }
     function render(t = 0) {
-      const d = shape(L);
+      const d = shape(TOP, L);
       paper.setAttribute('d', d);
       emb.setAttribute('d', d);
       const ds = perfDists();
-      perfLines.forEach((l, i) => {
-        if (i < ds.length) { l.setAttribute('y1', TOP + ds[i]); l.setAttribute('y2', TOP + ds[i]); l.style.display = ''; }
-        else l.style.display = 'none';
+      perfs.forEach(([a, b], i) => {
+        const on = i < ds.length;
+        a.style.display = b.style.display = on ? '' : 'none';
+        if (on) { a.setAttribute('y1', TOP + ds[i]); a.setAttribute('y2', TOP + ds[i]); b.setAttribute('y1', TOP + ds[i] + 1.6); b.setAttribute('y2', TOP + ds[i] + 1.6); }
       });
-      const shift = `translate(0 ${(U % 18).toFixed(2)})`;
+      const shift = `translate(0 ${(U % 24).toFixed(2)})`;
       patSheet.setAttribute('patternTransform', shift);
       patBody.setAttribute('patternTransform', shift);
-      caps.forEach((cap, i) => { cap.style.strokeDashoffset = (-U * (0.35 + i * 0.12)).toFixed(1); });
+      rings.forEach((r, i) => { r.style.strokeDashoffset = (-U * (.3 + i * .1)).toFixed(1); });
       const bob = reduce ? 0 : Math.sin(t / 380) * 3;
-      hint.setAttribute('transform', `translate(0 ${(TOP + L + 16 + bob).toFixed(1)})`);
+      hint.setAttribute('transform', `translate(0 ${(TOP + L + 18 + bob).toFixed(1)})`);
     }
     function setL(v, moving = true) {
-      v = clamp(v, 60, MAXL);
+      v = Math.max(60, Math.min(MAXL, v));
       if (moving) U += v - L;
       L = v;
     }
     const unitsPerPx = () => { const r = svg.getBoundingClientRect(); return 1 / Math.min(r.width / 520, r.height / 600); };
 
     function tear() {
-      const cands = perfDists().filter(d => d >= 60 && d <= L - 36);
-      const cut = cands.length ? cands[cands.length - 1] : Math.max(60, L - PERF);
+      // tear at the perforation that leaves the sheet closest to its usual length
+      const cands = perfDists().filter(d => d >= MIN - 40 && d <= L - 50);
+      const cut = cands.length ? cands.reduce((a, b) => (Math.abs(b - 205) < Math.abs(a - 205) ? b : a)) : Math.max(MIN, L - PERF);
       const len = L - cut, top = TOP + cut;
       const g = document.createElementNS(NS, 'g');
-      const d = `M${X0} ${top}${zig(top, X0, X1, 2.5)} V${top + len}${zig(top + len, X1, X0, 3.5)} Z`;
-      g.innerHTML = `<path d="${d}" fill="url(#gSheet)"/><path d="${d}" fill="url(#embossSheet)"/>`;
+      const dd = `M${X0 + 2} ${top}${zig(top, X0 + 2, X1 - 2, 2.6)} L${X1 - 3} ${top + len}${zig(top + len, X1 - 3, X0 + 3, 3.2)} Z`;
+      g.innerHTML = `<path d="${dd}" fill="url(#gSheet)"/><path d="${dd}" fill="url(#embossSheet)"/>`;
+      g.setAttribute('filter', 'url(#rDrop)');
       svg.insertBefore(g, hint);
       g.style.transformBox = 'fill-box';
       g.style.transformOrigin = '50% 0%';
       const dir = Math.random() > .5 ? 1 : -1;
       const a = g.animate([
-        { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
-        { transform: `translate(${dir * 24}px, 90px) rotate(${dir * 7}deg)`, opacity: 1, offset: .35 },
-        { transform: `translate(${dir * 70}px, 380px) rotate(${dir * 22}deg)`, opacity: 0 },
-      ], { duration: reduce ? 1 : 1200, easing: 'cubic-bezier(.45,0,.8,.55)' });
+        { transform: 'translate(0px, 0px) rotate(0deg) skewX(0deg)', opacity: 1 },
+        { transform: `translate(${dir * 16}px, 46px) rotate(${dir * 6}deg) skewX(${dir * 3}deg)`, opacity: 1, offset: .25 },
+        { transform: `translate(${-dir * 14}px, 150px) rotate(${-dir * 8}deg) skewX(${-dir * 4}deg)`, opacity: .95, offset: .58 },
+        { transform: `translate(${dir * 34}px, 330px) rotate(${dir * 18}deg) skewX(${dir * 2}deg)`, opacity: 0 },
+      ], { duration: reduce ? 1 : 1500, easing: 'cubic-bezier(.4,0,.7,.6)' });
       a.onfinish = () => g.remove();
       setL(cut, false);
+      base = Math.max(MIN, Math.min(250, cut));
       drag = 0;
       hint.classList.add('is-hidden');
       clearTimeout(hintT);
-      hintT = setTimeout(() => hint.classList.remove('is-hidden'), 4000);
+      hintT = setTimeout(() => hint.classList.remove('is-hidden'), 3500);
     }
     async function autoPull() {
       if (auto) return;
       auto = true;
+      hint.classList.add('is-hidden');
       const from = drag, t1 = performance.now();
       await new Promise(res => {
         const step = t => {
-          const k = clamp((t - t1) / 600, 0, 1);
-          drag = from + 120 * (1 - Math.pow(1 - k, 3));
+          const k = Math.min(1, (t - t1) / 650);
+          drag = from + 125 * (1 - Math.pow(1 - k, 3));
           if (k < 1) requestAnimationFrame(step); else res();
         };
         requestAnimationFrame(step);
       });
-      await wait(150);
+      await wait(140);
       tear();
       auto = false;
     }
     sheet.addEventListener('pointerdown', e => {
       dragging = true; moved = 0; startY = e.clientY; hold();
+      hint.classList.add('is-hidden');
       svg.classList.add('is-dragging');
       sheet.setPointerCapture?.(e.pointerId);
     });
@@ -292,16 +377,16 @@
       if (!dragging) return;
       dragging = false;
       svg.classList.remove('is-dragging');
-      if (moved < 6) autoPull(); else if (drag > 36) tear();
+      if (moved < 6) autoPull(); else if (drag > 40) tear();
     };
     sheet.addEventListener('pointerup', up);
     sheet.addEventListener('pointercancel', up);
     sheet.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); hold(); autoPull(); } });
 
     function frame(t) {
-      const target = BASE + drag;
-      if (Math.abs(target - L) > .05) setL(L + (target - L) * (dragging ? .45 : .1));
-      if (!dragging && !auto && drag > 0) drag *= .88; // a short tug springs back
+      const target = Math.max(base, base + drag);
+      if (Math.abs(target - L) > .05) setL(L + (target - L) * (dragging ? .45 : .12));
+      if (!dragging && !auto && drag > 0) drag *= .86;   // a short tug springs back
       render(t);
     }
     render();
@@ -350,6 +435,7 @@
         if (towelT > 3600 && !towelArt.busy) { towelT = 0; towelArt.pull(); }
       }
     }
+    if (running && cur === 0) towelArt.frame(t);
     if (running && cur === 1) roll.frame(t);
     requestAnimationFrame(tick);
   }
