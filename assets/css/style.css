@@ -825,6 +825,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .sec-head { margin-bottom: 22px; }
 }
 
+/* laptops: keep the whole slider, tabs included, on the first screen */
+@media (min-width: 761px) and (max-height: 820px) {
+  .slide { padding-top: 18px; padding-bottom: 12px; }
+  .slide__art { min-height: 0; }
+  .disp, .roll { height: clamp(360px, calc(100vh - 300px), 470px); }
+  .promo-tile img { position: absolute; inset: 0; }   /* the side banners follow the slider instead of setting its height */
+}
+
 @media (max-width: 380px) {
   .topbar__more { display: none; }
 }
