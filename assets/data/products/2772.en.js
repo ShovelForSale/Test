@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2772,"desc":["Medix Aqua gel washing-up liquid, 500 ml"],"more":[],"specs":[["Type","Cleaning products"]],"options":[{"name":"Colour","values":["White","Green","Yellow","Purple"]}]});

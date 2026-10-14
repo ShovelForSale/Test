@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4980,"desc":["Black dispenser for liquid soap and foam soap. Skin series. Capacity: 0.8 L. An elegant dispenser that blends in with any interior. Matching refills: A99905 foam and A99905 soap. Dimensions (H×D×W): 232×114×124 mm"],"more":[],"specs":[["Type","Soap, foam soap"],["Dispenser for","Soap, foam soap"]],"options":[]});

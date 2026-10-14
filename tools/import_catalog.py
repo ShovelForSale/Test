@@ -7,6 +7,7 @@ Writes
   assets/data/products/<id>.js    one file per product: description, specs,
                                   packaging options, photos, related products
   assets/img/catalog/             product and category photos
+  assets/data/catalog.en.js and assets/data/products/<id>.en.js, the English text (see tools/build_pages.py)
 
 Usage
   python3 tools/import_catalog.py                  # full import with fresh prices
@@ -20,6 +21,7 @@ import argparse
 import concurrent.futures as cf
 import hashlib
 import html
+import importlib.util
 import json
 import os
 import re
@@ -657,6 +659,12 @@ def main():
     with open(os.path.join(ROOT, 'assets', 'data', 'catalog.js'), 'w', encoding='utf-8') as f:
         f.write('window.PC_CATALOG=' + json.dumps(catalog, ensure_ascii=False, separators=(',', ':')) + ';\n')
     print(f'wrote {len(out_cats)} categories, {len(out_products)} products')
+
+    # the English catalog files follow the new data; a new or renamed product stays Bulgarian there until translated
+    spec = importlib.util.spec_from_file_location('build_pages', os.path.join(ROOT, 'tools', 'build_pages.py'))
+    build = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(build)
+    build.build_catalog_en()
 
 
 if __name__ == '__main__':

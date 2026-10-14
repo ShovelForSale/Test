@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3109,"desc":["Polypropylene shoe covers, TNT non-woven, single-use. Colour: blue. 100 per pack"],"more":["Shoe covers made of polypropylene, TNT non-woven, single-use. Colour: blue. 100 per pack"],"specs":[["Type","Shoe covers"]],"options":[]});

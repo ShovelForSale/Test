@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2789,"desc":["Creamy liquid soap for professional use. Suitable for washing hands and body. Contains excellent cleansing agents. Its economical creamy formula is enriched with milk protein and moisturisers. Gentle honey and milk fragrance. For everyday use."],"more":[],"specs":[["Type","Soap"]],"options":[]});

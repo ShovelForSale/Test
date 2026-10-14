@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2609,"desc":["Rubberised sponge cloths – 3 per pack","Medium 14×16 cm","Large 18×20 cm"],"more":["Rubberised sponge cloths – 3 per pack","Medium 14×16 cm","Large 18×20 cm","Designed to absorb water and grease"],"specs":[["Type","Colour-coded cloths"]],"options":[{"name":"Size","values":["Medium 14 × 16","Large 18 × 20"]}]});

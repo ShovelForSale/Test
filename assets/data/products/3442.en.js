@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3442,"desc":["White paper table covers with a polyethylene (PE) film backing. Size: 1.30×1 m","Suitable for single use in restaurants, fast-food outlets, schools and kindergartens"],"more":[],"specs":[],"options":[]});

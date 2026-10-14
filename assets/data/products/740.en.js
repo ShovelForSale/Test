@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":740,"desc":["8146 – V30 KleenGuard – yellow lens"],"more":["Provides high visibility and good contrast in low-light conditions.","Suitable for work in dark areas or for driving at night."],"specs":[["Type","Safety glasses"],["Brand","KLEENGUARD"],["Pack size","12 boxes × 12 pcs"],["Lens","Yellow"]],"options":[]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4695,"desc":["40×40 cm napkins, luxury 2-ply, printed. Ready-made designs in stock for decorating an elegant table. Suitable for luxury restaurants and hotels."],"more":[],"specs":[["Brand","Santia"],["Ply","2-ply"],["Fold","1/8 fold – H20.0 × W10.0 cm"],["Pack size","32 packs × 40 pcs"]],"options":[]});

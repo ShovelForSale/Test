@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4506,"desc":["Coloured dental bibs in a dispenser box.","Size: 33×45 cm","Material: 2-ply with PE film backing","Rectangular, for use with a bib clip.","Brand: Soft","Carton: 4 boxes × 125 bibs"],"more":[],"specs":[],"options":[{"name":"Colour","values":["Pink","White","Green","Yellow","Blue","Purple"]}]});

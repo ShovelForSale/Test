@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4276,"desc":["Flat floor mop with an abrasive microfibre pad, suitable for cleaning floors and walls.","Telescopic handle: blue, 140 cm. The pad is quick and easy to change and can be washed at 90 °C."],"more":[],"specs":[],"options":[]});

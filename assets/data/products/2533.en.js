@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2533,"desc":["Autocut hand towel rolls – 1-ply, 165 m. Suitable for Kimberly-Clark and Tork dispensers.","Material: 100% virgin pulp. Ply: 1-ply"],"more":[],"specs":[["Type","Hand towels – rolls"],["Brand","Paper-Converting"],["Ply","1-ply"],["Material","100% virgin pulp"],["Pack size","6 pcs"]],"options":[]});

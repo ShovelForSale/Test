@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4519,"desc":["Thick toilet paper – 4-ply, 100 g per roll / 8 rolls per pack.","1 multipack = 9 packs"],"more":[],"specs":[["Type","Toilet paper – rolls"],["Ply","3-ply"],["Material","100% virgin pulp"]],"options":[]});

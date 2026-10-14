@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3010,"desc":["Luxury Christmas napkins with baubles, 40×40 cm, 1/8 fold, 40 per pack."],"more":[],"specs":[["Type","Napkins"],["Ply","2-ply"],["Size","40×40 cm unfolded"],["Fold","1/8 fold – H20.0 × W10.0 cm"]],"options":[{"name":"Colour","values":["Blue","Green","Red"]}]});

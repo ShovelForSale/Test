@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3070,"desc":["Valeria sweeping brush for yards and outdoor areas. Available in various colours; takes a straight-threaded handle."],"more":[],"specs":[],"options":[]});

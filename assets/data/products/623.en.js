@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":623,"desc":["Kleenex hair and body wash, Kimberly-Clark – refill, 1,000 doses, code 6332","Colour: white"],"more":["Shower gel refill, suitable for hotels","1 refill – 1,000 doses"],"specs":[["Type","Soap, hair and body wash"],["Colour","White"],["Brand","Kimberly-Clark KLEENEX"],["Doses","1000"],["Pack size","6 pcs"]],"options":[]});

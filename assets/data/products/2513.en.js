@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2513,"desc":["Metal mesh office bin – grey and black"],"more":["Made of sturdy metal mesh, suitable for offices and more."],"specs":[["Type","Bins"]],"options":[{"name":"Colour","values":["Black","Grey"]}]});

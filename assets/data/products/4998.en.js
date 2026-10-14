@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4998,"desc":["Foam soap refills are consumables specially developed for use in dispensers that turn liquid soap into foam. They provide economical, hygienic handwashing while reducing soap and water consumption. Mar Plast refills are bio products that soften and moisturise the hands."],"more":[],"specs":[],"options":[]});

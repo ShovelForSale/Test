@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":5182,"desc":["Silver ceramic vase with wax flowers – a decoration for the home or office, or an elegant, impressive gift."],"more":[],"specs":[],"options":[]});

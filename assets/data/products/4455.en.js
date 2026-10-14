@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4455,"desc":["No-rinse hand disinfectant. Suitable for filling wall-mounted dispensers.","Ministry of Health authorisation No. 2697-1/06.04.2020"],"more":[],"specs":[["Type","Disinfectants"]],"options":[]});

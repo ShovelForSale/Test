@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2472,"desc":["Powder-free (talc-free) vinyl gloves – 100 pcs, blue"],"more":["Material: vinyl","Quantity per box: 100 pcs"],"specs":[["Type","Gloves"],["Colour","Blue"],["Thickness","0,06 mm."],["Pack size","10 boxes × 100 pcs"]],"options":[{"name":"Size","values":["S","M","L","XL","XXL"]}]});

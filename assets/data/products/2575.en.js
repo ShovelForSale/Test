@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2575,"desc":["Yellow 35 L bin bags – 10 per roll"],"more":["Yellow 35 L bin bags – 10 per roll","Polyethylene"],"specs":[["Type","Bin bags"],["Colour","Yellow"],["Material","Polyethylene"],["Pack size","50 rolls per bag"]],"options":[]});

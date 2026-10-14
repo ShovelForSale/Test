@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2503,"desc":["Stainless steel pedal bin, 5 litres"],"more":["Stainless steel waste bin with pedal and lid","Capacity: 5 litres","Outer body – metal, mirror-finish stainless steel","Inner body – removable plastic"],"specs":[["Type","Bins"],["Colour","Stainless steel"],["Dispenser for","Bins"]],"options":[]});

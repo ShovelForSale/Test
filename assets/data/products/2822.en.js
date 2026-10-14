@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2822,"desc":["Non-woven apron – polypropylene (PP) – with ties at the back","Colour: blue"],"more":[],"specs":[["Type","Aprons"]],"options":[{"name":"Size","values":["M","L","XL"]}]});

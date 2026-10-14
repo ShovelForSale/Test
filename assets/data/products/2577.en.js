@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2577,"desc":["Clear 35 L bin bags, 10 per roll","Material: polyethylene plastic","60 rolls per outer bag"],"more":[],"specs":[["Type","Bin bags"],["Colour","Clear"],["Material","Polyethylene"],["Pack size","50 rolls per bag"]],"options":[]});

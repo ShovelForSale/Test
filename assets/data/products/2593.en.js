@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2593,"desc":["Medix toilet bowl cleaner – 750 ml"],"more":[],"specs":[["Type","Cleaning products"],["Pack size","12 pcs"]],"options":[{"name":"Colour","values":["Green","Blue","Purple"]}]});

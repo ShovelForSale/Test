@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3009,"desc":["Decorative napkins, 2-ply, 33×33 cm, 1/8 fold – 60 per pack."],"more":["Napkins for decoupage and decoration, 2-ply, 33×33 cm, 1/8 fold – 60 per pack."],"specs":[["Type","Napkins"],["Ply","2-ply"],["Size","33×33 cm unfolded"],["Fold","1/8 fold – H16.5 × W8.25 cm"]],"options":[]});

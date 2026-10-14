@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4417,"desc":["Maxi jumbo toilet paper. Suitable for busy, high-traffic washrooms. Designed for dispensers over 27–28 cm in diameter. Material: 100% virgin pulp. Roll weight: 980 g.","Number of plies: 3. Rolls per pack: 4."],"more":[],"specs":[["Ply","3-ply"],["Material","100% virgin pulp"],["Pack size","4 per pack"]],"options":[]});

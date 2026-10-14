@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4489,"desc":["Scented, rubberised urinal screens for toilets. Fragrance lasts 30–40 days. Designed to be placed in the urinal. Brand: Fripo"],"more":["Rubberised urinal screen.","Fragrance lasts 30–40 days"],"specs":[["Type","Air fresheners"]],"options":[{"name":"Colour","values":["Blue","Green","Red","Orange","Cyclamen"]}]});

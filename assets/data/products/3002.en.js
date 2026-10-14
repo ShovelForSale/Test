@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3002,"desc":["Christmas napkins with poinsettias, 1-ply, 1/8 fold – 100 per pack.","Brand: Santia"],"more":["Christmas poinsettia napkins, 1-ply, 1/8 fold – 100 per pack."],"specs":[["Type","Napkins"],["Colour","White"],["Ply","1-ply"],["Fold","1/8 fold – H16.5 × W8.25 cm"],["Pack size","30 packs × 100 pcs"]],"options":[]});

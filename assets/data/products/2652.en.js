@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2652,"desc":["Napkins with Bulgarian ornaments (shevitsa embroidery pattern), 1-ply – 100 napkins."],"more":[],"specs":[["Colour","White"],["Brand","Santia"],["Ply","1-ply"],["Size","33×25 cm unfolded"],["Fold","1/8 fold – H16.5 × W8.25 cm"],["Pack size","30 packs × 100 pcs"]],"options":[]});

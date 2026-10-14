@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3126,"desc":["PUROX washing powder for coloured laundry, 5 kg. A pleasant, fresh scent at a great price."],"more":["PUROX detergent for coloured laundry, 5 kg. A pleasant, fresh scent at a great price."],"specs":[["Type","Cleaning products"]],"options":[]});

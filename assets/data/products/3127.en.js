@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3127,"desc":["Laundry detergent for whites, for washing machines. Fresh, pleasant, long-lasting scent. 2 kg. Brand: SAVEX"],"more":[],"specs":[["Type","Cleaning products"]],"options":[]});

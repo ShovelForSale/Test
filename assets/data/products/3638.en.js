@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3638,"desc":["1-ply table napkins, 1/4 fold. Embossed napkins with a leaf print","100 per pack"],"more":[],"specs":[["Ply","1-ply"],["Fold","1/4 fold – H16.5 × W16.5 cm"]],"options":[]});

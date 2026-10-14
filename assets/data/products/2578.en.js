@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2578,"desc":["Black 80 L bin bags, 10 per roll, polyethylene plastic"],"more":["Black 80 L bin bags, 10 per roll, polyethylene plastic"],"specs":[["Type","Bin bags"],["Colour","Black"],["Material","Polyethylene"],["Pack size","100 rolls per bag"]],"options":[]});

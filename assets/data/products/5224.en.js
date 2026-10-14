@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":5224,"desc":["Foam hand soap 6385, Kimberly-Clark refill. Strongly scented foam soap with lemon and tea tree extract.","1 L refill for Kimberly-Clark dispensers."],"more":[],"specs":[["Type","Foam soap"],["Colour","Pink"],["Brand","Kimberly-Clark SCOTT"],["Doses","2500"],["Pack size","6 pcs"]],"options":[]});

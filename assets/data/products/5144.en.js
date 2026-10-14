@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":5144,"desc":["All-purpose cleaner. Pack size: 5 L. Colour: blue","Ideal for deep cleaning and daily maintenance."],"more":[],"specs":[["Type","Cleaning products"]],"options":[]});

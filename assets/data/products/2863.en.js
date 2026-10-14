@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2863,"desc":["Hotel shower cap, plastic (polyethylene). Individually wrapped, 100 pcs per pack.","Carton: 10 packs","The price shown is for a pack of 100."],"more":["Hotel shower cap, plastic (polyethylene). Individually wrapped."],"specs":[["Type","Bouffant caps"]],"options":[]});

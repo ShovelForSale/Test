@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4830,"desc":["Wet wipes with vinegar for cleaning all kinds of surfaces. Quick and easy cleaning of tabletops, cookers, railings, PVC, kitchen worktops, desks and more. Brand: Sano. Carton contents: 24 packs"],"more":[],"specs":[],"options":[]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3302,"desc":["Professional cleaner for deep cleaning and a sparkling bathroom: sinks, shower cubicles, tiles, walls and toilets. Removes even the toughest dirt and build-up. Once you have tried it, you won't want to clean with anything else. Brand: Kiter. 750 ml."],"more":[],"specs":[["Type","Cleaning products"]],"options":[]});

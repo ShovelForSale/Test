@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4903,"desc":["Counter dispenser for dispenser napkins. White table napkin box.","Capacity: 400 napkins","Dimensions: 27×30 cm","Suitable napkin size (folded): W16 × H10.5 cm"],"more":["Table napkin dispenser box, white"],"specs":[["Colour","White"],["Material","ABS plastic"]],"options":[]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":620,"desc":["6190 – Kimberly-Clark Kleenex air freshener refill for dispenser 6994, 3,000 sprays."],"more":["1 refill – 3,000 sprays"],"specs":[["Type","Air fresheners"],["Colour","Clear"],["Brand","Kimberly-Clark KLEENEX"],["Doses","3000 sprays"]],"options":[]});

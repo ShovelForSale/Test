@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":611,"desc":["Pink foam hand soap, Slim, Kimberly-Clark Scott 6346 – refill, 500 doses. Matching dispenser: code 6982"],"more":["1 refill – 500 doses","Matching dispenser: code 6982"],"specs":[["Type","Foam soap"],["Colour","Pink"],["Brand","Kimberly-Clark SCOTT"],["Doses","500"],["Pack size","12 pcs"]],"options":[]});

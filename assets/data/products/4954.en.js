@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4954,"desc":["Tabletop dispenser for 16 cm dispenser napkins. Table napkin box with a black housing.","Capacity: 200 napkins","Dimensions: 160×163×221 mm","Suitable napkin size (folded): W16 × H10.5 cm"],"more":["Table napkin dispenser box, white"],"specs":[["Material","ABS plastic"]],"options":[]});

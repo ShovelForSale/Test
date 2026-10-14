@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4411,"desc":["2-ply Easter napkins with chicks, daisies and eggs. Napkin size: 33×33 cm, 2-ply, smooth with an embossed border and print. 1/4 fold, 40 per pack, for the retail trade. Brand: Santia"],"more":[],"specs":[["Ply","2-ply"],["Fold","1/4 fold – H16.5 × W16.5 cm"]],"options":[]});

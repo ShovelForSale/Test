@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2567,"desc":["Black 20 L bin bags – 50 per roll","Size: 45×50 cm"],"more":["20 L bin bags, size: 45×50 cm, 50 per roll"],"specs":[["Type","Bin bags"],["Colour","Black"],["Material","Polyethylene"],["Pack size","50 rolls per bag"]],"options":[]});

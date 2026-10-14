@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2781,"desc":["Kitchen cleaner, suitable for cleaning cookers, ovens, worktops and more.","Cif kitchen spray has a fast-acting formula that removes grease.","It is enriched with citrus extracts.","Cleans surfaces quickly and easily.","Pack size: 500 ml."],"more":[],"specs":[["Type","Cleaning products"]],"options":[]});

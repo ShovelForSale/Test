@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3880,"desc":["Disposable sleeve covers. Material: polypropylene (PP), TNT non-woven fabric. Colour: white. Suitable for hospitals and production facilities, to protect workwear. 1 pack – 100 pcs"],"more":["Disposable sleeve covers, white polypropylene"],"specs":[],"options":[]});

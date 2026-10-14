@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4966,"desc":["Tork bin for hand towels and waste – wall-mounted. Colour: white. It can be fixed to the wall, which makes floor cleaning easier and frees up space."],"more":[],"specs":[["Type","Bins"],["Colour","White"],["Material","ABS plastic"]],"options":[]});

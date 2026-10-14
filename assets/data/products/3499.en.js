@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3499,"desc":["Christmas napkins, 2-ply, luxury smooth with embossed border.","Unfolded napkin size: 33×33 cm.","Folded napkin size: 16.5×16.5 cm."],"more":["Luxury Christmas napkins with Christmas figures"],"specs":[["Ply","2-ply"],["Fold","1/4 fold – H16.5 × W16.5 cm"]],"options":[]});

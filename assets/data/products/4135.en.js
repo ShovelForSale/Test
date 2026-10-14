@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4135,"desc":["Soft facial tissues, 100 per box.","Colour: white","Number of plies: 2","Material: 100% soft tissue","Brand: Sanitex","1 carton: 36 boxes"],"more":[],"specs":[["Ply","2-ply"],["Material","100% virgin pulp"]],"options":[]});

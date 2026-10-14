@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2859,"desc":["Hand towel rolls, 190 m, 1-ply, Scott* 6697"],"more":[],"specs":[["Type","Hand towels – rolls"],["Brand","Kimberly-Clark SCOTT"]],"options":[{"name":"Packaging","values":["Bag"]}]});

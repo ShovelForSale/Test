@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2743,"desc":["Paper hand towels, V-fold, 21×21 cm, pack of 200, 2-ply – coloured"],"more":["Folded paper hand towels, 2-ply, V-fold, 21×21 cm"],"specs":[["Type","Hand towels – folded"],["Brand","Paper-Converting"],["Ply","2-ply"],["Size","W21.0 × L20.1 cm"],["Pack size","20 packs"]],"options":[]});

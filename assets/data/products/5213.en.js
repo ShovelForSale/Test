@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":5213,"desc":["Stylish scented decoration – a vase with wax flowers, for decor or as an original gift.","Scent: sandalwood. An everlasting jewel of never-fading flowers to adorn your office, hotel or restaurant."],"more":[],"specs":[],"options":[]});

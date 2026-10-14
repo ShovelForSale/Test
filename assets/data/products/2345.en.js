@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2345,"desc":["Shoe covers for automatic dispensers – 100 pcs"],"more":["Polyethylene (PE) shoe covers, 100 pcs per pack","Designed for automatic dispensers, with special side clips for attaching them to the dispenser"],"specs":[["Type","Shoe covers"],["Colour","Blue"],["Material","Polyethylene"]],"options":[]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4849,"desc":["Sano Maxima concentrated fabric softener, 1 litre (1,000 ml) – 40 washes"],"more":["Sano Maxima concentrated fabric softener, Blue Blossom – 1,000 ml."],"specs":[],"options":[{"name":"Colour","values":["Cool","Musk","Zen"]}]});

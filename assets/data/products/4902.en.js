@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4902,"desc":["Restaurant napkins, plain, white, 1/8 fold, multipack of 2,000"],"more":["Plain white restaurant napkins, 1/8 fold, 100 per pack.","30 packs per carton","100% virgin pulp"],"specs":[["Type","Napkins"],["Colour","White"],["Brand","Santia"],["Ply","1-ply"],["Fold","1/8 fold – H16.5 × W8.25 cm"]],"options":[]});

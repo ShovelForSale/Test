@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4766,"desc":["High-quality toilet cleaner – Sano WC Anticalc for cleaning toilets: removes limescale, dried-on stains and rust, cleans and disinfects, and leaves a brilliant shine.","Fragrance: fresh"],"more":[],"specs":[],"options":[]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3445,"desc":["Disposable table covers, suitable for single use in fast-food restaurants. The covers have a PE film backing that protects against spills and grease."],"more":[],"specs":[],"options":[]});

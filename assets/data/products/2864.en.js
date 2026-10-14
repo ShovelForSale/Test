@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2864,"desc":["Round pleat-wrapped hotel soap, 15 g, vanilla","Carton: 250 pcs"],"more":["Round pleat-wrapped hotel soap, 15 g","Packed in packs of 50"],"specs":[["Type","Soap"]],"options":[]});

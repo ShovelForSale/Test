@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3186,"desc":["Cleaner for sanitary ware, bathrooms and sinks. Roli abrasive scouring powder with pine and lemon scents."],"more":["Roli scouring powder for cleaning bathrooms"],"specs":[["Type","Cleaning products"]],"options":[]});

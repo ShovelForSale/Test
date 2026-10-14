@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4708,"desc":["Sano baking paper. Material: 100% thick, dense virgin pulp; both sides can be used for baking.","Temperature: up to 220 °C; suitable for contact with food.","Sheet size: 38×42 cm (sized to fit a standard oven tray)"],"more":[],"specs":[],"options":[]});

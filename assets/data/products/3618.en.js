@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3618,"desc":["Luxury napkins for decoupage and home decoration. Luxury 2-ply napkins – smooth, with embossed border, 40 per pack. All-over print"],"more":[],"specs":[["Ply","2-ply"],["Size","33×33 cm unfolded"],["Fold","1/4 fold – H16.5 × W16.5 cm"],["Pack size","33 packs × 40 pcs"]],"options":[]});

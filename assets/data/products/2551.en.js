@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2551,"desc":["Abrasive window washer for cleaning glass. Professional 35 cm microfibre window mop with an abrasive strip. How to use: 1) use the abrasive strip to remove dried-on marks and heavier build-up from the glass; 2) use the microfibre side to apply your usual window cleaning product."],"more":[],"specs":[],"options":[]});

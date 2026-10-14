@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4775,"desc":["Spray for cleaning furniture and other surfaces. Keeps furniture shining for longer.","Size: 250 ml"],"more":["Polish for wooden surfaces and furniture, leaving a pleasant fragrance and shine. 250 ml can, Pronto spray, brown/yellow."],"specs":[],"options":[]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2685,"desc":["Medix all-purpose floor cleaner – 1.5 L"],"more":[],"specs":[["Type","Cleaning products"]],"options":[{"name":"Colour","values":["Orchid","Violet","Lily","Lilac","Lily of the valley","Fresh air"]}]});

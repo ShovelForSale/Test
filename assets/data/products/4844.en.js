@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4844,"desc":["Sano Maxima fabric softener, 1 L concentrate – 40 washes.","Fresh floral scent that lasts after washing."],"more":[],"specs":[],"options":[{"name":"Colour","values":["Pink","Blue","Purple"]}]});

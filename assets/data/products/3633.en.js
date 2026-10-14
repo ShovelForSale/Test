@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3633,"desc":["Luxury napkins with Bulgarian embroidery (shevitsa) pattern, 2-ply with embossed border, 1/4 fold, 40 per pack.","Folded napkin size: W20 × H20 cm. Code: 057-1 / 20207."],"more":[],"specs":[["Ply","2-ply"],["Size","40×40 cm unfolded"],["Fold","1/4 fold – H20.0 × W20.0 cm"],["Pack size","32 packs × 40 pcs"]],"options":[]});

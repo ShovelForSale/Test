@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4356,"desc":["Professional rinse and polishing aid for dishwashers – My Ocean Rinse","Available in 10 kg and 20 kg packs."],"more":[],"specs":[],"options":[]});

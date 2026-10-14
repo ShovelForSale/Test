@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3073,"desc":["Combination mop holder for floor cleaning. Professional mop holder with clips that can also be slotted into pocket mops. Available in a range of colours"],"more":[],"specs":[],"options":[]});

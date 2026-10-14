@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4234,"desc":["Mini jumbo toilet roll dispenser. Material: plastic. Brand: Vialli. Mounting: with adhesive or by drilling (wall plugs)."],"more":[],"specs":[],"options":[]});

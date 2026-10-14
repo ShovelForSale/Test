@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3620,"desc":["Small black bar napkins – luxury with embossed border, 2-ply. Logo printing available."],"more":[],"specs":[["Colour","Black"],["Ply","2-ply"],["Size","25×25 cm unfolded"],["Fold","1/4 fold – H12.5 × W12.5 cm"]],"options":[{"name":"Napkin pack","values":["1-ply – 600 pcs","2-ply – 300 pcs"]}]});

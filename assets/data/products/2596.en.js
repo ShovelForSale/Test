@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2596,"desc":["Quickly removes everyday dirt in the bathroom. Cif bathroom spray quickly removes everyday bathroom dirt, leaving surfaces shining. Just spray, wipe and you're done! Pleasant, fresh fragrance."],"more":["Cif bathroom spray – 500 ml"],"specs":[["Type","Cleaning products"]],"options":[]});

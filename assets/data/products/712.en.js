@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":712,"desc":["WypAll* L10 Extra industrial wiper roll"],"more":["Industrial wiper roll – cleaning paper"],"specs":[["Colour","Blue"],["Brand","WYPALL L"],["Sheets","1000"],["Packaging","Roll"],["Ply","1-ply"],["Material","Airflex"],["Sheet size","38.0 × 33.0 cm"],["Certificates","Food contact"]],"options":[]});

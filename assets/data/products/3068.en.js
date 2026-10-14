@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3068,"desc":["Evropa sweeping brush, 44 cm. Medium-soft bristles, assorted colours.","Matching handle: straight thread."],"more":["Evropa sweeping brush, 44 cm. Medium-soft bristles, assorted colours."],"specs":[],"options":[]});

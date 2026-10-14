@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2970,"desc":["Medical face masks, ear-loop, 3-ply, 50 per box. Colour: orange","A wide choice of colours. Type IIR."],"more":["Buy orange 3-ply ear-loop medical face masks online, 50 per box.","A wide choice of colours."],"specs":[["Type","Face masks"]],"options":[]});

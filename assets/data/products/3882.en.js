@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3882,"desc":["Disposable plastic sleeve covers. Material: polyethylene (PE). Colour: white. Suitable for hospitals and production facilities, to protect workwear. 1 pack – 100 pcs"],"more":["Disposable sleeve covers, white polypropylene"],"specs":[],"options":[]});

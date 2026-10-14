@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2380,"desc":["Pink napkins, 1-ply, 1/8 fold, 33 cm – 100 napkins."],"more":["Coloured napkins, 1-ply, 1/8 fold, 100 per pack."],"specs":[["Type","Napkins"],["Colour","Pink"],["Brand","Santia"],["Ply","1-ply"],["Size","33×25 cm unfolded"],["Fold","1/8 fold – H16.5 × W8.25 cm"],["Pack size","30 packs × 100 pcs"]],"options":[]});

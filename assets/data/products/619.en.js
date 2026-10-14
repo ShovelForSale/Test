@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":619,"desc":["Joy air freshener, Joy fragrance by Kimberly-Clark Kleenex, code: 6189. 300 ml refill – 3,000 sprays; clear bottle that fits dispenser 6994."],"more":["3,000 sprays","Clear bottle, 300 ml."],"specs":[["Type","Air fresheners"],["Colour","Clear"],["Brand","Kimberly-Clark KLEENEX"],["Doses","3000 sprays"]],"options":[]});

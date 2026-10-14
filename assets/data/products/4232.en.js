@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4232,"desc":["Refillable dispenser for liquid soap, washing-up liquid and other liquids. Brand: Vialli"],"more":[],"specs":[["Type","Soap"],["Brand","Vialli"],["Dispenser for","Soap"]],"options":[]});

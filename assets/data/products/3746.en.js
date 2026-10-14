@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3746,"desc":["Easter napkins with a chick and a bunny – 1-ply, 1/8 fold – 100 napkins."],"more":["Easter Bunny napkins, 1-ply, 1/8 fold – 100 napkins."],"specs":[["Type","Napkins"],["Brand","Santia"],["Ply","1-ply"],["Size","33×25 cm unfolded"],["Fold","1/8 fold – H16.5 × W8.25 cm"]],"options":[]});

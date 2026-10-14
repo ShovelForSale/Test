@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4727,"desc":["Sano Maxima fabric softener, 1 litre pouch. Leaves a pleasant, strong fragrance on your laundry."],"more":["Sano Maxima concentrated fabric softener, Blue Blossom – 1,000 ml."],"specs":[],"options":[{"name":"Colour","values":["Baby","Fresh","Sensitive","Bio"]}]});

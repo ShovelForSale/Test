@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3107,"desc":["Exo washing-up liquid, 475 ml. Pleasant fragrance; removes grease quickly and easily."],"more":["Exo washing-up liquid, 475 ml."],"specs":[["Type","Cleaning products"]],"options":[]});

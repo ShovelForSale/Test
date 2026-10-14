@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":749,"desc":["8154 – KleenGuard V40 outdoor safety glasses – smoke lens"],"more":[],"specs":[["Type","Safety glasses"],["Brand","KLEENGUARD"],["Pack size","12 boxes × 12 pcs"],["Lens","Dark"]],"options":[]});

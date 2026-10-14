@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3278,"desc":["Paper sheets and couch rolls for hospitals and beauty salons – for examination couches.","Rolls with PE film backing, impermeable to liquids"],"more":[],"specs":[["Material","100% virgin pulp"],["Pack size","12 per carton"]],"options":[]});

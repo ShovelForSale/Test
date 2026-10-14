@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3447,"desc":["Disposable paper table covers with a factory-laminated plastic film backing that protects the table from stains and moisture. Suitable for picnics, home use, restaurants, schools and more.","Table covers with a blue anchor design"],"more":[],"specs":[],"options":[]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3129,"desc":["Vanish stain remover for whites, 1 L. A liquid stain remover for exceptional whiteness."],"more":[],"specs":[["Type","Cleaning products"]],"options":[]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":5291,"desc":["Glass cleaner, 5 litres, ready to use. Suitable for cleaning windows, mirrors, shop windows and other smooth surfaces. An economical choice for offices and homes: it evaporates quickly and leaves no streaks. Colour: blue"],"more":[],"specs":[],"options":[]});

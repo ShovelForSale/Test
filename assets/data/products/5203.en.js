@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":5203,"desc":["Hotel shampoo, 12 ml, vanilla fragrance. Brand: Relax","40 pcs per box","Carton contents: 12 boxes × 40 pcs"],"more":["Hotel shampoo sachet, 12 ml"],"specs":[["Type","Shampoo"]],"options":[]});

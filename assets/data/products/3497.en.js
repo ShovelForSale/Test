@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3497,"desc":["Disposable plastic plates. Suitable for picnics, fast food, restaurants and more.","Colour: white","Quantity per pack: 40 pcs"],"more":[],"specs":[],"options":[]});

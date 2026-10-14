@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3542,"desc":["Disposable white table knives, eco white – pack of 100","Suitable for single use, fast food, catering and more."],"more":[],"specs":[],"options":[]});

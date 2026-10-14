@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4999,"desc":["This liquid soap refill is a consumable specially developed for use in Mar Plast dispensers. It provides economical, hygienic handwashing while reducing soap and water consumption. Mar Plast refills are bio products that soften and moisturise the hands."],"more":[],"specs":[],"options":[]});

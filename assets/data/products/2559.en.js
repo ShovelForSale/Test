@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2559,"desc":["Sano Bon toilet rim block. Freshens and scents the toilet bowl and the room","Weight: 55 g"],"more":["Sano Bon toilet rim block. Freshens and scents the toilet bowl and the room"],"specs":[],"options":[{"name":"Colour","values":["Peach","Lavender","Lemon","Apple","Blue water","Green forest","Luxury hotel"]}]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3486,"desc":["Thick disposable cups (2.50 g), clear plastic, 200 ml – 100 cups per pack","36 packs per carton"],"more":["Disposable cups, clear plastic, 200 ml – 100 cups per pack"],"specs":[],"options":[]});

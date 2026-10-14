@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2614,"desc":["Steel wool scourer for cleaning pots and pans, burnt-on residue and grills – 6 pcs, galvanised wire."],"more":["Steel wool scourer for cleaning pots and pans, burnt-on residue and grills"],"specs":[],"options":[]});

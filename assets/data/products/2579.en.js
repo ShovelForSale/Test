@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2579,"desc":["Black bin bags, 60×90 cm – 80 L, 10 pcs"],"more":[],"specs":[["Type","Bin bags"],["Colour","Black"],["Material","Polyethylene"],["Pack size","50 rolls per bag"]],"options":[]});

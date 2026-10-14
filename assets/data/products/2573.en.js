@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2573,"desc":["Black bin bags DP, 60×72 cm – 70 L, 10 pcs"],"more":["Black bin bags DP, 60×72 cm – 70 L, 10 pcs","100 per outer bag"],"specs":[["Type","Bin bags"],["Colour","Black"],["Material","Polyethylene"],["Pack size","100 rolls per bag"]],"options":[]});

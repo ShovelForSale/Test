@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4752,"desc":["Pre-wash stain remover spray for stubborn stains on clothes. Suitable for shirt collars and underarms.","Sano KAL, 750 ml. Brand: Sano"],"more":[],"specs":[],"options":[]});

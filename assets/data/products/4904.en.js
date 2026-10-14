@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4904,"desc":["Professional cleaner and polish for stainless steel surfaces. For an exceptional shine, spray the product onto a microfibre cloth, then wipe the surface. Suitable for cleaning extractor hoods, railings, lifts, bathrooms and more."],"more":[],"specs":[],"options":[]});

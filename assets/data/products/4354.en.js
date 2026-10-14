@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4354,"desc":["Sano Spark washing-up liquid with pump, green – 1 L."],"more":["Sano washing-up liquid with pump, green – 700 ml."],"specs":[],"options":[{"name":"Colour","values":["Green","Yellow"]}]});

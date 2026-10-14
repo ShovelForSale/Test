@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3766,"desc":["Cellophane bags for glasses (15×20 cm) – 200 per pack"],"more":["Hotel cellophane bags for glasses (15×20 cm) – 200 per pack"],"specs":[],"options":[]});

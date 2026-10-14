@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4787,"desc":["Dispenser for wide V-fold paper hand towels (24×21 cm). Colour: white. Brand: Vialli"],"more":[],"specs":[["Type","Hand towels – folded"],["Colour","White"],["Brand","Vialli"],["Dispenser for","Hand towels – folded"]],"options":[]});

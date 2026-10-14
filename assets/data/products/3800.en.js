@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3800,"desc":["Smart One centrefeed toilet paper. Material: 2-ply, white. Number of sheets: 740. Packaging: 6 rolls."],"more":["Smart One toilet paper, luxury 3-ply. Material: 100% virgin pulp."],"specs":[["Type","Toilet paper – rolls"],["Sheets","750"],["Ply","3-ply"],["Material","100% virgin pulp"],["Pack size","6 pcs"]],"options":[]});

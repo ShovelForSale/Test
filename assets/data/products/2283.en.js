@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2283,"desc":["Toilet seat covers – 10 pcs","1 box – 30 packets"],"more":["Toilet seat covers. A small, compact pack that fits in a pocket or handbag. Suitable for use in public places."],"specs":[["Type","Toilet seat covers"],["Colour","White"],["Ply","1-ply"]],"options":[{"name":"Packaging","values":["Box","Pack"]}]});

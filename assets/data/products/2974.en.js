@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2974,"desc":["Napkins for dispensers: dispenser napkins 16 cm wide, for top-pull napkin dispensers.","20 packs per carton × 150 napkins, 2-ply"],"more":[],"specs":[["Type","Napkins"],["Brand","Paper-Converting"],["Ply","2-ply"],["Size","W16.0 × L21.0 cm"],["Pack size","20 packs × 150 pcs"]],"options":[]});

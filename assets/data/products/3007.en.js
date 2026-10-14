@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3007,"desc":["Luxury decorative napkins with ornaments, 2-ply, 33×33 cm, 1/4 fold."],"more":["Luxury napkins with ornaments, 2-ply, 33×33 cm, 1/4 fold."],"specs":[["Type","Napkins"],["Brand","Santia"],["Ply","2-ply"],["Fold","1/4 fold – H16.5 × W16.5 cm"],["Pack size","33 packs × 40 pcs"]],"options":[]});

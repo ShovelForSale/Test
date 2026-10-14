@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4304,"desc":["White kitchen roll, 100% virgin pulp. 2-ply paper for wiping hands and soaking up liquids. Perforated for easy tearing. Brand:"],"more":["Material: 100% virgin pulp","Packaging: 6 rolls per bag"],"specs":[["Type","Kitchen roll"],["Ply","2-ply"],["Material","100% virgin pulp"],["Pack size","6 pcs"]],"options":[]});

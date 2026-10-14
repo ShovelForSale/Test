@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2852,"desc":["Yellow napkins, 33×33 cm, 1/8 fold, luxury smooth with embossed border, 2-ply – 150 per pack."],"more":["Yellow napkins, 2-ply, 33×33 cm, 1/8 fold."],"specs":[["Type","Napkins"],["Colour","Yellow"],["Fold","1/8 fold – H16.5 × W8.25 cm"],["Pack size","20 packs × 150 pcs"]],"options":[]});

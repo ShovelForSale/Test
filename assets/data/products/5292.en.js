@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":5292,"desc":["Medix dishwasher tablets, 72 pcs. Tablets for exceptionally sparkling dishes.","Ingredients: 5–15% oxygen-based bleaching agents, polycarboxylates; <5% non-ionic surfactants, phosphonates, enzymes, perfume, Limonene."],"more":[],"specs":[],"options":[]});

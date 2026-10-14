@@ -8,6 +8,7 @@ const R = 5.5, CORE = 2, W = 10, SHEET = 11;   // cm: roll radius, core radius, 
 const REST = 13, MIN = 8, MAXL = 27;            // hanging length at rest, shortest and longest
 const WALL = -(R + 2.4);                        // the wall behind the roll
 const CURL = 2.6, CURL_R = 3.4;                 // the end of the sheet curls towards you
+const EN = document.documentElement.lang === 'en';
 
 /* the motif embossed on the company's paper: a flower, a vine with a leaf, small curls */
 const MOTIF = [
@@ -164,7 +165,7 @@ export function createRoll(host, { reduce = false, hold = () => {}, preserve = f
   const canvas = renderer.domElement;
   canvas.className = 'roll3d';
   canvas.setAttribute('role', 'button');
-  canvas.setAttribute('aria-label', 'Ролка тоалетна хартия. Дръпнете листа надолу, за да го откъснете.');
+  canvas.setAttribute('aria-label', EN ? 'Toilet roll. Pull the sheet down to tear it off.' : 'Ролка тоалетна хартия. Дръпнете листа надолу, за да го откъснете.');
   canvas.tabIndex = 0;
 
   const scene = new THREE.Scene();
@@ -243,7 +244,7 @@ export function createRoll(host, { reduce = false, hold = () => {}, preserve = f
 
   const hint = document.createElement('span');
   hint.className = 'roll3d__hint';
-  hint.innerHTML = '<span>Дръпнете ↓</span>';
+  hint.innerHTML = `<span>${EN ? 'Pull ↓' : 'Дръпнете ↓'}</span>`;
   host.append(canvas, hint);
 
   /* state: L = hanging length, U = paper unrolled so far */

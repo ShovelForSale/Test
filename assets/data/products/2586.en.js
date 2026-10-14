@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2586,"desc":["Thick black bin bags, 90×160 cm – 300 L, 1 pc"],"more":[],"specs":[["Type","Bin bags"],["Packaging","Bag"],["Material","Polyethylene"]],"options":[]});

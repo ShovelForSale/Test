@@ -3,7 +3,7 @@
 (() => {
   'use strict';
 
-  const { $, $$, esc, reduce, IMG, getProduct, productCard, priceHtml, prodUrl, whileVisible, params, cartAsText } = window.PC;
+  const { $, $$, esc, reduce, IMG, tr, getProduct, productCard, priceHtml, prodUrl, whileVisible, params, cartAsText } = window.PC;
   const scriptUrl = document.currentScript && document.currentScript.src;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const wait = ms => new Promise(r => setTimeout(r, ms));
@@ -34,15 +34,15 @@
 
   /* ---------------- napkin colour picker ---------------- */
   const NAPKINS = [
-    { id: 2313, color: 'Червено', c: '#c8102e' },
-    { id: 4533, color: 'Бордо', c: '#6d1a2a' },
-    { id: 2426, color: 'Шампанско', c: '#e3cf9e', light: true },
-    { id: 2403, color: 'Жълто', c: '#f2c230', light: true },
-    { id: 4688, color: 'Светлозелено', c: '#9cc83c', light: true },
-    { id: 2322, color: 'Синьо', c: '#1f4fa8' },
-    { id: 4693, color: 'Пепел от рози', c: '#c99aa6', light: true },
-    { id: 2348, color: 'Черно', c: '#1d1d1f' },
-    { id: 2465, color: 'Бяло', c: '#f7f5f0', light: true, white: true },
+    { id: 2313, color: tr('Червено', 'Red'), c: '#c8102e' },
+    { id: 4533, color: tr('Бордо', 'Burgundy'), c: '#6d1a2a' },
+    { id: 2426, color: tr('Шампанско', 'Champagne'), c: '#e3cf9e', light: true },
+    { id: 2403, color: tr('Жълто', 'Yellow'), c: '#f2c230', light: true },
+    { id: 4688, color: tr('Светлозелено', 'Light green'), c: '#9cc83c', light: true },
+    { id: 2322, color: tr('Синьо', 'Blue'), c: '#1f4fa8' },
+    { id: 4693, color: tr('Пепел от рози', 'Dusty rose'), c: '#c99aa6', light: true },
+    { id: 2348, color: tr('Черно', 'Black'), c: '#1d1d1f' },
+    { id: 2465, color: tr('Бяло', 'White'), c: '#f7f5f0', light: true, white: true },
   ].map(n => ({ ...n, p: getProduct(n.id) })).filter(n => n.p);
 
   const sw = $('#swatches');
@@ -79,7 +79,7 @@
   const msg = $('#f-msg');
   const asked = params.get('product') && getProduct(params.get('product'));
   if (msg && (params.get('quote') === 'cart' || asked)) {
-    msg.value = asked ? `Бих искал(а) оферта за:\n${asked.name}${params.get('opt') ? ` (${params.get('opt')})` : ''}\nКоличество: ${params.get('qty') || 1}` : cartAsText();
+    msg.value = asked ? `${tr('Бих искал(а) оферта за:', 'I would like a quote for:')}\n${asked.name}${params.get('opt') ? ` (${params.get('opt')})` : ''}\n${tr('Количество', 'Quantity')}: ${params.get('qty') || 1}` : cartAsText();
     history.replaceState(null, '', location.pathname + '#contact');
     requestAnimationFrame(() => {
       $('#contact').scrollIntoView();
@@ -290,7 +290,7 @@
     });
     sheet.setAttribute('tabindex', '0');
     sheet.setAttribute('role', 'button');
-    sheet.setAttribute('aria-label', 'Откъснете лист');
+    sheet.setAttribute('aria-label', tr('Откъснете лист', 'Tear off a sheet'));
 
     const zig = (y, from, to, amp) => {
       let d = '';
@@ -442,7 +442,7 @@
     const picks = NAPKINS.filter(n => !n.white).slice(0, 7);
     art.innerHTML = picks.map((n, i) => {
       const a = -26 + i * 12;
-      return `<button type="button" class="fan-nap${n.light ? ' is-light' : ''}" style="--c:${n.c};--a:${a}deg;--d:${(i * .07).toFixed(2)}s" data-nap="${NAPKINS.indexOf(n)}" aria-label="${esc(n.color)} салфетки"><span>${esc(n.color)}</span></button>`;
+      return `<button type="button" class="fan-nap${n.light ? ' is-light' : ''}" style="--c:${n.c};--a:${a}deg;--d:${(i * .07).toFixed(2)}s" data-nap="${NAPKINS.indexOf(n)}" aria-label="${esc(tr(`${n.color} салфетки`, `${n.color} napkins`))}"><span>${esc(n.color)}</span></button>`;
     }).join('');
     art.addEventListener('click', e => {
       const b = e.target.closest('.fan-nap');

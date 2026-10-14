@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":5148,"desc":["Scented urinal screens for toilets or any other room. Fragrances: Green Apple and Ocean Breeze. Lasts 30 days. Packaging: 12 pcs per box; 144 pcs per carton (8 packs × 12 pcs)."],"more":[],"specs":[["Type","Air fresheners"],["Colour","Blue, green"]],"options":[{"name":"Colour","values":["Green","Blue"]}]});

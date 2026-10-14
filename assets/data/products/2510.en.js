@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2510,"desc":["Sanitary disposal bags for the dispenser – 25 pcs."],"more":["Polyethylene sanitary disposal bags for ladies' toilets"],"specs":[["Type","Toilet seat covers"],["Material","Polyethylene"],["Pack size","48 boxes × 25 pcs"]],"options":[]});

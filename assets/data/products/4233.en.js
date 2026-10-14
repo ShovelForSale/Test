@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4233,"desc":["Refillable dispenser for foam hand soap and other liquids. Brand: Vialli"],"more":["Refillable dispenser for liquid soap, washing-up liquid and other liquids. Brand: Vialli"],"specs":[["Type","Foam soap"],["Brand","Vialli"],["Dispenser for","Foam soap"]],"options":[]});

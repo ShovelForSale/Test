@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2656,"desc":["Red napkins with embossed border, 1/8 fold, 2-ply, 33×33 cm."],"more":[],"specs":[["Type","Napkins"],["Colour","Red"],["Brand","Santia"],["Ply","2-ply"],["Size","33×33 cm unfolded"],["Fold","1/8 fold – H16.5 × W8.25 cm"],["Pack size","20 packs × 150 pcs"]],"options":[]});

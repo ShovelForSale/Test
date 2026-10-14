@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2569,"desc":["35 L bin bags – 20 per roll"],"more":["Material: polyethylene plastic","Outer bag: 100 rolls"],"specs":[["Type","Bin bags"],["Colour","Black"],["Material","Polyethylene"],["Pack size","100 rolls per bag"]],"options":[]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2511,"desc":["Santia Christmas Candle napkins – 1-ply, 1/8 fold – 100 per pack."],"more":[],"specs":[["Type","Napkins"],["Colour","White"],["Brand","Santia"],["Ply","1-ply"],["Size","33×25 cm unfolded"],["Fold","1/8 fold – H16.5 × W8.25 cm"],["Pack size","30 packs × 100 pcs"]],"options":[]});

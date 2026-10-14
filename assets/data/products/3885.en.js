@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3885,"desc":["Microfibre cloth for glass and mirrors.","Material: 80% polyester and 20% polyamide","Carton: 240 pcs"],"more":["Coloured microfibre cloths on a roll, 1 pc. Brand"],"specs":[],"options":[]});

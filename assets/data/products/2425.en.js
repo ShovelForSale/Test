@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2425,"desc":["White luxury napkins, 2-ply – 40 per pack."],"more":["White luxury napkins, 2-ply – smooth with embossed border."],"specs":[["Type","Napkins"],["Colour","White"],["Brand","Santia"],["Ply","2-ply"],["Size","33×33 cm unfolded"],["Fold","1/4 fold – H16.5 × W16.5 cm"],["Pack size","33 packs × 40 pcs"]],"options":[]});

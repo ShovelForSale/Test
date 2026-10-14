@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4952,"desc":["Paper kitchen roll, 66 m"],"more":["Carlo kitchen roll, 700 g, 100% virgin pulp","Very thick and highly absorbent for grease and liquids."],"specs":[["Type","Kitchen roll"],["Ply","2-ply"]],"options":[]});

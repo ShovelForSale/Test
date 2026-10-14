@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2585,"desc":["Thick black bin bags, 80×110 cm – 130 L, 10 pcs"],"more":[],"specs":[["Type","Bin bags"],["Colour","Black"],["Material","Polyethylene"],["Pack size","30 rolls per bag"]],"options":[]});

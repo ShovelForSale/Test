@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":5256,"desc":["Paper couch sheet without film – couch rolls for hospitals, beauty salons and examination couches.","Material: virgin pulp","Width: 50 cm","Length: 50 m"],"more":[],"specs":[["Material","100% virgin pulp"],["Pack size","12 per carton"]],"options":[]});

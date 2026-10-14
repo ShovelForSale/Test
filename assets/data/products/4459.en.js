@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4459,"desc":["Hand towel rolls for automatic dispensers with a built-in cutter. Autocut hand towel rolls, 165 m, 1-ply. Material: 100% virgin pulp. Also works with push-button dispensers."],"more":[],"specs":[["Ply","2-ply"],["Material","100% virgin pulp"]],"options":[]});

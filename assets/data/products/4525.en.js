@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4525,"desc":["White dispenser for shoe covers, gloves and more. Facial tissue dispenser for hotels","Size: 25.6×14×6 cm","Colour: white","Material: plastic"],"more":[],"specs":[],"options":[]});

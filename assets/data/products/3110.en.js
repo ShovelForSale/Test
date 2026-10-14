@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3110,"desc":["White disposable shoe covers made of polypropylene non-woven. Colour: white. 100 per pack"],"more":[],"specs":[["Type","Shoe covers"]],"options":[]});

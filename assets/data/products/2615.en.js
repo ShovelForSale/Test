@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2615,"desc":["Oval bucket with wringer basket"],"more":["Plastic bucket with wringer basket for floor cleaning.","Material: strong, impact-resistant plastic"],"specs":[["Colour","Grey, blue, green, red"],["Material","ABS plastic"]],"options":[]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3829,"desc":["Small luxury cocktail napkins, 12×12 cm, 2-ply with embossed border. Logo printing available."],"more":[],"specs":[["Colour","White"],["Ply","2-ply"],["Size","W24.0 × L24.0 cm"],["Fold","1/4 fold – H12.0 × W12.0 cm"]],"options":[]});

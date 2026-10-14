@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3515,"desc":["Floor cleaner for parquet, laminate and wooden surfaces. Leaves a shine and a pleasant scent. Brand: Sano Poliwix"],"more":[],"specs":[],"options":[{"name":"Packaging","values":["Bottle 1 L","Bottle 2 L"]}]});

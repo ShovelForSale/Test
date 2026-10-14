@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2793,"desc":["Medix Sensitive creamy liquid soap with a delicate fragrance. Suitable for sensitive skin. Enriched with aloe vera extract."],"more":[],"specs":[],"options":[]});

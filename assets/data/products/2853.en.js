@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2853,"desc":["Black luxury napkins, 33×33 cm, 2-ply, 1/8 fold – 150 per pack.","Company logo printing available."],"more":["Black luxury 2-ply napkins with embossed border, 1/8 fold."],"specs":[["Type","Napkins"],["Colour","Black"],["Ply","2-ply"],["Fold","1/8 fold – H16.5 × W8.25 cm"]],"options":[]});

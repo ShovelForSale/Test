@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4486,"desc":["Printing on luxury napkins, 40×40 cm, 2-ply, luxury with embossed border.","Napkins with a company logo – Intriga restaurant"],"more":[],"specs":[["Colour","White"],["Ply","2-ply"],["Size","40×40 cm unfolded"],["Fold","1/8 fold – H20.0 × W10.0 cm"],["Pack size","18 packs × 70 pcs"]],"options":[]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3887,"desc":["Dry household cloths for dusting and cleaning surfaces. Absorbent dry cloths.","Pack: 3 cloths","Colours: yellow, blue and pink"],"more":["Soft, dry household cloths for dusting and cleaning surfaces.","Pack of 3 cloths"],"specs":[],"options":[]});

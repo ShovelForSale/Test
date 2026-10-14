@@ -7,8 +7,14 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = matchMedia('(pointer: fine)').matches;
-  const IMG = 'assets/img/';
+  /* the English pages live in en/ and set <html lang="en">; assets are found from this script's own address */
+  const EN = document.documentElement.lang === 'en';
+  const tr = (bg, en) => (EN ? en : bg);
+  const ROOT = (() => { try { return new URL('../../', document.currentScript.src).href; } catch { return EN ? '../' : ''; } })();
+  const IMG = ROOT + 'assets/img/';
   const BGN = 1.95583;
+  const PHONE = tr('0882 027 070', '+359 882 027 070');
+  const telLink = `<a href="tel:+359882027070">${PHONE}</a>`;
 
   const store = {
     get(k, d) { try { const v = localStorage.getItem('pcp.' + k); return v === null ? d : JSON.parse(v); } catch { return d; } },
@@ -18,11 +24,19 @@
   const eur = v => '€' + Number(v).toFixed(2);
   const bgn = v => (v * BGN).toFixed(2) + ' лв.';
   const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+  const products = n => plural(n, tr('продукт', 'product'), tr('продукта', 'products'));
 
   /* ======================================================
      CATALOG — indexes over the imported data
      ====================================================== */
   const CAT = window.PC_CATALOG || { categories: [], products: [], new: [], promo: [] };
+  /* English names and descriptions come from assets/data/catalog.en.js (made by tools/build_pages.py);
+     the Bulgarian name stays in .bg so a search in Bulgarian still finds the product */
+  const L10N = EN && window.PC_CATALOG_EN;
+  if (L10N) {
+    CAT.categories.forEach(c => { const t = L10N.c[c.id]; c.bg = c.name; if (t) { if (t.n) c.name = t.n; if (t.d) c.desc = t.d; } });
+    CAT.products.forEach(p => { const t = L10N.p[p.id]; p.bg = p.name; if (t) { if (t.n) p.name = t.n; if (t.s) p.size = t.s; } });
+  }
   const catById = new Map(CAT.categories.map(c => [c.id, c]));
   const prodById = new Map(CAT.products.map(p => [p.id, p]));
   const kids = new Map();
@@ -69,13 +83,21 @@
   const discount = p => (p.oldGross && p.oldGross > p.gross ? Math.round((1 - p.gross / p.oldGross) * 100) : 0);
   /* stock is left out of the data when the product is simply in stock */
   const soldOut = p => /изчерпан/i.test(p.stock || '');
+  /* the shop's stock notes, in a few words: [kind, text] */
+  function stockNote(p) {
+    const s = p.stock || '', left = s.match(/(\d+)/);
+    if (!s) return ['ok', tr('В наличност', 'In stock')];
+    if (soldOut(p)) return ['out', tr('Изчерпан', 'Out of stock')];
+    if (/^остават/i.test(s)) return ['low', tr(`Остават ${left ? left[1] : ''} бр.`, `Only ${left ? left[1] : 'a few'} left`)];
+    if (/разпродажба|до изчерпване/i.test(s)) return ['sale', tr('Разпродажба', 'While stocks last')];
+    if (/заявка/i.test(s)) return ['ask', tr('По заявка', 'Made to order')];
+    if (/запитване/i.test(s)) return ['ask', tr('По запитване', 'On request')];
+    return ['ask', EN ? 'Ask about stock' : s];
+  }
   function stockBadge(p) {
-    const s = p.stock || '';
-    if (!s) return '';
-    if (soldOut(p)) return '<span class="pbadge pbadge--muted">Изчерпан</span>';
-    if (/^остават/i.test(s)) return `<span class="pbadge pbadge--low">${esc(s.replace(/^остават само/i, 'Остават').replace(/броя$/, 'бр.'))}</span>`;
-    if (/разпродажба|до изчерпване/i.test(s)) return '<span class="pbadge pbadge--sale">Разпродажба</span>';
-    return `<span class="pbadge pbadge--muted">${esc(/заявка/i.test(s) ? 'По заявка' : s)}</span>`;
+    if (!p.stock) return '';
+    const [kind, text] = stockNote(p);
+    return `<span class="pbadge pbadge--${{ low: 'low', sale: 'sale' }[kind] || 'muted'}">${esc(text)}</span>`;
   }
   const home = document.body.dataset.page === 'home' ? '' : 'index.html';
   const quoteUrl = (id, extra = '') => `${home || 'index.html'}?product=${id}${extra}#contact`;
@@ -84,16 +106,16 @@
 
   /* price without VAT first, the price with VAT under it */
   const priceHtml = p => (!p.gross
-    ? '<p class="price__main"><b class="price__ask">Цена по запитване</b></p><span>Според количество и печат</span>'
-    : `<p class="price__main">${discount(p) ? `<s>${eur(p.oldNet)}</s>` : ''}<b>${eur(p.net)}</b><em>без ДДС</em></p>`
-      + `<span>с ДДС: ${eur(p.gross)} · ${bgn(p.gross)}</span>`);
+    ? `<p class="price__main"><b class="price__ask">${tr('Цена по запитване', 'Price on request')}</b></p><span>${tr('Според количество и печат', 'Depends on quantity and print')}</span>`
+    : `<p class="price__main">${discount(p) ? `<s>${eur(p.oldNet)}</s>` : ''}<b>${eur(p.net)}</b><em>${tr('без ДДС', 'excl. VAT')}</em></p>`
+      + (EN ? `<span>incl. VAT: ${eur(p.gross)}</span>` : `<span>с ДДС: ${eur(p.gross)} · ${bgn(p.gross)}</span>`));
 
   /* the product card used on the home page, category pages and "related" rows */
   function productCard(p, i = 0, extra = {}) {
     const off = discount(p);
     const badges = [
-      isOwn(p) ? '<span class="pbadge">Собствено производство</span>' : '',
-      extra.hit ? '<span class="pbadge pbadge--hit">Хит</span>' : '',
+      isOwn(p) ? `<span class="pbadge">${tr('Собствено производство', 'Made by us')}</span>` : '',
+      extra.hit ? `<span class="pbadge pbadge--hit">${tr('Хит', 'Bestseller')}</span>` : '',
       off ? `<span class="pbadge pbadge--sale">−${off}%</span>` : '',
       stockBadge(p),
     ].join('');
@@ -106,9 +128,9 @@
         <a class="product__name" href="${prodUrl(p.id)}">${esc(p.name)}</a>
         <span class="price__meta">${esc(meta)}</span>
         <div class="price">${priceHtml(p)}</div>
-        ${ask ? `<a class="add add--ask" href="${quoteUrl(p.id)}">Поискайте оферта</a>`
-          : out ? `<a class="add add--ask" href="${quoteUrl(p.id)}">Запитване за наличност</a>`
-          : `<button type="button" class="add" data-add="${p.id}">${cartIcon}<span>Добави</span></button>`}
+        ${ask ? `<a class="add add--ask" href="${quoteUrl(p.id)}">${tr('Поискайте оферта', 'Request a quote')}</a>`
+          : out ? `<a class="add add--ask" href="${quoteUrl(p.id)}">${tr('Запитване за наличност', 'Ask about stock')}</a>`
+          : `<button type="button" class="add" data-add="${p.id}">${cartIcon}<span>${tr('Добави', 'Add')}</span></button>`}
       </div>
     </article>`;
   }
@@ -160,8 +182,9 @@
       const grand = children(ch.id).slice(0, 5).map(g => `<a class="mega__grand" href="${catUrl(g.id)}">${esc(g.name)}</a>`).join('');
       return `<div class="mega__sub"><a href="${catUrl(ch.id)}">${esc(ch.name)} <small>${catProducts(ch.id).length}</small></a>${grand}</div>`;
     }).join('');
-    megaPanel.innerHTML = `<div><h3><a href="${catUrl(c.id)}">${esc(c.name)}</a></h3><div class="mega__subs">${subs || `<a href="${catUrl(c.id)}">Всички продукти</a>`}</div></div>
-      <a class="mega__pic" href="${catUrl(c.id)}"><img src="${catImage(c)}" alt="">Всички ${plural(catProducts(c.id).length, 'продукт', 'продукта')}</a>`;
+    const n = catProducts(c.id).length;
+    megaPanel.innerHTML = `<div><h3><a href="${catUrl(c.id)}">${esc(c.name)}</a></h3><div class="mega__subs">${subs || `<a href="${catUrl(c.id)}">${tr('Всички продукти', 'All products')}</a>`}</div></div>
+      <a class="mega__pic" href="${catUrl(c.id)}"><img src="${catImage(c)}" alt="">${EN ? (n === 1 ? 'See 1 product' : `See all ${n} products`) : `Всички ${products(n)}`}</a>`;
   }
   function setMega(open) {
     mega.hidden = !open;
@@ -187,8 +210,8 @@
 
   /* mobile drawer mirrors the same tree */
   $('#drawerNav').innerHTML = tops.map(c => `<details><summary>${esc(c.name)}</summary>
-      <a href="${catUrl(c.id)}">Всички продукти</a>${children(c.id).map(ch => `<a href="${catUrl(ch.id)}">${esc(ch.name)}</a>`).join('')}</details>`).join('')
-    + `<a href="category.html?id=new">Ново</a><a class="is-sale" href="category.html?id=promo">Промоции</a><a href="${home}#contact" data-close>Контакти</a>`;
+      <a href="${catUrl(c.id)}">${tr('Всички продукти', 'All products')}</a>${children(c.id).map(ch => `<a href="${catUrl(ch.id)}">${esc(ch.name)}</a>`).join('')}</details>`).join('')
+    + `<a href="category.html?id=new">${tr('Ново', 'New')}</a><a class="is-sale" href="category.html?id=promo">${tr('Промоции', 'Offers')}</a><a href="${home}#contact" data-close>${tr('Контакти', 'Contact')}</a>`;
 
   addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
@@ -200,8 +223,8 @@
   const q = $('#q'), drop = $('#searchDrop');
   const norm = s => String(s).toLowerCase().replace(/[×x]/g, 'х').replace(/ё/g, 'е').replace(/[^\p{L}\p{N}%/.,]+/gu, ' ').trim();
   const INDEX = [
-    ...CAT.categories.map(c => ({ kind: 'cat', id: c.id, name: c.name, label: pathTo(c.id).map(x => x.name).join(' › '), text: norm(pathTo(c.id).map(x => x.name).join(' ')) })),
-    ...CAT.products.map(p => ({ kind: 'prod', id: p.id, name: p.name, text: norm(`${p.name} ${p.brand || ''} ${p.size || ''}`), p })),
+    ...CAT.categories.map(c => ({ kind: 'cat', id: c.id, name: c.name, label: pathTo(c.id).map(x => x.name).join(' › '), text: norm(pathTo(c.id).map(x => `${x.name} ${x.bg || ''}`).join(' ')) })),
+    ...CAT.products.map(p => ({ kind: 'prod', id: p.id, name: p.name, text: norm(`${p.name} ${p.bg || ''} ${p.brand || ''} ${p.size || ''}`), p })),
   ];
   function searchAll(term) {
     const words = norm(term).split(' ').filter(Boolean);
@@ -224,12 +247,14 @@
     hits = [...cats, ...prods.slice(0, 6)];
     active = -1;
     if (!hits.length) {
-      drop.innerHTML = `<p class="search__empty">Няма резултати за „${esc(term)}“. Обадете се на <a href="tel:+359882027070"><b>0882 027 070</b></a> и ще ви помогнем.</p>`;
+      drop.innerHTML = EN
+        ? `<p class="search__empty">No results for “${esc(term)}”. Call us on <a href="tel:+359882027070"><b>${PHONE}</b></a> and we will help.</p>`
+        : `<p class="search__empty">Няма резултати за „${esc(term)}“. Обадете се на <a href="tel:+359882027070"><b>${PHONE}</b></a> и ще ви помогнем.</p>`;
     } else {
       drop.innerHTML =
-        (cats.length ? '<p class="search__group">Категории</p>' + cats.map((x, i) => `<a class="search__item" data-k="${i}" href="${catUrl(x.id)}">${mark(x.label, term)}</a>`).join('') : '') +
-        (prods.length ? '<p class="search__group">Продукти</p>' + prods.slice(0, 6).map((x, i) => `<a class="search__item" data-k="${cats.length + i}" href="${prodUrl(x.id)}"><img src="${x.p.img ? IMG + x.p.img : IMG + 'logo-badge.png'}" alt="">${mark(x.name, term)}<small>${x.p.gross ? `${eur(x.p.net)} без ДДС` : 'по запитване'}</small></a>`).join('') : '') +
-        (prods.length > 6 ? `<a class="search__all" href="category.html?q=${encodeURIComponent(term)}">Виж всички ${prods.length} продукта</a>` : '');
+        (cats.length ? `<p class="search__group">${tr('Категории', 'Categories')}</p>` + cats.map((x, i) => `<a class="search__item" data-k="${i}" href="${catUrl(x.id)}">${mark(x.label, term)}</a>`).join('') : '') +
+        (prods.length ? `<p class="search__group">${tr('Продукти', 'Products')}</p>` + prods.slice(0, 6).map((x, i) => `<a class="search__item" data-k="${cats.length + i}" href="${prodUrl(x.id)}"><img src="${x.p.img ? IMG + x.p.img : IMG + 'logo-badge.png'}" alt="">${mark(x.name, term)}<small>${x.p.gross ? `${eur(x.p.net)} ${tr('без ДДС', 'excl. VAT')}` : tr('по запитване', 'on request')}</small></a>`).join('') : '') +
+        (prods.length > 6 ? `<a class="search__all" href="category.html?q=${encodeURIComponent(term)}">${tr(`Виж всички ${prods.length} продукта`, `See all ${prods.length} products`)}</a>` : '');
     }
     drop.hidden = false;
     q.setAttribute('aria-expanded', 'true');
@@ -256,6 +281,8 @@
   /* ---------------- cart (keeps a snapshot of each line, so it works on every page) ---------------- */
   let lines = store.get('cart2', []).filter(l => l && l.key && l.qty > 0);
   const save = () => store.set('cart2', lines);
+  /* a line shows the product's name in the page's language when the product is still in the catalog */
+  const lineName = l => (prodById.get(l.id) || l).name;
   const totals = () => lines.reduce((a, l) => ({ net: a.net + l.net * l.qty, gross: a.gross + l.gross * l.qty, qty: a.qty + l.qty }), { net: 0, gross: 0, qty: 0 });
   function updateHeader(bump) {
     const t = totals(), badge = $('#cartCount');
@@ -267,9 +294,9 @@
   function renderCart() {
     const list = $('#cartList'), t = totals();
     list.innerHTML = lines.length ? lines.map(l => `<li class="cart__item"><img src="${l.img ? IMG + l.img : IMG + 'logo-badge.png'}" alt="">
-        <div><h4><a href="${prodUrl(l.id)}">${esc(l.name)}</a></h4>${l.opt ? `<small>${esc(l.opt)}</small><br>` : ''}<small>${eur(l.net)} без ДДС × ${l.qty}</small></div>
-        <div class="qty"><button type="button" data-q="-1" data-key="${esc(l.key)}" aria-label="Намали количеството">−</button><span>${l.qty}</span><button type="button" data-q="1" data-key="${esc(l.key)}" aria-label="Увеличи количеството">+</button></div></li>`).join('')
-      : '<li class="cart__empty">Количката е празна.<br>Добавете продукти от каталога.</li>';
+        <div><h4><a href="${prodUrl(l.id)}">${esc(lineName(l))}</a></h4>${l.opt ? `<small>${esc(l.opt)}</small><br>` : ''}<small>${eur(l.net)} ${tr('без ДДС', 'excl. VAT')} × ${l.qty}</small></div>
+        <div class="qty"><button type="button" data-q="-1" data-key="${esc(l.key)}" aria-label="${tr('Намали количеството', 'Decrease quantity')}">−</button><span>${l.qty}</span><button type="button" data-q="1" data-key="${esc(l.key)}" aria-label="${tr('Увеличи количеството', 'Increase quantity')}">+</button></div></li>`).join('')
+      : `<li class="cart__empty">${tr('Количката е празна.<br>Добавете продукти от каталога.', 'Your basket is empty.<br>Add products from the catalogue.')}</li>`;
     $('#cartNet').textContent = eur(t.net);
     $('#cartVat').textContent = eur(t.gross - t.net);
     $('#cartTotal').textContent = eur(t.gross);
@@ -277,7 +304,7 @@
   }
   function addToCart(id, { qty = 1, opt = '', from } = {}) {
     const p = getProduct(id);
-    if (!p) { toast('Продуктът не е намерен в каталога.'); return; }
+    if (!p) { toast(tr('Продуктът не е намерен в каталога.', 'This product is not in the catalogue.')); return; }
     const key = opt ? `${p.id}|${opt}` : String(p.id);
     const line = lines.find(l => l.key === key);
     if (line) line.qty += qty;
@@ -289,10 +316,10 @@
       from.classList.add('done');
       const label = from.querySelector('span') || from;
       const old = label.textContent;
-      label.textContent = 'Добавено';
+      label.textContent = tr('Добавено', 'Added');
       setTimeout(() => { label.textContent = old; from.classList.remove('done'); }, 1400);
     }
-    toast(`Добавено в количката: ${p.name}`);
+    toast(`${tr('Добавено в количката', 'Added to your basket')}: ${p.name}`);
   }
   function fly(img, target, cb) {
     const a = img.getBoundingClientRect(), b = target.getBoundingClientRect();
@@ -322,7 +349,10 @@
   });
   function cartAsText() {
     const t = totals();
-    return 'Бих искал(а) оферта за:\n' + lines.map(l => `${l.qty} × ${l.name}${l.opt ? ` (${l.opt})` : ''}, ${eur(l.net)} без ДДС`).join('\n') + `\n\nОбщо: ${eur(t.net)} без ДДС (${eur(t.gross)} с ДДС)`;
+    const vat = tr('без ДДС', 'excl. VAT');
+    return tr('Бих искал(а) оферта за:', 'I would like a quote for:') + '\n'
+      + lines.map(l => `${l.qty} × ${lineName(l)}${l.opt ? ` (${l.opt})` : ''}, ${eur(l.net)} ${vat}`).join('\n')
+      + `\n\n${tr('Общо', 'Total')}: ${eur(t.net)} ${vat} (${eur(t.gross)} ${tr('с ДДС', 'incl. VAT')})`;
   }
   $('#cartToQuote').addEventListener('click', () => {
     if (!lines.length) return;
@@ -345,8 +375,8 @@
       open = !['Sat', 'Sun'].includes(parts.weekday) && mins >= 510 && mins < 1050;
     } catch { /* no time zone data */ }
     const top = $('#openStatus'), pill = $('#openPill');
-    if (top) { top.classList.toggle('is-open', open); top.lastChild.textContent = open ? 'Отворено сега · до 17:30' : 'Пон–Пет 8:30–17:30'; }
-    if (pill) { pill.classList.toggle('is-open', open); pill.textContent = open ? 'Отворено сега' : 'Затворено в момента'; }
+    if (top) { top.classList.toggle('is-open', open); top.lastChild.textContent = open ? tr('Отворено сега · до 17:30', 'Open now · until 17:30') : tr('Пон–Пет 8:30–17:30', 'Mon–Fri 8:30–17:30'); }
+    if (pill) { pill.classList.toggle('is-open', open); pill.textContent = open ? tr('Отворено сега', 'Open now') : tr('Затворено в момента', 'Closed now'); }
   }
   openStatus();
   setInterval(openStatus, 60000);
@@ -361,27 +391,28 @@
     email.parentElement.classList.toggle('is-bad', !okMail);
     if (!okName || !okMail) {
       msg.className = 'form__msg bad';
-      msg.textContent = 'Попълнете име и валиден имейл, за да ви отговорим.';
+      msg.textContent = tr('Попълнете име и валиден имейл, за да ви отговорим.', 'Please enter your name and a valid email address so we can reply.');
       (okName ? email : name).focus();
       return;
     }
     const body = [
-      'Име: ' + name.value.trim(),
-      'Фирма: ' + ($('#f-company').value.trim() || '—'),
-      'Телефон: ' + ($('#f-phone').value.trim() || '—'),
-      'Имейл: ' + email.value.trim(),
-      'Тип обект: ' + ($('#f-type').value || '—'),
+      tr('Име: ', 'Name: ') + name.value.trim(),
+      tr('Фирма: ', 'Company: ') + ($('#f-company').value.trim() || '—'),
+      tr('Телефон: ', 'Phone: ') + ($('#f-phone').value.trim() || '—'),
+      tr('Имейл: ', 'Email: ') + email.value.trim(),
+      tr('Тип обект: ', 'Type of business: ') + ($('#f-type').value || '—'),
       '', $('#f-msg').value.trim(),
     ].join('\n');
     msg.className = 'form__msg ok';
-    msg.textContent = 'Отваряме имейл до office@paper-professional.com с вашето запитване. Ако не се отвори, пишете ни на този адрес или звънете на 0882 027 070.';
-    location.href = 'mailto:office@paper-professional.com?subject=' + encodeURIComponent('Запитване за оферта') + '&body=' + encodeURIComponent(body);
+    msg.textContent = tr(`Отваряме имейл до office@paper-professional.com с вашето запитване. Ако не се отвори, пишете ни на този адрес или звънете на ${PHONE}.`,
+      `We are opening an email to office@paper-professional.com with your request. If it does not open, write to that address or call ${PHONE}.`);
+    location.href = 'mailto:office@paper-professional.com?subject=' + encodeURIComponent(tr('Запитване за оферта', 'Quote request (English site)')) + '&body=' + encodeURIComponent(body);
   });
   $('#newsForm')?.addEventListener('submit', e => {
     e.preventDefault();
     const v = $('#news-email').value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { toast('Въведете валиден имейл адрес.'); return; }
-    toast('Бюлетинът ще бъде свързан при пускането на новия сайт.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { toast(tr('Въведете валиден имейл адрес.', 'Please enter a valid email address.')); return; }
+    toast(tr('Бюлетинът ще бъде свързан при пускането на новия сайт.', 'The newsletter will be connected when the new site goes live.'));
   });
 
   /* ---------------- reveal on scroll ---------------- */
@@ -398,10 +429,18 @@
   }
   reveal();
 
+  /* ---------------- language switch: keep the same page, filters and section ---------------- */
+  $$('[data-lang-switch]').forEach(a => {
+    const base = a.getAttribute('href').split(/[?#]/)[0];
+    const sync = () => { a.href = base + location.search + location.hash; };
+    ['pointerdown', 'focus', 'mouseenter'].forEach(ev => a.addEventListener(ev, sync));
+    a.addEventListener('click', sync);
+  });
+
   window.PC = {
-    $, $$, esc, eur, bgn, plural, store, reduce, finePointer, IMG, BGN,
+    $, $$, esc, eur, bgn, plural, products, store, reduce, finePointer, IMG, BGN, ROOT, EN, tr, PHONE, telLink,
     CAT, catById, prodById, getProduct, children, tops, catUrl, prodUrl, catProducts, pathTo, catImage,
-    isOwn, discount, soldOut, stockBadge, priceHtml, productCard, cartIcon, home, quoteUrl,
+    isOwn, discount, soldOut, stockNote, stockBadge, priceHtml, productCard, cartIcon, home, quoteUrl,
     toast, whileVisible, addToCart, cartAsText, setOverlay, reveal, params, searchAll,
   };
 })();

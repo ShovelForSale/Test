@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3543,"desc":["White/clear plastic forks with 4 tines, 100 pcs per pack. For single use – ideal for picnics, catering services, fast food and more."],"more":[],"specs":[],"options":[]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":4218,"desc":["Luxury floral napkins, 2-ply with embossed border, 1/4 fold, 40 per pack","Folded size: W20 × H20 cm (40×40 cm napkin)"],"more":[],"specs":[["Ply","2-ply"],["Size","40×40 cm unfolded"],["Fold","1/4 fold – H20.0 × W20.0 cm"],["Pack size","32 packs × 40 pcs"]],"options":[]});

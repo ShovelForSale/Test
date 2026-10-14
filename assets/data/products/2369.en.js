@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2369,"desc":["Christmas snowman napkins – 40 napkins, 2-ply, 33×33 cm.","Also suitable for decoupage."],"more":["Luxury Christmas napkins, 1/4 fold, 33×33 cm, 2-ply.","Brand: Santia"],"specs":[["Type","Napkins"],["Brand","Santia"],["Ply","2-ply"],["Fold","1/4 fold – H16.5 × W16.5 cm"],["Pack size","33 packs × 40 pcs"]],"options":[]});

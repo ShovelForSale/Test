@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3125,"desc":["PUROX* washing powder for coloured fabrics, 420 g, 6 washes. Suitable for all washing machines; fresh, pleasant scent."],"more":[],"specs":[["Type","Cleaning products"]],"options":[]});

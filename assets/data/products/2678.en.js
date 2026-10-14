@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2678,"desc":["Mini jumbo toilet paper, 3-ply, bleached recycled – 12 rolls."],"more":["We manufacture toilet paper in a range of roll weights and pack sizes."],"specs":[["Type","Toilet paper – rolls"],["Brand","Paper-Converting"],["Ply","3-ply"],["Material","80% virgin pulp"],["Pack size","12 per bag"]],"options":[]});

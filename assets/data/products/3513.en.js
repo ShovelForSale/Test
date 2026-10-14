@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":3513,"desc":["Christmas napkins for everyday use, 1-ply, embossed.","Unfolded napkin size: 33×33 cm.","Folded napkin size: 16.5×16.5 cm.","Packaging: 100 per pack"],"more":[],"specs":[["Ply","1-ply"],["Size","33×33 cm unfolded"]],"options":[]});

@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":702,"desc":["7935 – wet wipes dispenser"],"more":[],"specs":[["Type","Wet wipes, industrial rolls – disposable, industrial wipers – reusable"],["Colour","White"],["Dispenser for","Roll stands"],["Lock","Key"],["Material","ABS plastic"],["Dispenser size (H × W × D, cm)","H27.0 × W12.5–15.0 × D15.0"]],"options":[]});

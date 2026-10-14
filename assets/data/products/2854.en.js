@@ -1,0 +1,1 @@
+window.PC_PRODUCT_EN&&PC_PRODUCT_EN({"id":2854,"desc":["Blue napkins, 33×33 cm, 1/8 fold, 2-ply, luxury with embossed border – 150 per pack."],"more":["Blue 2-ply napkins, 1/8 fold, 33×33 cm."],"specs":[["Type","Napkins"],["Colour","Blue"],["Ply","2-ply"],["Fold","1/8 fold – H16.5 × W8.25 cm"]],"options":[]});
